@@ -1,0 +1,69 @@
+T 1472710381 31<sonal>30	ping
+T 1472714597 22*	Disconnected (Connection timed out).
+T 1472718167 22*	Disconnected (Connection timed out).
+T 1472721931 31<sonal_>30	ping
+T 1472753102 22*	Disconnected (Connection timed out).
+T 1472794943 18<psuriset>	ping 
+T 1472794948 18<psuriset>	Are you in office? 
+T 1472794963 31<sonal>30	helo
+T 1472794967 31<sonal>30	yes
+T 1472794970 18<psuriset>	can you get on to Bluejeans? 
+T 1472794983 31<sonal>30	sorry?
+T 1472794999 18<psuriset>	https://bluejeans.com/psuriset
+T 1472795007 18<psuriset>	can you go meeting room and join this 
+T 1472795030 18<psuriset>	I thought you could send a documentation patch 
+T 1472795033 18<psuriset>	to get started
+T 1472795044 18<psuriset>	i will show you how to do that
+T 1472795052 31<sonal>30	oky
+T 1472795070 18<psuriset>	Hope you have time.  If you are in middle of some thing, no worries 
+T 1472795097 31<sonal>30	ya..was going through sat-perrf code
+T 1472795102 18<psuriset>	ok
+T 1472795172 31<sonal>30	is this oky to join yu on bluejeans frm here
+T 1472795180 31<sonal>30	i mean frm desk
+T 1472795207 18<psuriset>	if you dont have headphone, it would be annoying for others
+T 1472795219 18<psuriset>	no worries. leave it. I will ask archit to take you through
+T 1472795224 18<psuriset>	when he is at office
+T 1472795230 31<sonal>30	i have my ear plugs
+T 1472795230 18<psuriset>	I will talk to him 
+T 1472795260 18<psuriset>	i am not sure, if you have speaker for that 
+T 1472795299 18<psuriset>	no worries. leave it 
+T 1472795305 31<sonal>30	oky
+T 1472795311 18<psuriset>	let me talk to archit to help you out 
+T 1472795320 31<sonal>30	oky
+T 1472795329 31<sonal>30	very few ppl today in office :(
+T 1472795340 18<psuriset>	Today being strike, its expected 
+T 1472795343 18<psuriset>	no worries. 
+T 1472795346 31<sonal>30	oky
+T 1472795359 18<psuriset>	Have fun 
+T 1472795368 18<psuriset>	Feel free to call me if any thing needed
+T 1472795392 31<sonal>30	oky
+T 1472795402 18<psuriset>	can you hear me over BJ? 
+T 1472795406 18<psuriset>	i see you in BJ
+T 1472795417 31<sonal>30	nope
+T 1472795444 18<psuriset>	no worries. lets fix it when i am there 
+T 1472795470 18<psuriset>	As i WFH couple of days in week, i would like to have interaction over BJ 
+T 1472795485 31<sonal>30	yep..iam there
+T 1472795494 31<sonal>30	yu can catch me ryt nw on bj
+T 1472795505 18<psuriset>	can u hear me? 
+T 1472795681 18<psuriset>	https://github.com/redhat-performance/satperf
+T 1472795933 18<psuriset>	git pull https://github.com/SonaArora/satperf.git
+T 1472796257 18<psuriset>	https://www.youtube.com/watch?v=BlNl7BJTUBs
+T 1472796264 18<psuriset>	https://www.youtube.com/watch?v=S1wD1uSbUSo
+T 1472796280 18<psuriset>	https://www.youtube.com/watch?v=kac1Cs4Wgx8
+T 1472796292 18<psuriset>	https://www.youtube.com/watch?v=WfxKQ7rwXfc
+T 1472796490 31<sonal>30	8058422937
+T 1472796507 18<psuriset>	Thanks.  
+T 1472796516 31<sonal>30	:)
+T 1472800194 31<sonal>30	permission denied to push in sat-perf
+T 1472804064 22*	Disconnected (Connection timed out).
+T 1472804075 22*	sonal already in use. Retrying with sonal_...
+T 1472807458 31<sonal_>30	i have pushed changes in my repo :https://github.com/SonaArora/satperf/tree/minor
+T 1472807479 31<sonal_>30	as it was unable to push in main repo
+T 1472807646 18<psuriset>	hi
+T 1472807651 18<psuriset>	was away
+T 1472807660 18<psuriset>	you cloned it from my repo 
+T 1472807674 18<psuriset>	you need to clone it from your repo 
+T 1472807689 18<psuriset>	pull changes to your repo 
+T 1472807705 18<psuriset>	Then you can send PR from your repo to mine 
+T 1472807712 18<psuriset>	will show you that
+T 1472808587 31<sonal_>30	https://github.com/redhat-performance/satperf/pull/7

@@ -1,0 +1,2987 @@
+document.domain = "sulekha.com";
+var gProtocol = (("http:" == document.location.protocol) ? "http://" : "https://");
+var oldsearchval = "";
+var mytempurl = "";
+var titlesrch = "";
+var mytemptext = "";
+var GAVersion = 0;
+var Firstsearch = true;
+var Fscrollsearch = true;
+var fSULHeaderInitialized = false;
+$SUL = jQuery.noConflict();
+var errordialog = function (c, b, a) { };
+window.onerror = function (c, b, a) {
+    return errordialog("Error message: " + c + "\nURL: " + b + "\nLine Number: " + a);
+};
+SulHeader = {
+    Common: {
+        getCookie: function (c) {
+            var b = document.cookie;
+            var e = c + "=";
+            var d = b.indexOf("; " + e);
+            if (d == -1) {
+                d = b.indexOf(e);
+                if (d != 0) {
+                    return null;
+                }
+            } else {
+                d += 2;
+            }
+            var a = document.cookie.indexOf(";", d);
+            if (a == -1) {
+                a = b.length;
+            }
+            return unescape(b.substring(d + e.length, a));
+        },
+        resizeIframe: function (a, b) {
+            SulHeader.Auth.isReg = 1;
+            if (a != "") {
+                $SUL("#signin_india").dialog("option", "height", a);
+            }
+            if (b != "") {
+                $SUL("#signin_india").dialog("option", "width", b);
+            }
+        },
+        isEmptyParam: function (a) {
+            if (a == undefined || a == "" || a == null) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        sul_ga_track_User: function (d, a) {
+            try {
+                var e = "FirstTimeUser";
+                var c = getCookie("tp_ud");
+                if (c != undefined && c != "") {
+                    e = usr_value;
+                } else {
+                    e = parent.window.location.href;
+                }
+                _gaq.push(["_trackEvent", "User", d, e, 1, a]);
+            } catch (b) { }
+        },
+        bookmark: function (a, c) {
+            if (SulHeader.Common.isEmptyParam(a)) {
+                a = document.URL;
+            }
+            if (SulHeader.Common.isEmptyParam(c)) {
+                c = "Sulekha.Com";
+            }
+            if (window.sidebar) {
+                window.sidebar.addPanel(c, a, "");
+            } else {
+                if (window.opera && window.print) {
+                    var b = document.createElement("a");
+                    b.setAttribute("href", a);
+                    b.setAttribute("title", c);
+                    b.setAttribute("rel", "sidebar");
+                    b.click();
+                } else {
+                    if (document.all) {
+                        window.external.AddFavorite(a, c);
+                    } else {
+                        alert("This Browser doesn't support manual bookmark press ctrl+D to bookmark");
+                    }
+                }
+            }
+        },
+        bookmarkPage: function (b, a, c) {
+            if (!SulHeader.Common.isEmptyParam(b)) {
+                $SUL("#" + b).ready(function () {
+                    $SUL("#" + b).bind("click", function (d) {
+                        SulHeader.Common.bookmark(a, c);
+                    });
+                    if ($SUL("#" + b + "_close").length > 0) {
+                        $SUL("#" + b + "_close").bind("click", function (d) {
+                            $SUL("#" + b + "_panel").hide();
+                        });
+                    }
+                });
+            } else {
+                SulHeader.Common.bookmark(a, c);
+            }
+        },
+        enter: function (holder, method, param) {
+            $SUL(holder).bind("keyup", function (event) {
+                if (event.keyCode == 13) {
+                    eval(method)(param);
+                }
+            });
+        },
+        PageEventTrack: function (a) {
+            if (SulHeader.Common.isEmptyParam(a)) {
+                a = "EVTTrack";
+            }
+            $SUL("." + a).each(function (g, e) {
+                var n = $SUL(this).attr("class");
+                var c = n.split(" ");
+                for (clsID = 0; clsID < c.length; clsID++) {
+                    if (c[clsID].substring(0, 4) == "GAQ_") {
+                        try {
+                            var h = c[clsID].split("_");
+                            var m = h[1].substring(0, 1);
+                            var f = h[2] + "";
+                            var b = h[3] + "";
+                            var l = "";
+                            var d = SulHeader.Common.getEventName(m);
+                            if (h[4] != undefined) {
+                                l = h[4];
+                            }
+                            if (!SulHeader.Common.isEmptyParam(d) && !SulHeader.Common.isEmptyParam(f) && !SulHeader.Common.isEmptyParam(b)) {
+                                $SUL(this).bind(d, function (o) {
+                                    _gaq.push(["_trackEvent", "UX", "MenuClick", b, 1, false]);
+                                });
+                            }
+                        } catch (k) { }
+                    }
+                }
+            });
+        },
+        getEventName: function (b) {
+            var a = "";
+            switch (b) {
+                case "C":
+                    a = "click";
+                    break;
+                case "B":
+                    a = "blur";
+                    break;
+                case "F":
+                    a = "focus";
+                    break;
+                case "M":
+                    a = "mouseover";
+                    break;
+                case "K":
+                    a = "keypress";
+                    break;
+                default:
+                    a = "click";
+                    break;
+            }
+            return a;
+        }
+    },
+    ServiceHeader: {
+        Init: function (a, b) {
+            SulHeader.Common.bookmarkPage("sul_mpbookmark", "", "Welcome to Sulekha.Com");
+            $SUL("#sul_mptabul li").each(function () {
+                $SUL(this).hover(function () {
+                    var d = $SUL(this);
+                    var e = d.offset();
+                    var c = this.id;
+                    timer = setTimeout(function () {
+                        $SUL("#" + c + "dd").css("left", e.left - 5);
+                        $SUL("#" + c + "dd").css("top", e.top + 32);
+                        $SUL("#" + c + "dd").show();
+                    }, 500);
+                }, function () {
+                    clearTimeout(timer);
+                    $SUL("#" + this.id + "dd").hide();
+                });
+                $SUL("#" + this.id + "dd").hover(function () {
+                    $SUL("#" + this.id).show();
+                    $SUL("#" + this.id.replace("dd", "") + " a.gSMListLnk").addClass("gActive");
+                }, function () {
+                    $SUL("#" + this.id).hide();
+                    $SUL("#" + this.id.replace("dd", "") + " a.gSMListLnk").removeClass("gActive");
+                });
+            });
+        }
+    },
+    Init: function (Srchholder, Srchdef) {
+        Sulekha2014.Init();
+        if (fSULHeaderInitialized) {
+            return;
+        }
+        $SUL("#signin_india").overlay({
+            mask: {
+                color: "#000000",
+                loadSpeed: 200,
+                opacity: 0.8
+            },
+            closeOnClick: true,
+            load: false
+        });
+        $SUL("#signin_india").find("a.close").bind("click", function () {
+            $SUL("#signin_india").css("display", "none");
+            SulHeader.Common.sul_ga_track_User("UserLogIn Close", false);
+            if (eval("window.CallBack_LoginClose") && eval("typeof CallBack_LoginClose") == "function") {
+                eval("CallBack_LoginClose")();
+            }
+        });
+        SulHeader.Auth.setLoginBar();
+        $SUL(document).keyup(function (e) {
+            if (e.keyCode == 27) {
+                $SUL("#signin_india").css("display", "none");
+            }
+        });
+        $SUL(window).scroll(function () {
+            if ($SUL(this).scrollTop() > 100) {
+                $SUL("#sul_gblmarketplace").show();
+                $SUL("#sul_gblmarketplace").addClass("gNScroll");
+            } else {
+                if ($SUL(window).width() < 780) {
+                    $SUL("#sul_gblmarketplace").hide();
+                }
+                $SUL("#sul_gblmarketplace").removeClass("gNScroll");
+            }
+            if ($SUL(this).scrollTop() > 40) {
+                $SUL("body").addClass("sticky-header");
+            } else {
+                $SUL("body").removeClass("sticky-header");
+            }
+        });
+        $SUL(window).load(function () {
+            CommonHeader.dropdownSearch("cityDropdownHeader", "sulCommonheader_cb", {
+                hasLink: false,
+                ajaxEnabled: true
+            });
+            CommonHeader.megamenu();
+            CHTE.Init();
+            CommonSearch.Init();
+            setTimeout(CommonHeader.secondaryMenuPositioning, 1000);
+        });
+        SulHeader.Common.PageEventTrack();
+        fSULHeaderInitialized = true;
+    },
+    CurrentUser: {
+        name: "",
+        url: "",
+        id: "",
+        photo: "",
+        firstName: "",
+        lastName: "",
+        loggedsite: "sulekha",
+        loggedsiteid: 1,
+        gatherDetail: function () {
+            if (SulHeader.Common.getCookie("sulekha_screenname") != null && SulHeader.Common.getCookie("tp_ud") == null) {
+                this.name = SulHeader.Common.getCookie("sulekha_screenname");
+                this.url = SulHeader.Common.getCookie("sulekha_baseaddress");
+                this.id = "";
+                var b = this.url;
+                if (SulHeader.Common.isEmptyParam(this.name)) {
+                    this.name = "Member";
+                }
+                if (SulHeader.Common.isEmptyParam(this.url.replace("http://", ""))) {
+                    this.url = "http://www.sulekha.com/myhome.aspx?t=[timestamp]";
+                }
+                if (b != null && b != "http://www.sulekha.com/myhome.aspx" && b != "") {
+                    b = b.replace(".sulekha.com", "").replace("http://", "");
+                    if (!SulHeader.Common.isEmptyParam(b)) {
+                        this.photo = "http://www1.sulekha.com/mstore/" + b + "/profile/photo/thumbnail/default-42x42.jpg";
+                    } else {
+                        this.photo = "http://www.sulekha.com/mstore/unknown-42x42.jpg";
+                    }
+                } else {
+                    this.photo = "http://www.sulekha.com/mstore/unknown-42x42.jpg";
+                }
+                this.loggedsite = "sulekha";
+                this.loggedsiteid = 1;
+            } else {
+                if (SulHeader.Common.getCookie("tp_ud") != null) {
+                    var a = SulHeader.Common.getCookie("tp_ud");
+                    this.name = a.split("::")[2];
+                    this.url = a.split("::")[4];
+                    this.id = a.split("::")[1];
+                    this.photo = a.split("::")[5];
+                    if (this.photo.indexOf("/mstore//profile/photo") > 0) {
+                        this.photo = "http://www.sulekha.com/mstore/unknown-42x42.jpg";
+                    }
+                    if (a.split("::").length > 6) {
+                        this.firstName = a.split("::")[6];
+                    }
+                    if (a.split("::").length > 7) {
+                        this.lastName = a.split("::")[7];
+                    }
+                    this.loggedsite = a.split("::")[0];
+                    if (SulHeader.Common.isEmptyParam(this.name)) {
+                        this.name = "Member";
+                    }
+                    if (SulHeader.Common.isEmptyParam(this.url.replace("http://", ""))) {
+                        this.url = "http://www.sulekha.com/myhome.aspx?t=[timestamp]";
+                    }
+                    if (this.loggedsite == "local" || this.loggedsite == "sulekha") {
+                        this.loggedsiteid = 1;
+                    } else {
+                        if (this.loggedsite == "facebook") {
+                            this.loggedsiteid = 2;
+                        } else {
+                            if (this.loggedsite == "google") {
+                                this.loggedsiteid = 3;
+                            } else {
+                                if (this.loggedsite == "twitter") {
+                                    this.loggedsiteid = 4;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    Auth: {
+        CallBack_Success: "",
+        CallBack_Failure: "",
+        isReg: 0,
+        Version: "2",
+        RegPath: "http://myaccount.sulekha.com/network/register.aspx",
+        Path: "http://myaccount.sulekha.com/network/signin.aspx",
+        isLoggedin: function (c) {
+            var d = 0;
+            var b = "";
+            var a = "";
+            if (SulHeader.Common.getCookie("tp_ud") != null) {
+                b = SulHeader.Common.getCookie("tp_ud");
+                a = b.split("::")[0];
+            }
+            if (c == "" || c == "all" || c == undefined || c == "popup") {
+                if (SulHeader.Common.getCookie("sulekha_screenname") != null) {
+                    d = 1;
+                } else {
+                    if (SulHeader.Common.getCookie("tp_ud") != null) {
+                        d = 1;
+                    }
+                }
+            } else {
+                if (c == "sulekha") {
+                    if (SulHeader.Common.getCookie("sulekha_screenname") != null) {
+                        d = 1;
+                    } else {
+                        if (a == "sulekha" || a == "local") {
+                            d = 1;
+                        }
+                    }
+                } else {
+                    if (c == "facebook" && a == "facebook") {
+                        d = 1;
+                    } else {
+                        if (c == "google" && a == "google") {
+                            d = 1;
+                        } else {
+                            if (c == "twitter" && a == "twitter") {
+                                d = 1;
+                            }
+                        }
+                    }
+                }
+            }
+            if (d == 1) {
+                SulHeader.CurrentUser.gatherDetail();
+            }
+            return d;
+        },
+        ensureLoggedIn: function (loginservice, callback, version) {
+
+            if ($SUL("#sul_loginlnk").length) {
+                this.Path = "http://myaccount.sulekha.com/html/newsignin.html";
+            }
+            if (!SulHeader.Common.isEmptyParam(version)) {
+                if (version > 0) {
+                    this.Version = version;
+                }
+            }
+            this.CallBack_Success = callback;
+            if (this.isLoggedin(loginservice) == 1) {
+                eval(callback)();
+            } else {
+                this.popupLoginCtrl(loginservice);
+                if ($SUL("#sul_ressignin").length) {
+
+                    $SUL("#exposeMask").css("display", "block"); $SUL("#signin_india").css("display", "block");
+                    $SUL('#signin_india.signin-register-popup').css('top', $SUL(document).scrollTop() + 15);
+                    document.getElementById('frMyAccount').contentWindow.Sulekha2014Login.Common.FlipShow("registerPanel");
+                }
+            }
+
+
+        },
+        popupRegisterCtrl: function (b, a) {
+            var c = $SUL("#frMyAccount").attr("src") + "";
+            if (c == "undefined" || c == "" || c == "http://api.sulekhalive.com/html/dummy.html") {
+                $SUL("#frMyAccount").attr("src", this.Path);
+            }
+            if ($SUL("#signin_india").length > 0) {
+                $SUL("#signin_india").data("overlay").load().show();
+            } else {
+                $SUL("#signin").data("overlay").load();
+            }
+        },
+        popupLoginCtrl: function (c, a, b) {
+            if (!SulHeader.Common.isEmptyParam(a)) {
+                if (a > 0) {
+                    this.Version = a;
+                }
+            }
+            if (!SulHeader.Common.isEmptyParam(this.Version)) {
+                if (!SulHeader.Common.isEmptyParam(b)) {
+                    a = "?atuotriggfb=true&ver=" + this.Version;
+                } else {
+                    a = "?ver=" + this.Version;
+                }
+            } else {
+                a = "";
+            }
+            var d = $SUL("#frMyAccount").attr("src") + "";
+            if (d == "undefined" || d == "" || d == "http://api.sulekhalive.com/html/dummy.html") {
+                $SUL("#frMyAccount").attr("src", this.Path + a);
+            }
+            if ($SUL("#signin_india").length > 0) {
+                $SUL("#signin_india").data("overlay").load();
+            } else {
+                $SUL("#signin").data("overlay").load();
+            }
+        },
+        popupLoginClose: function (status) {
+            $SUL("#divSignin_Dialog").dialog("close");
+            if (status == 1) {
+                eval(this.CallBack_Success)();
+            } else {
+                if (status == 0 && this.isLoggedin("") == 1) {
+                    eval(this.CallBack_Success)();
+                } else {
+                    eval(this.CallBack_Failure)();
+                }
+            }
+        },
+        popupLoginCallBack: function (aIPCountry) {
+            this.setLoginBar();
+            $SUL("#signin").css("display", "none");
+            if (Sulekha != undefined) {
+                if (Sulekha.Auth != undefined) {
+                    this.CallBack_Success = Sulekha.Auth.CallBack_Success;
+                }
+            }
+            if (this.CallBack_Success != "") {
+                eval(this.CallBack_Success)();
+            }
+            SulHeader.Common.sul_ga_track_User("UserLoggedIn", false);
+        },
+        setLoginBar: function (a) {
+            var c = "";
+            var b = "";
+            if (!SulHeader.Common.isEmptyParam(a)) {
+                if (a > 0) {
+                    this.Version = a;
+                }
+            }
+            if (SulHeader.Auth.isLoggedin()) {
+                if (!SulHeader.Common.isEmptyParam(SulHeader.CurrentUser.firstName)) {
+                    c = SulHeader.CurrentUser.firstName;
+                } else {
+                    if (!SulHeader.Common.isEmptyParam(SulHeader.CurrentUser.lastName)) {
+                        c = SulHeader.CurrentUser.lastName;
+                    } else {
+                        c = SulHeader.CurrentUser.name;
+                    }
+                }
+                b = SulHeader.CurrentUser.id;
+                if (c.length > 20) {
+                    c = c.substring(0, 18) + "...";
+                }
+                if (b != null && b != "" && b != undefined) {
+                    $SUL("#sul_loggedinul").html('<li><a href="http://myaccount.sulekha.com/" title="Account settings">Account settings</a></li><li><a href="http://www.sulekha.com/user/dashboard" title="My dashboard">My dashboard</a></li><li class="gLast"><a href="http://rivr.sulekha.com/myrivr.aspx" title="My profile">My profile</a></li><li class="divider"></li><li><a tabindex="-1" href="#" class="btn margin20l margin20r" id="sul_logouttxt">Logout</a></li>');
+                    $SUL("#sul_logouttxt").attr("href", gProtocol + "myaccount.sulekha.com/network/signout.aspx");
+                    if (c == null || c == "" || c == undefined) {
+                        c = "Member";
+                    }
+                    $SUL("#sul_loginname").html(c);
+                    $SUL("#sul_loginname").parent().attr('href', '');
+                    $SUL("#exposeMask").css("display", "none");
+                    $SUL("#signin_india").css("display", "none");
+                    $SUL("#sul_loggedout").css("display", "none");
+                    $SUL("#sul_loggedin").css("display", "");
+                    $SUL("#sul_loggedindd").css("display", "");
+                    $SUL("#sul_myaccount").click(function (d) {
+                        d.stopPropagation();
+                        if ($SUL("#sul_loggedindd").css("display") == "" || $SUL("#sul_loggedindd").css("display") == "block") {
+                            $SUL("#sul_loggedindd").hide();
+                        } else {
+                            $SUL("#sul_loggedindd").show();
+                        }
+                        $SUL("#sul_logouttxt").click(function () {
+                            $SUL("#sul_loggedindd").hide();
+                        });
+                    });
+                } else {
+                    $SUL("#sul_loggedinul").children("li").remove();
+                    $SUL("#sul_loggedout").css("display", "");
+                    $SUL("#sul_loggedin").css("display", "none");
+                    $SUL("#sul_loggedindd").css("display", "none");
+                }
+            } else {
+                $SUL("#sul_loggedinul").children("li").remove();
+                $SUL("#sul_loggedinul").children("li").remove();
+                $SUL("#sul_loggedout").css("display", "");
+                $SUL("#sul_loggedin").css("display", "none");
+                $SUL("#sul_loggedindd").css("display", "none");
+            }
+            if ($SUL("#sul_loginlnk").length) {
+                $SUL("#sul_loginlnk").click(function (d) {
+                    CHTE.RecordEvent("SI", "", true);
+                    SulHeader.Auth.Path = "http://myaccount.sulekha.com/html/newsignin.html";
+                    SulHeader.Auth.popupLoginCtrl();
+                });
+            }
+            if ($SUL("#sul_reglnk").length) {
+                $SUL("#sul_reglnk").click(function (d) {
+                    CHTE.RecordEvent("CR", "", true);
+                    SulHeader.Auth.Path = "http://myaccount.sulekha.com/html/newsignin.html";
+                    SulHeader.Auth.popupLoginCtrl();
+                });
+            }
+            $SUL("#sul_logintxt").click(function (d) {
+                CHTE.RecordEvent("SI", "", true);
+                SulHeader.Auth.popupLoginCtrl();
+            });
+            $SUL("#sul_regtxt").click(function (d) {
+                CHTE.RecordEvent("CR", "", true);
+                SulHeader.Auth.popupLoginCtrl();
+            });
+        }
+    },
+    ToggleDrowpdown: {
+        Init: function () {
+            $SUL(document).ready(function () {
+                $SUL("body").on("click", ".dropdown-toggle", SulHeader.ToggleDrowpdown.setDropdown);
+                $SUL("ul .dropdown-menu").bind("mouseout", SulHeader.ToggleDrowpdown.setDropdown);
+                $SUL("ul .dropdown-menu li a").bind("click", SulHeader.ToggleDrowpdown.ClearMenus);
+            });
+        },
+        setDropdown: function () {
+            var c = $SUL(this),
+                b, a;
+            if (c.is(".disabled, :disabled")) {
+                return;
+            }
+            b = SulHeader.ToggleDrowpdown.getParentElement(c);
+            a = b.hasClass("open");
+            SulHeader.ToggleDrowpdown.ClearMenus(b);
+            if (!a) {
+                $SUL(b).toggleClass("open");
+                c.focus();
+            }
+            return false;
+        },
+        getParentElement: function (c) {
+            var a = $SUL(c).attr("data-target"),
+                b;
+            if (!a) {
+                a = $SUL(c).attr("href");
+                a = a && /#/.test(a) && a.replace(/.*(?=#[^\s]*$)/, "");
+            }
+            b = $SUL(a);
+            b.length || (b = $SUL(c).parent());
+            return b;
+        },
+        ClearMenus: function () {
+            var a = "[data-toggle=dropdown]";
+            SulHeader.ToggleDrowpdown.getParentElement($SUL(a)).removeClass("open");
+        }
+    }
+}, Sulekha = {
+    Init: function (a) {
+        Sulekha2014.Init();
+        var b = $SUL("<div id='divError_Dialog' name='divError_Dialog' title='Error!...'></div><div id='div_Dialog' name='div_Dialog' title='Alert!...'></div><div id='div_Dialogphoto' name='div_Dialogphoto' title='Alert!...'></div><div id='div_Process' name='div_Process' title='Process...'></div><div id='divSignin_Dialog' name='divSignin_Dialog' title='Signin control!..'></div><div id='divShare_Dialog' name='divShare_Dialog' title=''></div>");
+        $SUL("body").append(b);
+        $SUL("head").append("<link>");
+        var c = $SUL("head").children(":last");
+        $SUL(document).ready(function () {
+            $SUL("#divError_Dialog").dialog({
+                modal: true,
+                zIndex: 3999,
+                autoOpen: false,
+                draggable: false,
+                title: "Sulekha Alert!..",
+                resizable: false,
+                buttons: {
+                    Ok: function () {
+                        $SUL(this).dialog("close");
+                    }
+                }
+            });
+            $SUL("#divSignin_Dialog").dialog({
+                modal: true,
+                zIndex: 3999,
+                autoOpen: false,
+                draggable: true,
+                title: "Welcome to sulekha.com. Kindly authenticate your identity",
+                resizable: false
+            });
+            $SUL("#divShare_Dialog").dialog({
+                modal: true,
+                zIndex: 3999,
+                height: 140,
+                width: 270,
+                autoOpen: false,
+                draggable: false,
+                title: "Share this page with",
+                resizable: false
+            });
+            $SUL("#div_Dialog").dialog({
+                modal: true,
+                zIndex: 3999,
+                autoOpen: false,
+                draggable: true,
+                title: "Sulekha Alert!...",
+                resizable: false
+            });
+            $SUL("#div_Dialogphoto").dialog({
+                modal: true,
+                zIndex: 3999,
+                autoOpen: false,
+                draggable: true,
+                title: "Sulekha Alert!...",
+                resizable: false
+            });
+            $SUL("#div_Process").dialog({
+                modal: true,
+                zIndex: 3999,
+                autoOpen: false,
+                draggable: false,
+                title: "Sulekha Process...",
+                resizable: false
+            });
+        });
+        if (window.location.href.indexOf("classifieds.sulekha.com") > 0) {
+            Sulekha.Auth.JSONGetData("http://classifieds.sulekha.com/network/sullogoutcl.aspx?freq=" + Math.random());
+        }
+    },
+    Validate: {
+        defaultTxt: function (a, b) {
+            if (Sulekha.Common.isEmptyParam(b) == false && Sulekha.Common.isEmptyParam(a) == false) {
+                a = "#" + a;
+                if ($SUL(a).is("div")) {
+                    $SUL(a).html(b);
+                    $SUL(a).bind("focusin", function (c) {
+                        if ($SUL(a).html() == b) {
+                            $SUL(a).html("");
+                        }
+                    });
+                    $SUL(a).bind("focusout", function (c) {
+                        if ($SUL(a).html() == "") {
+                            $SUL(a).html(b);
+                        }
+                    });
+                } else {
+                    $SUL(a).val(b);
+                    $SUL(a).bind("focusin", function (c) {
+                        if ($SUL(a).val() == b) {
+                            $SUL(a).val("");
+                        }
+                    });
+                    $SUL(a).bind("focusout", function (c) {
+                        if ($SUL(a).val() == "") {
+                            $SUL(a).val(b);
+                        }
+                    });
+                }
+            }
+        },
+        isValidData: function (a) {
+            var c = true;
+            if (Sulekha.Validate.bindedFields != null) {
+                for (i = 0; i < Sulekha.Validate.bindedFields.length; i++) {
+                    var b = Sulekha.Validate.bindedFields[i];
+                    for (j = 0; j < a.length; j++) {
+                        if ("#" + a[j].name == b.holder) {
+                            if (b.def != undefined) {
+                                if (b.sRegEx == "") {
+                                    Sulekha.Validate.required_chk(b.holder, b.def, b.resultholder, $SUL(b.holder).attr("title") + " field is required.");
+                                } else {
+                                    if (Sulekha.Validate.required_chk(b.holder, b.def, "", "status")) {
+                                        Sulekha.Validate.gbl_chk(b.holder, b.resultholder, b.msg, b.error, b.success, b.sRegEx);
+                                    } else {
+                                        Sulekha.Validate.required_chk(b.holder, b.def, b.resultholder, $SUL(b.holder).attr("title") + " field is required.");
+                                    }
+                                }
+                            } else {
+                                if ($SUL(b.holder).val() != "") {
+                                    Sulekha.Validate.gbl_chk(b.holder, b.resultholder, b.msg, b.error, b.success, b.sRegEx);
+                                }
+                            }
+                            if (Sulekha.Validate.valid == false) {
+                                c = false;
+                            }
+                        }
+                    }
+                }
+            }
+            return c;
+        }
+    },
+    sGSClBkParam: "",
+    CurrentUser: {
+        name: "",
+        url: "",
+        id: "",
+        photo: "",
+        firstName: "",
+        lastName: "",
+        loggedsite: "sulekha",
+        loggedsiteid: 1,
+        gatherDetail: function () {
+            if (Sulekha.Common.getCookie("sulekha_screenname") != null && Sulekha.Common.getCookie("tp_ud") == null) {
+                this.name = Sulekha.Common.getCookie("sulekha_screenname");
+                this.url = Sulekha.Common.getCookie("sulekha_baseaddress");
+                this.id = "";
+                var b = this.url;
+                if (Sulekha.Common.isEmptyParam(this.name)) {
+                    this.name = "Member";
+                }
+                if (Sulekha.Common.isEmptyParam(this.url.replace("http://", ""))) {
+                    this.url = "http://www.sulekha.com/myhome.aspx?t=[timestamp]";
+                }
+                if (b != null && b != "http://www.sulekha.com/myhome.aspx" && b != "") {
+                    b = b.replace(".sulekha.com", "").replace("http://", "");
+                    if (!Sulekha.Common.isEmptyParam(b)) {
+                        this.photo = "http://www1.sulekha.com/mstore/" + b + "/profile/photo/thumbnail/default-42x42.jpg";
+                    } else {
+                        this.photo = "http://www.sulekha.com/mstore/unknown-42x42.jpg";
+                    }
+                } else {
+                    this.photo = "http://www.sulekha.com/mstore/unknown-42x42.jpg";
+                }
+                this.loggedsite = "sulekha";
+                this.loggedsiteid = 1;
+            } else {
+                if (Sulekha.Common.getCookie("tp_ud") != null) {
+                    var a = Sulekha.Common.getCookie("tp_ud");
+                    this.name = a.split("::")[2];
+                    this.url = a.split("::")[4];
+                    this.id = a.split("::")[1];
+                    this.photo = a.split("::")[5];
+                    if (this.photo.indexOf("/mstore//profile/photo") > 0) {
+                        this.photo = "http://www.sulekha.com/mstore/unknown-42x42.jpg";
+                    }
+                    if (a.split("::").length > 6) {
+                        this.firstName = a.split("::")[6];
+                    }
+                    if (a.split("::").length > 7) {
+                        this.lastName = a.split("::")[7];
+                    }
+                    this.loggedsite = a.split("::")[0];
+                    if (Sulekha.Common.isEmptyParam(this.name)) {
+                        this.name = "Member";
+                    }
+                    if (Sulekha.Common.isEmptyParam(this.url.replace("http://", ""))) {
+                        this.url = "http://www.sulekha.com/myhome.aspx?t=[timestamp]";
+                    }
+                    if (this.loggedsite == "local" || this.loggedsite == "sulekha") {
+                        this.loggedsiteid = 1;
+                    } else {
+                        if (this.loggedsite == "facebook") {
+                            this.loggedsiteid = 2;
+                        } else {
+                            if (this.loggedsite == "google") {
+                                this.loggedsiteid = 3;
+                            } else {
+                                if (this.loggedsite == "twitter") {
+                                    this.loggedsiteid = 4;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    Auth: {
+        CallBack_Success: "",
+        CallBack_Failure: "",
+        isReg: 0,
+        Version: "",
+        RegPath: "http://myaccount.sulekha.com/network/register.aspx",
+        Path: "http://myaccount.sulekha.com/network/signin.aspx",
+        isLoggedin: function (c) {
+            var d = 0;
+            var b = "";
+            var a = "";
+            if (Sulekha.Common.getCookie("tp_ud") != null) {
+                b = Sulekha.Common.getCookie("tp_ud");
+                a = b.split("::")[0];
+            }
+            if (c == "" || c == "all" || c == undefined || c == "popup") {
+                if (Sulekha.Common.getCookie("sulekha_screenname") != null) {
+                    d = 1;
+                } else {
+                    if (Sulekha.Common.getCookie("tp_ud") != null) {
+                        d = 1;
+                    }
+                }
+            } else {
+                if (c == "sulekha") {
+                    if (Sulekha.Common.getCookie("sulekha_screenname") != null) {
+                        d = 1;
+                    } else {
+                        if (a == "sulekha" || a == "local") {
+                            d = 1;
+                        }
+                    }
+                } else {
+                    if (c == "facebook" && a == "facebook") {
+                        d = 1;
+                    } else {
+                        if (c == "google" && a == "google") {
+                            d = 1;
+                        } else {
+                            if (c == "twitter" && a == "twitter") {
+                                d = 1;
+                            }
+                        }
+                    }
+                }
+            }
+            if (d == 1) {
+                Sulekha.CurrentUser.gatherDetail();
+            }
+            return d;
+        },
+        ensureLoggedIn: function (loginservice, callback) {
+
+            if ($SUL("#sul_loginlnk").length) {
+                this.Path = "http://myaccount.sulekha.com/html/newsignin.html";
+            }
+            this.CallBack_Success = callback;
+            this.CallBack_Failure = "Sulekha.MP.ajaxError";
+            if (this.isLoggedin(loginservice) == 1) {
+                eval(callback)();
+            } else {
+                this.popupLoginCtrl(loginservice, 2);
+                if ($SUL("#sul_ressignin").length) {
+
+                    $SUL("#exposeMask").css("display", "block"); $SUL("#signin_india").css("display", "block");
+                    $SUL('#signin_india.signin-register-popup').css('top', $SUL(document).scrollTop() + 15);
+                    document.getElementById('frMyAccount').contentWindow.Sulekha2014Login.Common.FlipShow("registerPanel");
+                }
+            }
+
+
+        },
+        popupRegisterCtrl: function (b, a) {
+            if ($SUL("#frMyAccount").attr("src") == "") {
+                $SUL("#frMyAccount").attr("src", this.Path);
+            }
+            if ($SUL("#signin_india").length > 0) {
+                $SUL("#signin_india").data("overlay").load();
+            } else {
+                $SUL("#signin").data("overlay").load();
+            }
+            CHTE.RecordEvent("CR", "", true);
+        },
+        popupLoginCtrl: function (c, a, b) {
+            if (!Sulekha.Common.isEmptyParam(a)) {
+                if (b != "" && b != undefined) {
+                    a = "?atuotriggfb=true&ver=" + a;
+                } else {
+                    a = "?atuotriggfb=false&ver=" + a;
+                }
+            } else {
+                a = "";
+            }
+            var d = $SUL("#frMyAccount").attr("src") + "";
+            if (d == "undefined" || d == "" || d == "http://api.sulekhalive.com/html/dummy.html") {
+                $SUL("#frMyAccount").attr("src", this.Path + a);
+            }
+            if ($SUL("#signin_india").length > 0) {
+                $SUL("#signin_india").data("overlay").load();
+            } else {
+                $SUL("#signin").data("overlay").load();
+            }
+        },
+        popupLoginClose: function (status) {
+            $SUL("#divSignin_Dialog").dialog("close");
+            if (status == 1) {
+                eval(this.CallBack_Success)();
+            } else {
+                if (status == 0 && this.isLoggedin("") == 1) {
+                    eval(this.CallBack_Success)();
+                } else {
+                    eval(this.CallBack_Failure)();
+                }
+            }
+        },
+        popupLoginCallBack: function (aIPCountry) {
+            if ($SUL("#signin_india").length > 0) {
+                this.setLoginBarV2();
+            } else {
+                Sulekha.Auth.setLoginBar();
+                $SUL("#divSignin_Dialog").dialog("close");
+            }
+            if (this.CallBack_Success != "") {
+                $SUL("#signin").css("display", "none");
+                eval(this.CallBack_Success)();
+            }
+        },
+        setLoginBar: function () {
+            if (Sulekha.Auth.isLoggedin()) {
+                if (!Sulekha.Common.isEmptyParam(Sulekha.CurrentUser.firstName)) {
+                    sName = Sulekha.CurrentUser.firstName;
+                } else {
+                    if (!Sulekha.Common.isEmptyParam(Sulekha.CurrentUser.lastName)) {
+                        sName = Sulekha.CurrentUser.lastName;
+                    } else {
+                        sName = Sulekha.CurrentUser.name;
+                    }
+                }
+                if (sName.length > 40) {
+                    sName = sName.substring(0, 40) + "...";
+                }
+                var c = Sulekha.CurrentUser.url;
+                var b = "";
+                var a = document.getElementById("s_username");
+                sLogin = Sulekha.CurrentUser.loggedsite;
+                if (sLogin == "sulekha") {
+                    if (c == null || c == "" || c.indexOf(".sulekha.com") <= 0) {
+                        b = "Welcome " + sName;
+                    } else {
+                        if (c != "" && c != null) {
+                            b = '<a href="' + c + '" class="userimg"><img src="' + Sulekha.CurrentUser.photo + '" onerror="this.src=\'http://www.sulekha.com/common/img07/sulfavicon.gif\'"/></a><a class="username" target="_blank" href="' + c + '">' + sName + '</a><div class="clr"></div>';
+                        }
+                    }
+                } else {
+                    if (sLogin == "facebook") {
+                        if (sName.indexOf("-FB") > 0) {
+                            b = '<a target="_blank" href="' + c + '" class="userimg"><img src="' + Sulekha.CurrentUser.photo + '" onerror="this.src=\'http://www.sulekha.com/common/img07/facefavicon.gif\'"/></a><a class="username" target="_blank" href="' + c + '">' + sName.substring(0, sName.indexOf("-FB")) + '</a><div class="clr"></div>';
+                        } else {
+                            b = '<a target="_blank" href="' + c + '" class="userimg"><img src="' + Sulekha.CurrentUser.photo + '" onerror="this.src=\'http://www.sulekha.com/common/img07/facefavicon.gif\'"/></a><a class="username" target="_blank" href="' + c + '">' + sName + '</a><div class="clr"></div>';
+                        }
+                    } else {
+                        if (sLogin == "google") {
+                            b = '<a target="_blank" href="' + c + '" class="userimg"><img src="' + Sulekha.CurrentUser.photo + '" onerror="this.src=\'http://www.sulekha.com/common/img07/googsocial.gif\'"/></a><a class="username" target="_blank" href="' + c + '">' + sName + '</a><div class="clr"></div>';
+                        } else {
+                            if (sLogin == "twitter") {
+                                b = '<a target="_blank" href="' + c + '" class="userimg"><img src="' + Sulekha.CurrentUser.photo + '" onerror="this.src=\'http://www.sulekha.com/common/img07/twtsocial.gif\'"/></a><a class="username" target="_blank" href="' + c + '">' + sName + '</a><div class="clr"></div>';
+                            }
+                        }
+                    }
+                }
+                if (b != "") {
+                    if (a != null) {
+                        a.innerHTML = b;
+                        a.style.display = "";
+                        document.getElementById("s_logged").style.display = "";
+                        document.getElementById("s_login").style.display = "none";
+                    }
+                }
+            }
+        },
+        setLoginBarV2: function () {
+            var b = "";
+            var a = "";
+            if (Sulekha.Auth.isLoggedin()) {
+                if (!Sulekha.Common.isEmptyParam(Sulekha.CurrentUser.firstName)) {
+                    b = Sulekha.CurrentUser.firstName;
+                } else {
+                    if (!Sulekha.Common.isEmptyParam(Sulekha.CurrentUser.lastName)) {
+                        b = Sulekha.CurrentUser.lastName;
+                    } else {
+                        b = Sulekha.CurrentUser.name;
+                    }
+                }
+                a = Sulekha.CurrentUser.id;
+                if (b.length > 40) {
+                    b = b.substring(0, 40) + "...";
+                }
+                if (a != null && a != "" && a != undefined) {
+                    $SUL("#s_LoggedUL").html('<span id="sLogName" style="color: #000"> </span><li style="position: relative"><a onmouseout="EleOut();" onmouseover="EleOver();"><span class="SUL_linktxt">My Account</span> <span class="SUL_downarrow"></span></a><div id="myaccopen" onmouseout="DivOut()" onmouseover="DivOver()" class="select_myacc"><div><a href="http://rivr.sulekha.com/myrivr.aspx">My Rivr</a></div><div><a href="http://myaccount.sulekha.com/classifiedads">My Classifieds Ads</a></div></div></li><li>| </li><li><a href="http://myaccount.sulekha.com/classifiedads"><span class="SUL_linktxt">My Classifieds Ads</span></a></li><li> | </li><li><a href="http://myaccount.sulekha.com/network/signout.aspx"><span class="SUL_linktxt">Logout</span></a></li>');
+                    $SUL("#s_unLoggedUL").children("li").remove();
+                    if (b == null || b == "" || b == undefined) {
+                        b = "Member";
+                    }
+                    $SUL("#sLogName").html("<li>Hi <strong >" + b + ":</strong></li> ");
+                    $SUL("#signin_india").css("display", "none");
+                    $SUL("#exposeMask").css("display", "none");
+                } else {
+                    $SUL("#s_unLoggedUL").html('<li class="nact"><a id="gblmenu4" onclick="globalMenu(event,2);" rel="#signin" title="Account">Login</a></li><li>| </li><li><a title="Register in Sulekha" onclick="globalMenu(event,2);" id="gblmenu5">Register</a></li><li> | </li><li style="padding-top: 0;"><div class="SUL_social"><ul><li style="padding-top: 10px; color: #444444;">Login using</li><li><a class="SUL_facebook" id="FBImgPlu" href="javascript:Sulekha.Auth.popupLoginCtrl(\'\',2,\'true\');"></a></li><li><a class="SUL_twitter" id="TwtImgPlug" href="javascript:Sulekha.Auth.popupLoginCtrl(\'\', \'2\');"></a></li><li style="margin-right: 0;"><a class="SUL_googleplus" id="GooImgPlug" href="javascript:Sulekha.Auth.popupLoginCtrl(\'\', \'2\');"></a></li></ul></div></li>');
+                    $SUL("#s_LoggedUL").children("li").remove();
+                }
+            } else {
+                $SUL("#s_unLoggedUL").html('<li class="nact"><a id="gblmenu4" onclick="globalMenu(event,2);" rel="#signin" title="Account">Login</a></li><li>| </li><li><a title="Register in Sulekha" onclick="globalMenu(event,2);" id="gblmenu5">Register</a></li><li> | </li><li style="padding-top: 0;"><div class="SUL_social"><ul><li style="padding-top: 10px; color: #444444;">Login using</li><li><a class="SUL_facebook" id="FBImgPlu" href="javascript:Sulekha.Auth.popupLoginCtrl(\'\',2,\'true\');"></a></li><li><a class="SUL_twitter" id="TwtImgPlug" href="javascript:Sulekha.Auth.popupLoginCtrl(\'\', \'2\');"></a></li><li style="margin-right: 0;"><a class="SUL_googleplus" id="GooImgPlug" href="javascript:Sulekha.Auth.popupLoginCtrl(\'\', \'2\');"></a></li></ul></div></li>');
+                $SUL("#s_LoggedUL").children("li").remove();
+            }
+        },
+        validEmail: function (b, a, e, f) {
+            var d = document.getElementById("process_email");
+            if ($SUL("#" + b).val() != "") {
+                if (Sulekha.Validate.email(b, "", "")) {
+                    var c = "http://api.sulekha.com/network/validation.aspx?sulcallbackjson=" + f + "&inputtype=email&errdivid=" + a + "&inputvalue=" + $SUL("#" + b).val() + "&processdiv=" + e;
+                    $SUL("#" + e).html('<img align="absmiddle" width="16px" src="http://www.sulekha.com/common/img07/ajaxload.gif" />');
+                    this.JSONGetData(c);
+                } else {
+                    $SUL("#" + a).html("Enter a Valid Email");
+                    $SUL("#" + a).css("display", "");
+                    $SUL("#" + e).html('<img align="absmiddle" width="16px" src="http://www.sulekha.com/common/img07/error.gif" />');
+                    return false;
+                }
+            } else {
+                $SUL("#" + a).html("Enter Login Email");
+                $SUL("#" + a).css("display", "");
+                $SUL("#" + e).html('<img align="absmiddle" width="16px" src="http://www.sulekha.com/common/img07/error.gif" />');
+                return false;
+            }
+        },
+        signIn: function (e, b, a, d) {
+            var c = "http://api.sulekha.com/network/validation.aspx?sulcallbackjson=" + d + "&inputtype=signin&errdivid=" + a + "&logid=" + $SUL("#" + e).val() + "&logpass=" + $SUL("#" + b).val();
+            this.JSONGetData(c);
+        },
+        register: function (h, b, c, d, f, a, g) {
+            var e = "http://api.sulekha.com/network/validation.aspx?sulcallbackjson=" + g + "&inputtype=register&errdivid=" + a + "&logid=" + $SUL("#" + h).val() + "&logpass=" + $SUL("#" + b).val();
+            if (!Sulekha.Common.isEmptyParam(c)) {
+                e += "&logadd=" + $SUL("#" + c).val();
+            }
+            if (!Sulekha.Common.isEmptyParam(d)) {
+                e += "&logname=" + $SUL("#" + d).val();
+            }
+            if (!Sulekha.Common.isEmptyParam(f)) {
+                e += "&logidentity=" + $SUL("#" + f).val();
+            }
+            this.JSONGetData(e);
+        },
+        JSONGetData: function (a) {
+            var b = document.createElement("script");
+            b.src = a;
+            b.type = "text/javascript";
+            var c = document.getElementsByTagName("head").item(0);
+            c.appendChild(b);
+            return false;
+        }
+    },
+    Common: {
+        getCookie: function (c) {
+            var b = document.cookie;
+            var e = c + "=";
+            var d = b.indexOf("; " + e);
+            if (d == -1) {
+                d = b.indexOf(e);
+                if (d != 0) {
+                    return null;
+                }
+            } else {
+                d += 2;
+            }
+            var a = document.cookie.indexOf(";", d);
+            if (a == -1) {
+                a = b.length;
+            }
+            return unescape(b.substring(d + e.length, a));
+        },
+        setCookie: function (b, d, a, c) {
+            var e = new Date();
+            e.setDate(e.getDate() + a);
+            document.cookie = b + "=" + escape(d) + ";path=/" + ((Sulekha.Common.isEmptyParam(a)) ? "" : ";expires=" + e.toUTCString()) + ((Sulekha.Common.isEmptyParam(c)) ? ";domain=.sulekha.com" : ";domain=" + c);
+        },
+        deleteCookie: function (a) {
+            if (Sulekha.Common.getCookie(a)) {
+                Sulekha.Common.setCookie(a, "", -1, ".sulekha.com");
+            }
+        },
+        isEmptyParam: function (a) {
+            if (a == undefined || a == "") {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        trim: function (a) {
+            if (a == undefined) {
+                return false;
+            }
+            return a.replace(/^\s+|\s+$/g, "");
+        },
+        dialog: function (f, b, a, d, c, e) {
+            if (b.indexOf("#") == 0) {
+                holder = b;
+                $SUL(holder).dialog({
+                    modal: true,
+                    zIndex: 3999,
+                    autoOpen: false,
+                    draggable: true,
+                    title: "Sulekha Alert!...",
+                    resizable: false
+                });
+            } else {
+                holder = "#div_Dialog";
+                $SUL(holder).html(b);
+            }
+            $SUL(holder).dialog("close");
+            if (Sulekha.Common.isEmptyParam(a)) {
+                a = 300;
+            }
+            if (Sulekha.Common.isEmptyParam(d)) {
+                d = 100;
+            }
+            if (!Sulekha.Common.isEmptyParam(c)) {
+                $SUL(holder).dialog("option", "buttons", {
+                    Ok: function () {
+                        $SUL(holder).dialog("close");
+                    }
+                });
+            }
+            $SUL(holder).dialog("option", "height", a);
+            $SUL(holder).dialog("option", "width", d);
+            $SUL(holder).dialog("option", "title", f);
+            if (Sulekha.Common.isEmptyParam(e)) {
+                $SUL(holder).dialog("option", "modal", false);
+            } else {
+                $SUL(holder).dialog("option", "modal", e);
+            }
+            $SUL(holder).dialog("option", "closeOnEscape", true);
+            $SUL(holder).dialog("option", "position", "center");
+            $SUL(holder).dialog("open");
+        },
+        process: function (b, d, a, c) {
+            if (b) {
+                $SUL("#div_Process").dialog("close");
+                if (Sulekha.Common.isEmptyParam(a)) {
+                    a = 100;
+                }
+                if (Sulekha.Common.isEmptyParam(c)) {
+                    c = 250;
+                }
+                if (Sulekha.Common.isEmptyParam(d)) {
+                    d = "Loading please wait...";
+                }
+                $SUL("#div_Process").html("<br/><center><img src='http://api.sulekhalive.com/common/images/processing.gif'/></center>");
+                $SUL("#div_Process").dialog("option", "height", a);
+                $SUL("#div_Process").dialog("option", "width", c);
+                $SUL("#div_Process").dialog("option", "title", d);
+                $SUL("#div_Process").dialog("option", "modal", true);
+                $SUL("#div_Process").dialog("option", "closeOnEscape", false);
+                $SUL("#div_Process").dialog("option", "position", "center");
+                $SUL("#div_Process").dialog("option", "closeText", "hide");
+                $SUL("#div_Process").dialog("open");
+                $SUL("#ui-id-8").next("a").hide();
+            } else {
+                $SUL("#div_Process").dialog("close");
+            }
+        },
+        autocomplete: function (holder, def, url, callback, params) {
+            if (!Sulekha.Common.isEmptyParam(holder)) {
+                if (!Sulekha.Common.isEmptyParam(def)) {
+                    Sulekha.Validate.defaultTxt(holder, def);
+                } else {
+                    Sulekha.Validate.defaultTxt(holder, "Enter text");
+                }
+                holder = "#" + holder;
+                if (Sulekha.Common.isEmptyParam(url)) {
+                    url = "/search.aspx";
+                }
+                if (!Sulekha.Common.isEmptyParam(params)) {
+                    if (params.indexOf(",") > 0) {
+                        var aparams = params.split(",");
+                        params = "";
+                        for (i = 0; i < aparams.length; i++) {
+                            if (aparams[i].indexOf("=") > 0) {
+                                params += "&" + aparams[i];
+                            } else {
+                                if ($SUL("#" + aparams[i]).length > 0) {
+                                    params += "&" + aparams[i] + "=" + $SUL("#" + aparams[i]).val();
+                                }
+                            }
+                        }
+                    } else {
+                        if (params.indexOf("=") > 0) {
+                            params = "&" + params;
+                        } else {
+                            if ($SUL("#" + params).length > 0) {
+                                params = "&" + params + "=" + $SUL("#" + params).val();
+                            }
+                        }
+                    }
+                }
+                url = url + "?" + params;
+                $SUL(holder).autocomplete({
+                    source: url,
+                    processData: false,
+                    minLength: 2,
+                    cacheLength: 10,
+                    select: function (event, ui) {
+                        if (!Sulekha.Common.isEmptyParam(callback)) {
+                            eval(callback)(holder.replace("#", ""), ui.item);
+                        }
+                    },
+                    autoFill: true
+                });
+            }
+        },
+        alert: function (a) {
+            $SUL("#divError_Dialog").html(a);
+            $SUL("#divError_Dialog").dialog("open");
+        }
+    },
+    Form: {
+        output: "alert",
+        error: "alert",
+        jsonData: null,
+        url: "/common/processform.aspx",
+        method: "POST",
+        onSuccess: "",
+        showprocess: "1",
+        ajaxBegin: function (a, b) {
+            $SUL("#" + a).bind("ajaxSend", b);
+        },
+        ajaxEnd: function (a, b) {
+            $SUL("#" + a).bind("ajaxComplete", b);
+        },
+        ajaxError: function (a) {
+            Sulekha.Common.alert(a);
+        },
+        post: function (b, g, a, h, f, d, e, c) {
+            if (Sulekha.Common.isEmptyParam(b)) {
+                Sulekha.Form.process(g, a, h, f, d, e, c);
+            } else {
+                $SUL("#" + b).bind("click", function (k) {
+                    Sulekha.Form.process(g, a, h, f, d, e, c);
+                });
+            }
+        },
+        process: function (f, b, a, h, e, k, d) {
+            jsonData = null;
+            if (!Sulekha.Common.isEmptyParam(k)) {
+                Sulekha.Form.onSuccess = k;
+            }
+            if (!Sulekha.Common.isEmptyParam(a)) {
+                Sulekha.Form.method = a;
+            }
+            if (!Sulekha.Common.isEmptyParam(b)) {
+                Sulekha.Form.url = b;
+            }
+            if (!Sulekha.Common.isEmptyParam(h)) {
+                Sulekha.Form.output = h;
+            }
+            if (!Sulekha.Common.isEmptyParam(e)) {
+                Sulekha.Form.error = e;
+            }
+            if (Sulekha.Common.isEmptyParam(f)) {
+                jsonData = [{
+                    name: "Empty",
+                    value: ""
+                }];
+            } else {
+                if (f.indexOf(",") > 0) {
+                    var c = f.split(",");
+                    for (i = 0; i < c.length; i++) {
+                        param = "#" + c[i];
+                        if ($SUL(param).is("form")) {
+                            if (jsonData == null) {
+                                jsonData = $SUL(param).serializeArray();
+                            } else {
+                                jsonData.push($SUL(param).serializeArray());
+                            }
+                        } else {
+                            if (jsonData == null) {
+                                jsonData = [{
+                                    name: c[i].replace("#", ""),
+                                    value: $SUL(param).val()
+                                }];
+                            } else {
+                                jsonData.push({
+                                    name: c[i].replace("#", ""),
+                                    value: $SUL(param).val()
+                                });
+                            }
+                        }
+                    }
+                } else {
+                    if ($SUL("#" + f).is("form")) {
+                        jsonData = $SUL("#" + f).serializeArray();
+                    } else {
+                        jsonData = [{
+                            name: f,
+                            value: $SUL("#" + f).val()
+                        }];
+                    }
+                }
+            }
+            if (typeof (tinyMCE) != "undefined") {
+                if (tinyMCE.activeEditor != null) {
+                    var g = tinyMCE.activeEditor.getContent();
+                    jsonData.push({
+                        name: "iTinyEditorData",
+                        value: g
+                    });
+                }
+            }
+            Sulekha.Form.jsonData = jsonData;
+            if (Sulekha.Validate.isValidData(jsonData)) {
+                if (Sulekha.Common.isEmptyParam(d)) {
+                    Sulekha.Auth.ensureLoggedIn("", "Sulekha.Form.ajaxCall");
+                } else {
+                    if (d == 0) {
+                        Sulekha.Form.ajaxCall();
+                    } else {
+                        Sulekha.Auth.ensureLoggedIn("", "Sulekha.Form.ajaxCall");
+                    }
+                }
+            } else {
+                if (Sulekha.Form.error == "alert") {
+                    Sulekha.Common.alert("Check all values");
+                } else {
+                    $SUL("#" + Sulekha.Form.error).html("Check all values");
+                }
+            }
+        },
+        ajaxCall: function () {
+            if (Sulekha.Form.jsonData != null) {
+                if (typeof (Sulekha.Context) != "undefined") {
+                    for (i = 0; i < Sulekha.Context.length; i++) {
+                        Sulekha.Form.jsonData.push({
+                            name: Sulekha.Context[i].name,
+                            value: Sulekha.Context[i].value
+                        });
+                    }
+                }
+            }
+            if (Sulekha.Form.showprocess == "1") {
+                Sulekha.Common.process(true, "Processing, Please wait...", "", 250);
+            }
+            $SUL.ajax({
+                type: Sulekha.Form.method,
+                url: Sulekha.Form.url,
+                dataType: "json",
+                data: Sulekha.Form.jsonData,
+                success: Sulekha.Form.success,
+                failure: Sulekha.Form.failure
+            });
+        },
+        failure: function (a) {
+            Sulekha.Common.process(false);
+            if (Sulekha.Form.error == "alert") {
+                Sulekha.Common.alert("Error in form posting : " + a.responseText);
+            } else {
+                $SUL("#" + Sulekha.Form.error).html("Error in form posting : " + a.responseText);
+            }
+            Sulekha.Form.reset;
+        },
+        success: function (o) {
+            Sulekha.Common.process(false);
+            if (!Sulekha.Common.isEmptyParam(Sulekha.Form.onSuccess)) {
+                eval(Sulekha.Form.onSuccess)(o);
+            } else {
+                var sResult = "";
+                if (o[1] == undefined) {
+                    if (o.responseText != undefined) {
+                        sResult = o.responseText;
+                    } else {
+                        sResult = "Error in form post";
+                    }
+                    if (Sulekha.Form.output == "alert") {
+                        Sulekha.Common.alert(sResult);
+                    } else {
+                        $SUL("#" + Sulekha.Form.output).html(sResult);
+                    }
+                } else {
+                    if (Sulekha.Form.output == "alert") {
+                        Sulekha.Common.alert(o[1].value);
+                    } else {
+                        $SUL("#" + Sulekha.Form.output).html(o[1].value);
+                    }
+                }
+            }
+            Sulekha.Form.reset();
+        },
+        reset: function () {
+            Sulekha.Form.output = "alert";
+            Sulekha.Form.error = "alert";
+            Sulekha.Form.jsonData = null;
+            Sulekha.Form.url = "/common/processform.aspx";
+            Sulekha.Form.method = "POST";
+            Sulekha.Form.onSuccess = "";
+        }
+    }
+}, CHTE = {
+    Init: function () {
+        var scripts = document.getElementsByTagName("script");
+        for (i = 0; i < scripts.length; i++) {
+            if (scripts[i].src.split("/").pop() == "analytics.js") {
+                GAVersion = 1;
+            } else {
+                if (scripts[i].src.split("/").pop() == "ga.js") {
+                    GAVersion = 2;
+                }
+            }
+        }
+        jQuery("[data-trackmenu]").each(function (i, obj) {
+            var elabel = "";
+            var ltype = "";
+            elabel = CHTE.getMPname(jQuery(this).attr("data-trackmenu"));
+            if (jQuery(this).attr("data-primarylink")) {
+                ltype = "MP";
+            } else {
+                ltype = "MPL";
+            }
+            jQuery(this).bind(CHTE.getEvenName("C"), function (e) {
+                e.preventDefault();
+                var url = $SUL.trim(jQuery(this).attr("href"));
+                var title = $SUL.trim(jQuery(this).text());
+                if (ltype == "MP") {
+                    CHTE.RecordEvent("CM", elabel, true);
+                } else {
+                    if (ltype == "MPL") {
+                        elabel = elabel + "^" + title + "^" + url;
+                        CHTE.RecordEvent("CS", elabel, true);
+                    }
+                }
+                if (url.indexOf("?") == -1) {
+                    window.location = $SUL.trim(url) + "?utm_medium=megamenu";
+                } else {
+                    window.location = $SUL.trim(url) + "&utm_medium=megamenu";
+                }
+            });
+            jQuery(this).bind(CHTE.getEvenName("M"), function (e) {
+                if (ltype == "MP") {
+                    CHTE.RecordEvent("MV", elabel, true);
+                    var h = Sulekha.Common.getCookie("MVreturn");
+                    if (h == null) {
+                        CHTE.RecordEvent("MVU", elabel, true);
+                        CHTE.setCookieMin("MVreturn", 1, 20, ".sulekha.com");
+                    }
+                }
+            });
+        });
+    },
+    setCookieMin: function (b, d, a, c) {
+        var ed = new Date();
+        ed.setMinutes(ed.getMinutes() + a);
+        document.cookie = b + "=" + escape(d) + ";path=/" + ((Sulekha.Common.isEmptyParam(a)) ? "" : ";expires=" + ed.toUTCString()) + ((Sulekha.Common.isEmptyParam(c)) ? ";domain=.sulekha.com" : ";domain=" + c);
+    },
+    RecordEvent: function (e, l, noninteraction) {
+        var Url = "";
+        var title = "";
+        var Userid = CHTE.GetUserid();
+        var a = "";
+        var Category = "Common Header";
+        var city = $SUL(".dropdownSearch-value").val();
+        var m = noninteraction;
+        var EL = "";
+        switch (e) {
+            case "CM":
+                a = "Click MP";
+                EL = "Tab - " + l + "^" + city + "^" + Userid;
+                break;
+            case "CS":
+                a = "Click submenu";
+                EL = city + "^" + l + "^" + Userid;
+                break;
+            case "MO":
+                a = "Mouse over";
+                EL = city + "^" + l + "^" + Userid;
+                break;
+            case "MV":
+                a = "Menu view";
+                EL = city + "^" + l + "^" + Userid;
+                break;
+            case "MVU":
+                a = "Menu view unique";
+                EL = city + "^" + l + "^" + Userid;
+                break;
+            case "ML":
+                a = "Menu loaded";
+                EL = city + "^" + Userid;
+                break;
+            case "CL":
+                a = "Logo";
+                EL = city + "^" + Userid;
+                break;
+            case "CH":
+                a = "Home button";
+                EL = city + "^" + Userid;
+                break;
+            case "CC":
+                a = "City selection";
+                EL = l + "^" + Userid;
+                break;
+            case "SI":
+                a = "Sign In";
+                EL = "";
+                break;
+            case "CR":
+                a = "Register";
+                EL = "";
+                break;
+            case "SS":
+                a = "Search_Started";
+                EL = city + "^" + Userid;
+                break;
+            case "SSS":
+                a = "Search_Scroll_Started";
+                EL = city + "^" + Userid;
+                break;
+            case "SC":
+                a = "Search_Selected_Title";
+                EL = city + "^" + l + "^" + Userid;
+                break;
+            case "SB":
+                a = "Search_User";
+                EL = Userid;
+                break;
+            case "SR":
+                a = "Search_Returns";
+                EL = Userid + "^" + l;
+                break;
+            case "SSU":
+                a = "Search_Unique";
+                EL = city + "^" + Userid;
+                break;
+            case "RV":
+                a = "Recent_Visit";
+                EL = city + "^" + l + "^" + Userid;
+                break;
+            default:
+                a = "UNK";
+                break;
+        }
+        if (typeof ST != "undefined") {
+            ST.RecordEvent(Category, a, EL, 1, m);
+        } else {
+            if (GAVersion == 2) {
+                _gaq.push(["_trackEvent", Category, a, EL, 1, m]);
+            } else {
+                if (GAVersion == 1) {
+                    ga("send", "event", Category, a, EL, {
+                        nonInteraction: 1
+                    });
+                }
+            }
+        }
+    },
+    RecordEventV2: function (Category, Action, Label, value, noninteraction) {
+        if (ST !== null) {
+            ST.RecordEvent(Category, Action, Label, value, noninteraction);
+        } else {
+            if (GAVersion == 2) {
+                _gaq.push(["_trackEvent", Category, Action, Label, value, noninteraction]);
+            } else {
+                if (GAVersion == 1) {
+                    ga("send", "event", Category, Action, Label, value, {
+                        nonInteraction: 1
+                    });
+                }
+            }
+        }
+    },
+    GetUserid: function () {
+        var Userid = "";
+        isLoggedinStatus = SulHeader.Auth.isLoggedin("");
+        if (isLoggedinStatus == 1) {
+            Userid = SulHeader.CurrentUser.id;
+        } else {
+            if (isLoggedinStatus == 0) {
+                Userid = SulHeader.Common.getCookie("sulusrtrack");
+            }
+        }
+        return Userid;
+    },
+    getMPname: function (mpid) {
+        var MPName = "";
+        switch (mpid) {
+            case "9":
+                MPName = "Cars";
+                break;
+            case "3":
+                MPName = "Homeneeds";
+                break;
+            case "5":
+                MPName = "Officeneeds";
+                break;
+            case "2":
+                MPName = "Property";
+                break;
+            case "4":
+                MPName = "Education";
+                break;
+            case "10":
+                MPName = "Mobiles";
+                break;
+            case "12":
+                MPName = "Lifestyle";
+                break;
+            case "7":
+                MPName = "Travel";
+                break;
+            case "6":
+                MPName = "Movies";
+                break;
+            case "875":
+                MPName = "Coupons";
+                break;
+            case "890":
+                MPName = "Classifieds";
+                break;
+            case "116":
+                MPName = "Community";
+                break;
+        }
+        return MPName;
+    },
+    getEvenName: function (EventID) {
+        var EventName = "";
+        switch (EventID) {
+            case "C":
+                EventName = "click";
+                break;
+            case "B":
+                EventName = "blur";
+                break;
+            case "F":
+                EventName = "focus";
+                break;
+            case "M":
+                EventName = "mouseover";
+                break;
+            case "K":
+                EventName = "keypress";
+                break;
+            default:
+                EventName = "click";
+                break;
+        }
+        return EventName;
+    }
+}, SulCommonHeader = {
+    Common: {
+        getCookie: function (c) {
+            var b = document.cookie;
+            var e = c + "=";
+            var d = b.indexOf("; " + e);
+            if (d == -1) {
+                d = b.indexOf(e);
+                if (d != 0) {
+                    return null;
+                }
+            } else {
+                d += 2;
+            }
+            var a = document.cookie.indexOf(";", d);
+            if (a == -1) {
+                a = b.length;
+            }
+            return unescape(b.substring(d + e.length, a));
+        },
+        setCookie: function (b, d, a, c) {
+            var e = new Date();
+            e.setDate(e.getDate() + a);
+            document.cookie = b + "=" + escape(d) + ";path=/" + ((SulCommonHeader.Common.isEmptyParam(a)) ? "" : ";expires=" + e.toUTCString()) + ((SulCommonHeader.Common.isEmptyParam(c)) ? ";domain=.Sulekha.com" : ";domain=" + c);
+        },
+        deleteCookie: function (a) {
+            if (SulCommonHeader.Common.getCookie(a)) {
+                SulCommonHeader.Common.setCookie(a, "", -1, ".Sulekha.com");
+            }
+        },
+        isEmptyParam: function (a) {
+            if (a == undefined || a == "") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+}, CommonHeader = {
+    megamenu: function () {
+        $SUL(".primary-nav .main-menu li a").each(function () {
+            var myHref = $SUL(this).attr("href");
+            if (window.location.toString().indexOf(myHref) != -1) {
+                $SUL(this).parent("li").addClass("active");
+            }
+            if ((window.location.toString().indexOf("http://rentals.sulekha.com/") != -1) && (myHref.indexOf("http://property.sulekha.com") != -1)) {
+                $SUL(this).parent("li").addClass("active");
+            }
+        });
+        $SUL(".mobile-menu").click(function () {
+            $SUL(".primary-nav").toggleClass("show");
+        });
+        $SUL(".mobile-sub-menu").click(function () {
+            $SUL(".secondary-nav").toggleClass("show");
+        });
+        if ($SUL(window).width() < 1258) {
+            $SUL(".recent-visits").hide();
+        }
+    },
+    secondaryMenuPositioning: function () {
+        $SUL(".secondary-nav>.main-menu>li>a").each(function (index, elem) {
+            elem = $SUL(elem);
+            dropdownDiv = elem.next(".nav-container");
+            if (dropdownDiv.size() != 0) {
+                mainMenuWidth = elem.closest(".main-menu").width();
+                elemPosition = elem.position().left;
+                dropdownDiv.css("left", "0");
+                dropdownDivWidth = dropdownDiv.width();
+                if (dropdownDivWidth > (mainMenuWidth - elemPosition)) {
+                    dropdownDiv.css("left", "auto");
+                    dropdownDiv.css("right", "0");
+                } else {
+                    dropdownDiv.css("left", "auto");
+                }
+            }
+            newLabel = elem.prev(".new-label");
+            if (newLabel.size() != 0) {
+                newLabel.css("left", elem.position().left + elem.width() - newLabel.width() + 10);
+                newLabel.show();
+            }
+        });
+    },
+    dropdownSearch: function (holder, callback, options) {
+        var obj = $SUL("#" + holder);
+        var elem = obj[0];
+        var mycitylist;
+        var dropdowncb;
+        init = function () {
+            elem.dropdowncb = callback, elem.selectedElem, elem.currentNum, elem.focusedIn = false;
+            elem.prc = '';
+            elem.dropdownLabelCont = obj.find(".dropdownSearch-choice"), elem.dropdownLabel = obj.find(".dropdownSearch-chosen"), elem.citiesUL = obj.find(".dropdownSearch-results"), elem.cityLisDefault = elem.citiesUL.find("li"), elem.cityLis = elem.citiesUL.find("li"), elem.visibleList = elem.citiesUL.find("li"), elem.searchInputBox = obj.find(".dropdownSearch-input"), elem.dropdownValue = obj.find(".dropdownSearch-value"), elem.cityLisDefaultCont = $SUL("<div class='original-city-list hide'></div>"), elem.citiesUL.parent().append(elem.cityLisDefaultCont), elem.cityLisDefault = elem.cityLisDefaultCont.append(elem.citiesUL.html()), elem.noResults = obj.find(".no-results");
+            if (options) {
+                elem.hasLink = options.hasLink;
+                elem.ajaxEnabled = options.ajaxEnabled;
+                if (options.prcurl) {
+                    elem.processurl = options.prcurl;
+                } else {
+                    elem.processurl = false;
+                }
+
+            } else {
+                elem.hasLink = false;
+                elem.ajaxEnabled = false;
+                elem.processurl = false;
+            }
+            elem.citiesUL.attr("tabindex", "-1");
+            elem.cityLis.children("a").attr("tabindex", "-1");
+            setEvents();
+        }, updateListEvents = function () {
+            elem.cityLis.click(setValueOnClick);
+            elem.cityLis.mouseover(setHighlight);
+        }, setEvents = function () {
+            elem.dropdownLabelCont.click(function (e) {
+                e.preventDefault();
+                if ($SUL(e.currentTarget).parent().hasClass("dropdownSearch-dropdown-open")) {
+                    hideDropdown(e);
+                } else {
+                    showDropdown(e);
+                }
+            });
+            elem.cityLis.click(setValueOnClick);
+            elem.cityLis.mouseover(setHighlight);
+            elem.dropdownLabelCont.keydown(function (e) {
+                if (e.keyCode == 38 || e.keyCode == 40) {
+                    showDropdown(e);
+                }
+            });
+            elem.searchInputBox.keydown(traverseList);
+            elem.searchInputBox.bind("input propertychange", autoComplete);
+            obj.children(".dropdownSearch-drop").focusout(function (e) {
+                obj = $SUL(e.currentTarget).parents(".dropdownSearch-container");
+                elem = obj[0];
+                elem.focusedIn = false;
+                setTimeout(function () {
+                    obj = $SUL(e.currentTarget).parents(".dropdownSearch-container");
+                    elem = obj[0];
+                    if (elem.focusedIn != true) {
+                        hideDropdown(e);
+                    }
+                }, 200);
+            });
+            obj.children(".dropdownSearch-drop").focusin(function (e) {
+                obj = $SUL(e.currentTarget).parents(".dropdownSearch-container");
+                elem = obj[0];
+                elem.focusedIn = true;
+            });
+        }, setHighlight = function (e) {
+            obj = $SUL(e.currentTarget).parents(".dropdownSearch-container");
+            elem = obj[0];
+            if (!$SUL(e.currentTarget).hasClass("optGroup")) {
+                elem.cityLis.removeClass("dropdownSearch-highlighted");
+                $SUL(e.currentTarget).addClass("dropdownSearch-highlighted");
+            }
+        };
+        setValueOnClick = function (e) {
+
+            if ($SUL('#localityDropdownHeader').length > 0)
+                $SUL('#localityDropdownHeader .dropdownSearch-chosen').text('Locality');
+
+            obj = $SUL(e.currentTarget).parents(".dropdownSearch-container");
+            elem = obj[0];
+            if (!$SUL(e.currentTarget).hasClass("optGroup")) {
+                var getoldcity = SulCommonHeader.Common.getCookie("mycity") + "^" + $SUL(this).text();
+                CHTE.RecordEvent("CC", getoldcity, true);
+                SulCommonHeader.Common.setCookie("mycity", $SUL(this).text(), 1826, ".Sulekha.com");
+                elem.dropdownLabel.text($SUL(this).text());
+                elem.dropdownValue.val($SUL(this).text());
+                hideDropdown(e);
+                if (typeof (elem.dropdowncb) != undefined) {
+                    eval(elem.dropdowncb)();
+                }
+                elem.dropdownLabelCont.focus();
+                setTimeout(function () {
+                    $SUL("#cityDropdownHeader").removeClass("dropdownSearch-dropdown-open");
+                }, 100);
+            }
+        }, showDropdown = function (e) {
+            obj = $SUL(e.currentTarget).parents(".dropdownSearch-container");
+            elem = obj[0];
+            obj.addClass("dropdownSearch-dropdown-open");
+            elem.searchInputBox.focus();
+        }, hideDropdown = function (e) {
+            obj = $SUL(e.currentTarget).parents(".dropdownSearch-container");
+            elem = obj[0];
+            resetSearch(obj);
+            obj.removeClass("dropdownSearch-dropdown-open");
+            setTimeout(function () {
+                obj.removeClass("dropdownSearch-dropdown-open");
+            }, 100);
+            return;
+        }, autoComplete = function (e) {
+            obj = $SUL(e.currentTarget).parents(".dropdownSearch-container");
+            elem = obj[0];
+            elem.ajaxRequest = null;
+            elem.visibleList = [];
+            elem.selectedElem = null;
+            elem.cityLis.removeClass("dropdownSearch-highlighted");
+            elem.cityLis.show();
+            searchString = elem.searchInputBox.val();
+            if (searchString == "") {
+                elem.citiesUL.html(elem.cityLisDefault[0].innerHTML);
+                elem.visibleList = elem.cityLis = elem.citiesUL.find("li");
+                updateListEvents();
+                elem.noResults.hide();
+                elem.citiesUL.show();
+                return;
+            }
+            if (elem.ajaxEnabled) {
+                var prcurl = "http://www.sulekha.com/common/cityload.aspx?refurl=" + window.location.host + "&term=" + searchString;
+                if (elem.processurl) prcurl = "http://www.sulekha.com/common/cityload.aspx?refurl=" + window.location.host + "&term=" + searchString + elem.processurl;
+                $SUL.ajax({
+                    url: prcurl,
+                    type: "GET",
+                    dataType: "jsonp",
+                    global: false,
+                    jsonpCallback: "jsonpCallback2",
+                    cache: true,
+                    jsonp: false,
+                    success: function (data) {
+                        elem.citiesUL.html("");
+                        $SUL.each(data, function (index, obj) {
+                            if (obj.label.toLowerCase().indexOf(searchString.toLowerCase()) == 0) {
+                                elem.citiesUL.append("<li><a tabindex='-1' title='Sulekha " + obj.label + "'>" + obj.label + "</a></li>");
+                                elem.visibleList = elem.cityLis = elem.citiesUL.find("li");
+                                var firstPart = $SUL(elem.cityLis[index]).text().substring(0, searchString.length);
+                                var lastPart = $SUL(elem.cityLis[index]).text().substring(searchString.length);
+                                if (elem.hasLink == true) {
+                                    $SUL(elem.cityLis[index]).children().html("<span>" + firstPart + "</span>" + lastPart);
+                                } else {
+                                    $SUL(elem.cityLis[index]).html("<span>" + firstPart + "</span>" + lastPart);
+                                }
+                            }
+                        });
+                        if (elem.visibleList.length > 0) {
+                            elem.noResults.hide();
+                            elem.citiesUL.show();
+                        } else {
+                            elem.noResults.show();
+                            elem.citiesUL.hide();
+                        }
+                        elem.selectedElem = elem.visibleList[0];
+                        $SUL(elem.visibleList[0]).addClass("dropdownSearch-highlighted");
+                        updateListEvents();
+                    }
+                });
+            } else {
+                for (i = 0; i < elem.cityLis.size() ; i++) {
+                    if (($SUL(elem.cityLis[i]).text().toLowerCase().indexOf(this.value.toLowerCase()) == 0) && (!$SUL(elem.cityLis[i]).hasClass("optGroup"))) {
+                        var firstPart = $SUL(elem.cityLis[i]).text().substring(0, this.value.length);
+                        var lastPart = $SUL(elem.cityLis[i]).text().substring(this.value.length);
+                        if (elem.hasLink == true) {
+                            $SUL(elem.cityLis[i]).children().html("<span>" + firstPart + '</span><span class="result-last">' + lastPart + "</span>");
+                        } else {
+                            $SUL(elem.cityLis[i]).html("<span>" + firstPart + '</span><span class="result-last">' + lastPart + "</span>");
+                        }
+                        elem.visibleList.push(elem.cityLis[i]);
+                    } else {
+                        $SUL(elem.cityLis[i]).hide();
+                    }
+                }
+                if (elem.visibleList.length > 0) {
+                    elem.noResults.hide();
+                    elem.citiesUL.show();
+                } else {
+                    elem.noResults.show();
+                    elem.citiesUL.hide();
+                }
+                elem.selectedElem = elem.visibleList[0];
+                $SUL(elem.visibleList[0]).addClass("dropdownSearch-highlighted");
+            }
+        }, traverseList = function (e) {
+            obj = $SUL(e.currentTarget).parents(".dropdownSearch-container");
+            elem = obj[0];
+            if (e.keyCode == 13) {
+                if (elem.selectedElem) {
+                    elem.dropdownLabel.text($SUL(elem.selectedElem).text());
+                    elem.dropdownValue.val($SUL(elem.selectedElem).text());
+                    elem.dropdownLabelCont.focus();
+                    var getoldcity = SulCommonHeader.Common.getCookie("mycity") + "^" + $SUL(this).text();
+                    CHTE.RecordEvent("CC", getoldcity, true);
+                    SulCommonHeader.Common.setCookie("mycity", $SUL(elem.selectedElem).text(), 1826, ".Sulekha.com");
+                    hideDropdown(e);
+                    if (typeof (elem.dropdowncb) != undefined) {
+                        eval(elem.dropdowncb)();
+                    }
+                }
+            }
+            if (e.keyCode == 27) {
+                hideDropdown(e);
+                elem.dropdownLabelCont.focus();
+            }
+            if (e.keyCode == 38 || e.keyCode == 40) {
+                e.preventDefault();
+                obj.addClass("dropdownSearch-dropdown-open");
+                elem.cityLis.removeClass("dropdownSearch-highlighted");
+                if (!elem.selectedElem && e.keyCode == 40) {
+                    newNum = 0;
+                    if ($SUL(elem.visibleList[newNum]).hasClass("optGroup")) {
+                        newNum++;
+                    }
+                } else {
+                    if (!elem.selectedElem && e.keyCode == 38) {
+                        return;
+                    } else {
+                        elem.currentNum = $SUL(elem.visibleList).index(elem.selectedElem);
+                        if (e.keyCode == 38) {
+                            if (elem.currentNum >= 1) {
+                                newNum = elem.currentNum - 1;
+                                if ($SUL(elem.visibleList[newNum]).hasClass("optGroup")) {
+                                    if (newNum <= 0) {
+                                        newNum++;
+                                    } else {
+                                        newNum--;
+                                    }
+                                }
+                            }
+                        }
+                        if (e.keyCode == 40) {
+                            if (elem.currentNum < $SUL(elem.visibleList).size() - 1) {
+                                newNum = elem.currentNum + 1;
+                                while ($SUL(elem.visibleList[newNum]).hasClass("optGroup")) {
+                                    if (newNum == $SUL(elem.visibleList).size() - 1) {
+                                        return;
+                                    } else {
+                                        newNum++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                $SUL(elem.visibleList[newNum]).addClass("dropdownSearch-highlighted");
+                elem.selectedElem = elem.visibleList[newNum];
+                elem.citiesUL.scrollTop(((((newNum / $SUL(elem.visibleList).size()) * 100) / 100) * elem.citiesUL[0].scrollHeight) - 100);
+            }
+        }, resetSearch = function (obj) {
+            for (i = 0; i < obj.size() ; i++) {
+                obj[i].searchInputBox.val("");
+
+                obj[i].citiesUL.html(obj[i].cityLisDefault[0].innerHTML);
+                obj[i].visibleList = obj[i].cityLis = obj[i].citiesUL.find("li");
+                obj[i].citiesUL.scrollTop(0);
+                obj[i].noResults.hide();
+                obj[i].citiesUL.show();
+                updateListEvents();
+                obj[i].cityLis.removeClass("dropdownSearch-highlighted");
+                obj[i].selectedElem = null;
+            }
+        };
+        return init();
+    }
+}, CommonSearch = {
+    Init: function () {
+        isLoggedinStatus = SulHeader.Auth.isLoggedin("");
+        if (isLoggedinStatus == 1) {
+            var isUserid = SulHeader.CurrentUser.id;
+            Userid = isUserid;
+        }
+        if (isLoggedinStatus == 0) {
+            var trackid = SulHeader.Common.getCookie("sulusrtrack");
+            Userid = trackid;
+        }
+        $SUL(window).scroll(function () {
+            $SUL("#sul_gblsearchiv1").autocomplete("close");
+            $SUL("#div_result").css("display", "none");
+        });
+      /*  $SUL("#sul_gblsearchiv1").blur(function () {
+            $SUL(this).val(oldsearchval);
+        });*/
+        $SUL("#sul_gblsearchiv1").keyup(function (a) {
+            if ($SUL("#sul_gblsearchiv1").val().length > 0) {
+                $SUL("#div_result").css("display", "none");
+            }
+        });
+        $SUL("body").bind("click", function (b) {
+            $SUL("#div_result").css("display", "none");
+        });
+        $SUL(".dropdown-toggle").bind("click", function (b) {
+            $SUL("#div_result").css("display", "none");
+        });
+        $SUL("#sul_gblsearchiv1").keypress(function (e) {
+            if (!e) {
+                e = window.event;
+            }
+            if (e.keyCode == "13") {
+                if ($SUL("#sul_gblsearchiv1").val() == oldsearchval) {
+                    mytempurl = "";
+                    SearchRedirect();
+                }
+                return false;
+            } else {
+                if ($SUL("#sul_gblsearchiv1").val().length >= 2) {
+                    if (Firstsearch) {
+                        CHTE.RecordEvent("SS", "", true);
+                        var l = document.location;
+                        CHTE.RecordEvent("SR", l, true);
+                        var c = Sulekha.Common.getCookie("Sreturn");
+                        if (c == null) {
+                            CHTE.RecordEvent("SSU", l, true);
+                            CHTE.setCookieMin("Sreturn", 1, 20, ".sulekha.com");
+                        }
+                        Firstsearch = false;
+                    }
+                    if ($SUL("body").hasClass("sticky-header")) {
+                        if (Fscrollsearch) {
+                            CHTE.RecordEvent("SSS", "", true);
+                            Fscrollsearch = false;
+                        }
+                    }
+                }
+            }
+        });
+        var listingHead = 1;
+        var needHead = 1;
+        var recentHead = 1;
+        var recentData = 0;
+        $SUL("#sul_gblsearchiv1").autocomplete({
+            delay: 0,
+            minLength: 0,
+            autoFocus: false,
+            source: function (request, response) {
+                if ($SUL.trim(request.term) != "") {
+                    var mp = "0";
+                    var query = $SUL.trim($SUL("#sul_gblsearchiv1").val());
+                    var city = $SUL(".dropdownSearch-value").val();
+                    var direct = true;
+                    // var endpoint = endpoint = "http://175.41.139.188/solr/sulekha/yellowpages/";
+                    var endpoint = endpoint = "http://searchapi.sulekha.com/NeedMergeResponse/mergeResponse";
+                    var dtype = direct ? "jsonp" : "json";
+                    var ajax_data = {};
+                    typeseq = [];
+                    var qdata = {};
+                    var mpId = 0;
+                    var mpname = "";
+                    var hostname = location.host;
+                    /*  if (hostname.indexOf("rentals") >= 0) {
+                          endpoint = "http://175.41.139.188/solr/sulekha/NewProperties/";
+                          mpId = 1000;
+                      } else if ($SUL('#localityDropdownHeader').length > 0) {
+                          endpoint = "http://175.41.139.188/solr/sulekha/yellowpagesnewlocationforall/";
+                          mpId = 900;
+                      } else if (hostname.indexOf("property") >= 0) {
+                          endpoint = "http://175.41.139.188/solr/sulekha/NewProperties/";
+                          mpId = 951;
+                      } else if (hostname.indexOf("kitchen") >= 0) {
+                          mpId = 915;
+                      } else if (hostname.indexOf("yellowpages") >= 0) {
+                          mpId = 900;
+                      } else if (hostname.indexOf("cars") >= 0) {
+                          mpId = 890;
+                      } else if (hostname.indexOf("bazar") >= 0) {
+                          mpId = 875;
+                      } else if (hostname.indexOf("mobiles") >= 0) {
+                          endpoint = "http://175.41.139.188/solr/sulekha/MobileExactNew/";
+                          mpId = 850;
+                      } else if (hostname.indexOf("generator") >= 0) {
+                          mpId = 920;
+                      } else if (hostname.indexOf("lifestyle") >= 0) {
+                          mpId = 825;
+                      } else if (hostname.indexOf("movies") >= 0) {
+                          mpId = 800;
+                      } else if (hostname.indexOf("homeappliances") >= 0) {
+                          mpId = 940;
+                      } else if (hostname.indexOf("upsinverter") >= 0) {
+                          mpId = 945;
+                      } else if (typeof pagetype != 'undefined' && typeof pagetype != null) {
+              
+                          if (pagetype == 'product') {
+                          
+                              endpoint = "http://175.41.139.188/solr/sulekha/LCProducts/";
+                              mpId=925;
+                          }
+                      } else if (hostname.indexOf("search") >= 0) {
+                          endpoint = "http://175.41.139.188/solr/sulekha/";
+                          mpId = 0;
+                      } else {
+                          mpId = 900;
+                      }*/
+                    var durl = direct ? endpoint : "proxy";
+                    if (direct) {
+                        if (mpId != 0) {
+                            // durl += "suggest";
+                            // qdata.mp = mpId;
+                        } else {
+                            // durl += "main";
+                        }
+                    }
+                    var citylocation = $SUL("#localityDropdownHeader .dropdownSearch-value").val();
+                    qdata.l = citylocation;
+                    qdata.c = city;
+                    if (city == "Delhi/ncr" || city == "Delhi/NCR") {
+                        city = "(Delhi OR Noida OR Gurgaon OR Ghaziabad OR Faridabad OR \"Greater Noida\")";
+                        qdata.c = city
+                    }
+                    qdata.s = query;
+                    qdata.r = "~" + $SUL.trim(query).split(" ").join(" ~");
+                    qdata.s1 = "*";
+                    qdata.s2 = query + "~0.7";
+                    var xi = query.lastIndexOf(" ");
+                    if (xi != -1) {
+                        qdata.s1 = query.substring(0, xi).replace(/\s/g, "~0.7 ") + "~0.7";
+                        qdata.s2 = (xi == query.length - 1) ? "*" : query.substring(xi + 1) + "~0.7";
+                        if (qdata.s2.length == 1) {
+                            qdata.s2 = "*";
+                        }
+                    }
+                    qdata.wt = "json";
+                    ajax_data.url = durl;
+                    ajax_data.type = dtype;
+                    ajax_data.data = qdata;
+                    $SUL.ajax({
+                        type: "GET",
+                        url: ajax_data.url,
+                        dataType: ajax_data.type,
+                        headers: {
+                            "Accept-Encoding": "gzip"
+                        },
+                        jsonp: "json.wrf",
+                        data: ajax_data.data,
+                        success: function (data) {
+                            try {
+                                if (typeof (data.result) !== "undefined") {
+                                    listingHead = 1;
+                                    needHead = 1;
+
+                                    newData=[];
+                                    for(i=0;i<data.result.length;i++){
+                                        if(data.result[i].need==0){
+                                            newData.push(data.result[i]);
+                                        }
+                                    }
+
+                                    if (newData.length == 0) {
+                                        response([{ 'title': 'noresults' }]);
+                                    } else {
+                                        response(newData);
+                                    }
+                                }
+
+
+                            } catch (err) {
+                                oldsearchval = $SUL("#sul_gblsearchiv1").val();
+                            }
+                        },
+                        error: function () { }
+                    });
+                }
+                else {
+                    var arr = [];
+                    var t = Math.floor(Math.random() * 11);
+                    var n = "?output=json&action=get&awsUserID=&valuetype=br&attrname=searhhist&attrvalue=&rnd=" + t;
+                    var jsondata = "http://www.sulekha.com/common/sul-hp-proc-swig-nhp.aspx" + n;
+                    if (recentData == 0) {
+                        $SUL.ajax({
+                            type: 'GET',
+                            url: jsondata,
+                            dataType: 'jsonp',
+                            jsonp: "callback",
+                            global: false,
+                            success: function (data) {
+                                if (typeof (data) !== "undefined") {
+                                    recentHead = 1;
+                                    recentData = data;
+                                    response(data);
+                                }
+                            }
+                        });
+                    } else {
+                        recentHead = 1;
+                        response(recentData);
+                    }
+                }
+            },
+            open: function (event, ui) {
+                $SUL(".ui-menu").css({
+                    "z-index": 9999
+                });
+            },
+            focus: function (event, ul) {
+                event.preventDefault();
+                if (event.keyCode === undefined) {
+                    var maxlength = -1;
+                    var query = oldsearchval.toLowerCase() + " ";
+                    var queryList = query.split(" ");
+                    var count = queryList.length;
+                    var matchingindex = 0;
+                    var prevmaxlength = 0;
+                    for (var i = 0; i < ul.item.title.length; i++) {
+                        var test = ul.item.title[i].toLowerCase();
+                        var datalist = test.split(" ");
+                        maxlength = 0;
+                        var templenght = 0;
+                        for (var kk = 0; kk < queryList.length; kk++) {
+                            var pattern = new RegExp("(" + queryList[kk] + ")".toLowerCase(), "gi");
+                            if (test.match(pattern)) {
+                                maxlength++;
+                            }
+                        }
+                        if (maxlength > prevmaxlength) {
+                            matchingindex = i;
+                        }
+                        prevmaxlength = maxlength;
+                        if (count == maxlength) {
+                            break;
+                        }
+                    }
+                    var valueset = ul.item.title[matchingindex];
+                    if (valueset == undefined || valueset == "" || valueset == null) {
+                        titlesrch = ul.item.title[0];
+                    } else {
+                        titlesrch = valueset;
+                    }
+                    // $SUL("#sul_gblsearchiv1").val(titlesrch);
+                    return false;
+                } else {
+                    var maxlength = -1;
+                    var query = oldsearchval.toLowerCase() + " ";
+                    var queryList = query.split(" ");
+                    var count = queryList.length;
+                    var matchingindex = 0;
+                    var prevmaxlength = 0;
+                    for (var i = 0; i < ul.item.title.length; i++) {
+                        var test = ul.item.title[i].toLowerCase();
+                        var datalist = test.split(" ");
+                        maxlength = 0;
+                        var templenght = 0;
+                        for (var kk = 0; kk < queryList.length; kk++) {
+                            var pattern = new RegExp("(" + queryList[kk] + ")".toLowerCase(), "gi");
+                            if (test.match(pattern)) {
+                                maxlength++;
+                            }
+                        }
+                        if (maxlength > prevmaxlength) {
+                            matchingindex = i;
+                        }
+                        prevmaxlength = maxlength;
+                        if (count == maxlength) {
+                            break;
+                        }
+                    }
+                    var valueset = ul.item.title[matchingindex];
+                    if (valueset == undefined || valueset == "" || valueset == null) {
+                        valueset = ul.item.title[0];
+                    }
+                    // $SUL("#sul_gblsearchiv1").val(valueset).focus();
+                    String(valueset + "");
+                    mytempurl = ul.item.url;
+                    mytemptext = valueset;
+                    $SUL("#sul_gblsearchiv1").val(valueset);
+                    titlesrch = $SUL("#sul_gblsearchiv1").val();
+                }
+            },
+            select: function (event, ui) {
+                $SUL('body').append('<div class="page-mask-loading" style="background: #000 url(http://c2c.sulekhalive.com/home/images/loading-big.gif) no-repeat center center; bottom: 0; left: 0; opacity: 0.8;  position: fixed; right: 0; top: 0; z-index: 10001;"></div>');
+                var hos = window.location.host;
+				var sultrackid = SulHeader.Common.getCookie("sulusrtrack") + " ";
+                $SUL(this).bind("keyup", function (event) {
+                    if (event.keyCode == 13) {
+                        var tempURL = ui.item.url + "";
+                        // tempURL = tempURL.replace("http://www.sulekha.com/", "");
+                        tempURL = tempURL.replace("http//", "http://");
+                        if (tempURL.indexOf("http://") == -1) {
+                            tempURL = "http://" + tempURL;
+                        }
+                        var city = $SUL(".dropdownSearch-value").val();
+                        try {
+                            CHTE.RecordEvent("SC", oldsearchval + "^" + tempURL, true);
+                            CHTE.RecordEvent("SB", oldsearchval + "^" + tempURL, true);
+                        } catch (e) { }
+						 $SUL.ajax({
+                            type: "GET",
+                            url: "http://175.41.139.188/solr/Need/select?c=" + $SUL.trim(city) + "&search=" + $SUL("#sul_gblsearchiv1").val() + "&selected=" + titlesrch + "&marketplace=" + hos + "&deviceid=" + sultrackid + "&wt=json",
+
+                        });
+                        var g = Math.floor(Math.random() * 11);
+                        var j1 = "?action=set&awsUserID=&valuetype=br&attrname=searhhist&attrvalue=&rnd=" + g + "&city=" + city + "&taxonomy=" + titlesrch + "&pagetype=NHPSearch&need=" + $SUL("#sul_gblsearchiv1").val() + "&url=" + encodeURI(tempURL);
+                        $SUL.ajax({
+                            type: "GET",
+                            global: false,
+                            url: "http://www.sulekha.com/common/recentsearches.aspx" + j1,
+                            dataType: "jsonp",
+                            jsonpCallback: "addrecenthistory",
+                            data: null,
+                            async: false,
+                            success: function () {
+                                domainhost = window.location.host.split('.');
+                                if(domainhost[0]=='www'){
+                                    domainhost=domainhost[1];
+                                }else{
+                                    domainhost=domainhost[0];
+                                }
+
+                                isMobile=''
+                                if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+                                    isMobile='mobile_'
+                                }
+
+                                if (tempURL.indexOf("?") >= 0) {
+                                    $SUL(location).attr("href", tempURL + "&q=" + oldsearchval + "&c=" + domainhost + "_" + isMobile + $SUL.trim(city).toLowerCase())
+                                } else {
+                                    $SUL(location).attr("href", tempURL + "?q=" + oldsearchval + "&c=" + domainhost + "_" + isMobile + $SUL.trim(city).toLowerCase())
+                                }
+                            }
+                        });
+                        return false;
+                    }
+                });
+                var tempURL = ui.item.url + "";
+                // tempURL = tempURL.replace("http://www.sulekha.com/", "");
+                tempURL = tempURL.replace("http//", "http://");
+                if (tempURL.indexOf("http://") == -1) {
+                    tempURL = "http://" + tempURL;
+                }
+                var city = $SUL(".dropdownSearch-value").val();
+                try {
+                    CHTE.RecordEvent("SC", oldsearchval + "^" + tempURL, true);
+                    CHTE.RecordEvent("SB", oldsearchval + "^" + tempURL, true);
+                } catch (e) { }
+				 $SUL.ajax({
+                    type: "GET",
+                    url: "http://175.41.139.188/solr/Need/select?c=" + $SUL.trim(city) + "&search=" + $SUL("#sul_gblsearchiv1").val() + "&selected=" + titlesrch + "&marketplace=" + hos + "&deviceid=" + sultrackid + "&wt=json",
+                                      
+                });
+                var g = Math.floor(Math.random() * 11);
+                var j1 = "?action=set&awsUserID=&valuetype=br&attrname=searhhist&attrvalue=&rnd=" + g + "&city=" + city + "&taxonomy=" + titlesrch + "&pagetype=NHPSearch&need=" + $SUL("#sul_gblsearchiv1").val() + "&url=" + encodeURI(tempURL);
+                $SUL.ajax({
+                    type: "GET",
+                    global: false,
+                    url: "http://WWW.Sulekha.com/common/recentsearches.aspx" + j1,
+                    dataType: "jsonp",
+                    jsonpCallback: "addrecenthistory",
+                    data: null,
+                    async: false,
+                    success: function () {
+
+                        domainhost = window.location.host.split('.');
+                        if(domainhost[0]=='www'){
+                            domainhost=domainhost[1];
+                        }else{
+                            domainhost=domainhost[0];
+                        }
+
+                        isMobile=''
+                        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+                            isMobile='mobile_'
+                        }
+
+                        if (tempURL.indexOf("?") >= 0) {
+                            $SUL(location).attr("href", tempURL + "&q=" + oldsearchval + "&c=" + domainhost + "_" + isMobile + $SUL.trim(city).toLowerCase())
+                        } else {
+                            $SUL(location).attr("href", tempURL + "?q=" + oldsearchval + "&c=" + domainhost + "_" + isMobile + $SUL.trim(city).toLowerCase())
+                        }
+                    }
+                });
+                return false;
+            },
+            close: function () {
+                $SUL(this).show();
+                return false;
+            }
+        })
+            .focus(function () {
+                $SUL(this).autocomplete("search", '');
+            })
+
+            .data("ui-autocomplete")._renderItem = function (ul, item) {
+                ul.addClass("ch-search");
+                ul.css({ 'max-height': '300px', 'overflow-y': 'auto', 'border': '1px solid #ccc', 'padding': '0' })
+                if (item.title == "noresults") {
+                    ul.css({ 'z-index': '999' })
+                    $SUL("<li style='padding:3px 5px; font-size: 13px; text-align:left; font-family: Arial,Helvetica,sans-serif'>Sorry no results found, please search your need again</li>").appendTo(ul);
+                    return;
+                }
+                
+                if ($SUL('#sul_gblsearchiv1').val() != "") {
+                    $SUL("#div_result").css("display", "none");
+                  
+                    $SUL("#ui-id-1").addClass("hp-autosuggestion");
+                    var titleTemp = 0;
+                    var bit = new Array();
+                    var text = 0;
+                    var maxlength = -1;
+                    var matcher = "";
+                    var textnew = "";
+                    var newtitle = "";
+                    var mytitlevalue = "";
+                    var stringnew = "";
+                    var matchingindex = 0;
+                    var prevmaxlength = 0;
+                    var query = $SUL("#sul_gblsearchiv1").val().toLowerCase() + " ";
+                    var queryList = query.replace("/", "").split(" ");
+                    var count = queryList.length;
+                    oldsearchval = $SUL("#sul_gblsearchiv1").val();
+                    for (var i = 0; i < item.title.length; i++) {
+                        var test = item.title[i].toLowerCase();
+                        var datalist = test.split(" ");
+                        maxlength = 0;
+                        var templenght = 0;
+                        for (var kk = 0; kk < queryList.length; kk++) {
+                            var pattern = new RegExp("(" + queryList[kk] + ")".toLowerCase(), "gi");
+                            if (test.match(pattern)) {
+                                maxlength++;
+                            }
+                        }
+                        if (maxlength > prevmaxlength) {
+                            matchingindex = i;
+                        }
+                        prevmaxlength = maxlength;
+                        if (count == maxlength) {
+                            break;
+                        }
+                    }
+                    var temptextval = item.title[matchingindex];
+                    var id = item.id;
+                    for (var kk = 0; kk < queryList.length; kk++) {
+                        var filter = queryList[kk];
+                        var regExPattern = "i";
+                        var regEx = new RegExp(filter, regExPattern);
+                        var matcher = new RegExp("(" + filter + ")".toLowerCase(), "gi");
+                        if ($SUL.trim(filter).length > 0) {
+                            temptextval = temptextval.replace(matcher, "<<>>$1<</>>");
+                        }
+                    }
+                    var matcher1 = new RegExp("(<<>>)".toLowerCase(), "gi");
+                    var matcher2 = new RegExp("(<</>>)".toLowerCase(), "gi");
+                    temptextval = temptextval.replace(matcher1, "<strong>").replace(matcher2, "</strong>");
+                    /*if (id.indexOf("CARLAST-") >= 0) {
+                        mytitlevalue = item.title[0];
+                        var spec = "(<<>>)" + item.title[0] + "(<<>>)";
+                        temptextval = spec.replace("(<<>>)", "<strong>").replace("(<<>>)", "</strong>");
+                    }*/
+                    mytitlevalue = temptextval;
+                    if (mytitlevalue.length > 0) {
+                        if ((item.need == 1 || item.need == 2) && needHead == 1) {
+                            $SUL("<li style='background-color: #e5e5e5; font-size: 13px; font-weight: bold; padding: 3px 5px; text-align:left; font-family: Arial,Helvetica,sans-serif'>Get quotes for</li>").appendTo(ul);
+                            needHead = 0;
+                        } else if (item.need == 0 && listingHead == 1 && needHead == 0) {
+                            $SUL("<li style='background-color: #e5e5e5; font-size: 13px; font-weight: bold; padding: 3px 5px; clear: both; text-align:left; font-family: Arial,Helvetica,sans-serif'>Browse business listings</li>").appendTo(ul);
+                            listingHead = 0;
+                        }
+                        return $SUL("<li>").append($SUL("<a>" + ((mytitlevalue.length > 0) ? mytitlevalue : item.v) + "</a>").attr("style", "color:black")).appendTo(ul);
+                    }
+                }
+                else {
+                    if (item.need) {//corner case
+                        $SUL('#sul_gblsearchiv1').autocomplete('close');
+                        return;
+                    }
+                    if (recentHead == 1) {
+                        $SUL("<li style='background-color: #e5e5e5; font-size: 13px; font-weight: bold; padding: 3px 5px; text-align:left; font-family: Arial,Helvetica,sans-serif'>Recent search</li>").appendTo(ul);
+                        recentHead = 0;
+                    }
+                    return $SUL("<li>").append($SUL("<a href=" + item.url + ">" + item.value + "</a>").attr("style", "color:black")).appendTo(ul);
+                }
+            };
+        $SUL("#sul_gblsearchb").bind("click", function (e) {
+            SearchRedirect();
+        });
+    }
+};
+
+function SearchRedirect() {
+    var city = $SUL(".dropdownSearch-value").val();
+    var host = "www.Sulekha.com";
+    var hos = window.location.host;
+    if (!SulHeader.Common.isEmptyParam(window.location.host)) {
+        host = window.location.host;
+    }
+    if ($SUL("#sul_gblsearchiv1").val() === "Enter Keyword") {
+        alert("Enter keywords to search.");
+    } else {
+        if ($SUL("#sul_gblsearchiv1").val().length > 0 && mytempurl == "") {
+            try {
+                CHTE.RecordEvent("SB", oldsearchval, true);
+            } catch (e) { }
+            window.location.href = "http://www.sulekha.com/search/?q=" + encodeURIComponent($SUL("#sul_gblsearchiv1").val().toLowerCase()) + "&loc=" + city.toLowerCase() + "&ref=" + hos;
+        } else {
+            alert("Enter keywords to search.");
+        }
+    }
+}
+$SUL(document).ready(function () {
+    Sulekha.Auth.CallBack_Success = "fnPageReload";
+});
+
+function fnPageReload() {
+    window.location.reload();
+} !function (h) {
+    var f = "[data-toggle=dropdown]",
+        g = function (a) {
+            var b = h(a).on("click.dropdown.data-api", this.toggle);
+            h("html").on("click.dropdown.data-api", function () {
+                b.parent().removeClass("open");
+            });
+        };
+    g.prototype = {
+        constructor: g,
+        toggle: function (a) {
+            var b = h(this),
+                c, d;
+            if (b.is(".disabled, :disabled")) {
+                return;
+            }
+            c = k(b);
+            d = c.hasClass("open");
+            l();
+            if (!d) {
+                c.toggleClass("open");
+                b.focus();
+            }
+            return false;
+        },
+        keydown: function (b) {
+            var c, a, n, d, e, m;
+            if (!/(38|40|27)/.test(b.keyCode)) {
+                return;
+            }
+            c = h(this);
+            b.preventDefault();
+            b.stopPropagation();
+            if (c.is(".disabled, :disabled")) {
+                return;
+            }
+            d = k(c);
+            e = d.hasClass("open");
+            if (!e || (e && b.keyCode == 27)) {
+                return c.click();
+            }
+            a = h("[role=menu] li:not(.divider) a", d);
+            if (!a.length) {
+                return;
+            }
+            m = a.index(a.filter(":focus"));
+            if (b.keyCode == 38 && m > 0) {
+                m--;
+            }
+            if (b.keyCode == 40 && m < a.length - 1) {
+                m++;
+            }
+            if (! ~m) {
+                m = 0;
+            }
+            a.eq(m).focus();
+        }
+    };
+
+    function l() {
+        k(h(f)).removeClass("open");
+    }
+
+    function k(a) {
+        var c = a.attr("data-target"),
+            b;
+        if (!c) {
+            c = a.attr("href");
+            c = c && /#/.test(c) && c.replace(/.*(?=#[^\s]*$)/, "");
+        }
+        b = h(c);
+        b.length || (b = a.parent());
+        return b;
+    }
+    h.fn.dropdown = function (a) {
+        return this.each(function () {
+            var b = h(this),
+                c = b.data("dropdown");
+            if (!c) {
+                b.data("dropdown", (c = new g(this)));
+            }
+            if (typeof a == "string") {
+                c[a].call(b);
+            }
+        });
+    };
+    h.fn.dropdown.Constructor = g;
+    h(function () {
+        h("html").on("click.dropdown.data-api touchstart.dropdown.data-api", l);
+        h("body").on("click.dropdown touchstart.dropdown.data-api", ".dropdown form", function (a) {
+            a.stopPropagation();
+        }).on('touchstart.dropdown.data-api', '.dropdown-menu', function (e) { e.stopPropagation() }).on("click.dropdown.data-api touchstart.dropdown.data-api", f, g.prototype.toggle).on("keydown.dropdown.data-api touchstart.dropdown.data-api", f + ", [role=menu]", g.prototype.keydown);
+    });
+}(window.jQuery);
+!function (c) {
+    var d = function (a, b) {
+        this.$element = c(a);
+        this.options = c.extend({}, c.fn.button.defaults, b);
+    };
+    d.prototype.setState = function (k) {
+        var a = "disabled",
+            m = this.$element,
+            l = m.data(),
+            b = m.is("input") ? "val" : "html";
+        k = k + "Text";
+        l.resetText || m.data("resetText", m[b]());
+        m[b](l[k] || this.options[k]);
+        setTimeout(function () {
+            k == "loadingText" ? m.addClass(a).attr(a, a) : m.removeClass(a).removeAttr(a);
+        }, 0);
+    };
+    d.prototype.toggle = function () {
+        var a = this.$element.closest('[data-toggle="buttons-radio"]');
+        a && a.find(".active").removeClass("active");
+        this.$element.toggleClass("active");
+    };
+    c.fn.button = function (a) {
+        return this.each(function () {
+            var b = c(this),
+                g = b.data("button"),
+                h = typeof a == "object" && a;
+            if (!g) {
+                b.data("button", (g = new d(this, h)));
+            }
+            if (a == "toggle") {
+                g.toggle();
+            } else {
+                if (a) {
+                    g.setState(a);
+                }
+            }
+        });
+    };
+    c.fn.button.defaults = {
+        loadingText: "loading..."
+    };
+    c.fn.button.Constructor = d;
+    c(function () {
+        c("body").on("click.button.data-api", "[data-toggle^=button]", function (a) {
+            var b = c(a.target);
+            if (!b.hasClass("btn")) {
+                b = b.closest(".btn");
+            }
+            b.button("toggle");
+        });
+    });
+}(window.jQuery);
+$SUL(document).ready(function () {
+    $SUL(".navbar-inverse .dropdown-toggle").hover(function () {
+        $SUL(this).parent().addClass("open");
+    }, function () {
+        $SUL(this).next().hover(function () {
+            $SUL(this).parent().addClass("open");
+        }, function () {
+            $SUL(this).parent().removeClass("open");
+        });
+        $SUL(this).parent().removeClass("open");
+    });
+    if ($SUL(".secondary-nav-container").size() == 0) {
+        $SUL("body").addClass("no-secondary-nav");
+    }
+    if (!fSULHeaderInitialized) {
+        SulHeader.Init();
+    }
+    if (navigator.userAgent.match(/msie|trident/i)) {
+        $SUL("#divheader").mouseover(function () {
+            $SUL(".header-search input").blur();
+        });
+    }
+    if ($SUL("#div_result").length == 0) {
+        $SUL(".header-search").prepend("<div id='div_result' style='display: none;'/>");
+    }
+    /* if ($SUL.browser.mozilla) {
+         $SUL("#sul_gblsearchiv1").focus(function () {
+             if ($SUL("#sul_gblsearchiv1").val().length <= 0) {
+                 $SUL("#sul_gblsearchiv1").placeholder = "";
+                 var e = Math.floor(Math.random() * 11);
+                 var b = "?action=get&awsUserID=&valuetype=br&attrname=searhhist&attrvalue=&rnd=" + e;
+                 $SUL.ajax({
+                     type: "GET",
+                     global: false,
+                     url: "http://WWW.Sulekha.com/common/recentsearches.aspx?" + e,
+                     dataType: "jsonp",
+                     jsonpCallback: "recenthistory",
+                     data: null,
+                     success: action_Att_CallBack
+                 });
+                 var d = "Initial";
+             }
+         });
+     }
+     $SUL("#sul_gblsearchiv1").bind("click", function (g) {
+         if ($SUL("#sul_gblsearchiv1").val().length <= 0) {
+             $SUL("#sul_gblsearchiv1").placeholder = "";
+             var b = Math.floor(Math.random() * 11);
+             var e = "?action=get&awsUserID=&valuetype=br&attrname=searhhist&attrvalue=&rnd=" + b;
+             $SUL.ajax({
+                 type: "GET",
+                 global: false,
+                 url: "http://WWW.Sulekha.com/common/recentsearches.aspx" + e,
+                 dataType: "jsonp",
+                 jsonpCallback: "recenthistory",
+                 data: null,
+                 success: action_Att_CallBack
+             });
+             var f = "Initial";
+         }
+     });*/
+});
+var rsTracked = 0;
+
+function action_Att_CallBack(f) {
+    try {
+        chosen = -1;
+        var Userid = 0;
+        var c = "";
+        isLoggedinStatus = SulHeader.Auth.isLoggedin("");
+        if (isLoggedinStatus == 1) {
+            Userid = SulHeader.CurrentUser.id
+        } else {
+            if (isLoggedinStatus == 0) {
+                Userid = SulHeader.Common.getCookie("sulusrtrack")
+            }
+        }
+        var now = new Date();
+        now = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds() + ':' + now.getDate() + '-' + (now.getMonth() + 1) + '-' + now.getFullYear();
+
+        if ($SUL(".dropdown-menu").is(":visible")) {
+            $SUL(".dropdown-menu").toggle();
+        }
+        if ($SUL("#sul_gblsearchiv1").val().length > 0) {
+            $SUL("#div_result").css("display", "none");
+        } else {
+            $SUL("#div_result").html("");
+            $SUL("#div_result").css("display", "block");
+            $SUL("#div_result").html(f.contents);
+        }
+        $SUL("#div_result a").click(function (e) {
+            e.preventDefault();
+            c = Userid + '^' + now + '^' + window.location.host + '^' + $SUL(this).attr('href');
+            if (typeof ST != "undefined") {
+                ST.RecordEvent("Common Header", "Recent_SearchClicked", c, 1, true);
+            } else {
+                if (GAVersion == 2) {
+                    _gaq.push(["_trackEvent", "Common Header", "Recent_SearchClicked", c, 1, true]);
+                } else {
+                    if (GAVersion == 1) {
+                        ga("send", "event", "Common Header", "Recent_SearchClicked", c, {
+                            nonInteraction: 1
+                        });
+                    }
+                }
+            }
+
+            c = Userid + '_' + now
+            window.location.href = $SUL(this).attr('href') + '?utm_source=' + window.location.host + '&utm_medium=commonHeader&utm_content=' + c + '&utm_campaign=recent_Search';
+        });
+        if (rsTracked == 0) {
+            c = Userid + '^' + now + '^' + window.location.host;
+            if (typeof ST != "undefined") {
+                ST.RecordEvent("Common Header", "Recent_SearchShown", c, 1, true);
+            } else {
+                if (GAVersion == 2) {
+                    _gaq.push(["_trackEvent", "Common Header", "Recent_SearchShown", c, 1, true]);
+                } else {
+                    if (GAVersion == 1) {
+                        ga("send", "event", "Common Header", "Recent_SearchShown", c, {
+                            nonInteraction: 1
+                        });
+                    }
+                }
+            }
+
+            rsTracked = 1;
+        }
+    } catch (d) {
+        var e = "Error occured. msg : " + d.Line + " type : " + d.Message + " " + d.StackTrace;
+        console.log(e);
+    }
+}
+
+Sulekha2014 = {
+    Init: function () {
+        if ($SUL("#sul_ressignin").length) {
+            $SUL('#signin_india iframe').attr('allowTransparency', 'true');
+            $SUL("#signin_india").removeClass("modal signin-modal hide jquery-ui");
+            $SUL("#signin_india").addClass("signin-register-popup hide");
+            $SUL("#s_login").removeClass("modal-body");
+
+            $SUL("#frMyAccount").attr("src", "http://myaccount.sulekha.com/html/newsigninv2.html?v=1");
+            $SUL("#sul_ressignin").click(function (d) {
+                CHTE.RecordEvent("SI", "", true);
+                SulHeader.Auth.popupLoginCtrl();
+                document.getElementById('frMyAccount').contentWindow.Sulekha2014Login.Common.FlipShow("signinPanel");
+                $SUL("#exposeMask").css("display", "block"); $SUL("#signin_india").css("display", "block");
+                $SUL('#signin_india').css('top', $SUL(document).scrollTop() + 15);
+
+            });
+            $SUL("#sul_resreg").click(function (d) {
+                CHTE.RecordEvent("SI", "", true);
+                SulHeader.Auth.popupLoginCtrl();
+                document.getElementById('frMyAccount').contentWindow.Sulekha2014Login.Common.FlipShow("registerPanel");
+                $SUL("#exposeMask").css("display", "block"); $SUL("#signin_india").css("display", "block");
+                $SUL('#signin_india').css('top', $SUL(document).scrollTop() + 15);
+            });
+            $SUL("#sul_ensured").click(function (d) { Sulekha.Auth.ensureLoggedIn("", "Sulekha2014.calltest", "3"); });
+            $SUL("#sul_autoensured").click(function (d) { Sulekha2014.autoensureLoggedIn("FB", "", "Sulekha2014.calltest", "3"); });
+            $SUL("#sul_autofb").click(function (d) { Sulekha2014.Loadautosignin(); });
+        }
+
+        if ($SUL('#localityDropdownHeader').length > 0)
+            this.locality();
+    },
+    locality: function () {
+
+        $SUL('#cityDropdownHeader .dropdownSearch-results li').click(function () {
+            $SUL('#localityDropdownHeader .dropdownSearch-chosen').text('Locality')
+        })
+
+        $SUL('#localityDropdownHeader .dropdownSearch-choice').click(function (event) {
+            event.preventDefault();
+
+            $SUL(this).siblings('.dropdownSearch-drop').toggle();
+            if ($SUL(this).siblings('.dropdownSearch-drop').is(':visible')) {
+                $SUL("#localityDropdownHeader .dropdownSearch-input").autocomplete('close')
+                $SUL(this).parent().find('.dropdownSearch-input').focus();
+                $SUL(this).parent().find('.dropdownSearch-input').val('');
+            } else {
+                $SUL(this).parent().find('.dropdownSearch-input').blur();
+            }
+        });
+
+        /*  $SUL(document).click(function (event) {
+                   if ($SUL(event.target).closest('.dropdownSearch-container')[0] !== $SUL('#localityDropdownHeader')[0]) {
+                       $SUL('#localityDropdownHeader .dropdownSearch-drop').hide();
+                   }
+               })   */
+
+        $SUL("#localityDropdownHeader .dropdownSearch-input").blur(function () {
+            $SUL('#localityDropdownHeader .dropdownSearch-drop').hide();
+        });
+        $SUL("#localityDropdownHeader .dropdownSearch-input").autocomplete({
+            source: function (request, response) {
+                $SUL.ajax({
+                    global: false,
+                    url: "http://54.254.102.182:8080/solr/YPCityArea/ypcity/suggest",
+                    dataType: "jsonp",
+                    data: "c=" + $SUL("#selected_city1").val() + "&s=" + request.term,
+                    headers: {
+                        "Accept-Encoding": "gzip"
+                    },
+                    jsonp: "json.wrf",
+                    success: function (data) {
+                        if (typeof (data.response) !== "undefined") {
+                            if (typeof (data.response.docs) !== "undefined") {
+                                var cont = data.response.docs;
+
+                                //console.log(cont);
+                                response($SUL.map(cont, function (item) {
+                                    return {
+                                        label: item.locality,
+                                        id: item.locality
+                                    }
+                                }));
+                            }
+                        }
+                    }
+
+                });
+            },
+            appendTo: "#localityDropdownHeader .dropdownSearch-drop",
+            autoFocus: true,
+            open: function (event, ui) {
+                var menu = $SUL(this).data("autocomplete").menu.element;
+                menu.removeClass('ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all').addClass('dropdownSearch-results text-capitalize');
+                menu.find('.ui-corner-all').removeClass('ui-corner-all');
+            },
+            select: function (event, ui) {
+                event.preventDefault();
+                var thisParent = $SUL(this).closest('.dropdownSearch-container');
+                thisParent.find('.dropdownSearch-chosen').text(ui.item.label);
+                thisParent.find('.dropdownSearch-value').val(ui.item.label);
+                thisParent.find('.dropdownSearch-drop').hide();
+                thisParent.find('.dropdownSearch-input').blur();
+            }
+        })
+        //.focus(function () {
+            //$SUL(this).autocomplete("search", ' ');
+        //})
+        .data('autocomplete')._renderItem = function (ul, item) {
+            return $SUL('<li></li>')
+                .data('item.autocomplete', item)
+                .append('<a>' + item.label + '</a>')
+                .appendTo(ul);
+        };
+        searchAnimate = function () {
+            headerSearch = $SUL('.header-search input');
+            headerSearchWidth = headerSearch.width();
+            signInBlock = $SUL('.sign-in');
+            headerSearch.focus(function () {
+                signInBlock.animate({
+                    opacity: 0
+                }, 300);
+
+                availableWidth = $SUL('header').width() - ($SUL('.header-search').position().left + $SUL('.header-search').width()) - 1;
+
+                //added setTimeout fn as animation blocks input click event from firing which is used for recent search results
+                setTimeout(function () {
+                    headerSearch.animate({
+                        width: headerSearchWidth + availableWidth
+                    }, 300, function () {
+                        $SUL('#div_result').css('min-width', headerSearch.outerWidth());
+                    });
+                }, 100);
+            })
+            headerSearch.blur(function () {
+                signInBlock.animate({
+                    opacity: 100
+                }, 300);
+
+                setTimeout(function () {
+                    headerSearch.animate({
+                        width: headerSearchWidth
+                    }, 300);
+                    $SUL('#div_result').css('min-width', '');
+                }, 100);
+            })
+            $SUL('#sul_gblsearchiv1').on("autocompleteopen", function (event, ui) {
+                $SUL($SUL(this).data('ui-autocomplete').bindings[1]).css('max-width', $SUL('.header-search').width());
+            });
+        }()
+    },
+    Loadautosignin: function (autotype) {
+        CHTE.RecordEvent("SI", "", true);
+        SulHeader.Auth.popupLoginCtrl();
+        document.getElementById('frMyAccount').contentWindow.Sulekha2014Login.Social.Facebook.Login("0");
+    },
+    autoensureLoggedIn: function (autotype, loginservice, callback, version) { //autotype:FB
+        CHTE.RecordEvent("SI", "", true);
+        Sulekha.Auth.ensureLoggedIn(loginservice, callback, version);
+        document.getElementById('frMyAccount').contentWindow.Sulekha2014Login.Social.Facebook.Login("0");
+    },
+    calltest: function () {
+        alert("ensured alert");
+    }
+};ù6àá      W»q÷W»q‘<ÿ∏ìjÄ'D   <    :http://api.sulekhalive.com/common/js/sul_gbl_cmn_hdr_1.9.js necko:classified 1 request-method GET response-head HTTP/1.1 200 OK
+Content-Type: application/x-javascript
+Content-Length: 134096
+Cache-Control: public,public,max-age=315360000
+Last-Modified: Wed, 30 Mar 2016 06:57:22 GMT
+Accept-Ranges: bytes
+Server: Microsoft-IIS/7.5
+Date: Wed, 17 Aug 2016 08:45:58 GMT
+Age: 1330536
+X-Cache: Hit from cloudfront
+Via: 1.1 6b26b084edd2f59d401f06af6a91bb35.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: s19xuDfrDpvvEXXztgPuE-2Lr0Ek0hv3h_PkfaQlHVJpNC6Oi5ID6w==
+ uncompressed-len 0  –

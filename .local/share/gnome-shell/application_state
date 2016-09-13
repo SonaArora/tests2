@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<application-state>
+  <context id="">
+    <application id="gnome-control-center.desktop" open-window-count="0" score="27" last-seen="1472756308"/>
+    <application id="yelp.desktop" open-window-count="0" score="0" last-seen="1472705769"/>
+    <application id="firefox.desktop" open-window-count="1" score="12457" last-seen="1472809280"/>
+    <application id="hexchat.desktop" open-window-count="0" score="42" last-seen="1472710215"/>
+    <application id="terminator.desktop" open-window-count="1" score="3" last-seen="1472710881"/>
+    <application id="org.gnome.Nautilus.desktop" open-window-count="1" score="15" last-seen="1472809523"/>
+    <application id="atom.desktop" open-window-count="1" score="23" last-seen="1472756387"/>
+    <application id="gnome-power-panel.desktop" open-window-count="0" score="0" last-seen="0"/>
+    <application id="google-chrome.desktop" open-window-count="1" score="420" last-seen="1472806712"/>
+    <application id="org.gnome.gedit.desktop" open-window-count="0" score="101" last-seen="1472809008"/>
+    <application id="org.gnome.Terminal.desktop" open-window-count="1" score="1247" last-seen="1472809526"/>
+    <application id="xchat.desktop" open-window-count="1" score="303" last-seen="1472809171"/>
+    <application id="org.gnome.Software.desktop" open-window-count="0" score="3" last-seen="1472756424"/>
+  </context>
+</application-state>

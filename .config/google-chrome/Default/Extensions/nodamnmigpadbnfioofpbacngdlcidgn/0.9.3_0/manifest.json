@@ -1,0 +1,27 @@
+{
+   "author": "Blue Jeans Network",
+   "background": {
+      "scripts": [ "js/background-scripts/carmelLauncher.js", "js/background-scripts/RTCDesktopMediaManager.js", "js/background-scripts/backgroundMain.js" ]
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "js/content-scripts/content_script.js" ],
+      "matches": [ "*://*.bluejeans.com/*", "*://*.bluejeansnet.com/*", "*://*.bluejeansdev.com/*" ],
+      "run_at": "document_start"
+   } ],
+   "description": "This extension enhances the Blue Jeans experience for Chrome users.",
+   "externally_connectable": {
+      "matches": [ "*://*.bluejeans.com/*", "*://*.bluejeansnet.com/*", "*://*.bluejeansdev.com/*" ]
+   },
+   "icons": {
+      "128": "images/icon-128.png",
+      "16": "images/icon-16.png",
+      "48": "images/icon-48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgxslAZdKcgEGn95Ow2CkYi3GD7Eqe0cIdDUa+htBYCU9hygSu0u9woxtAeZcUPBTpY1cF2lIrin2pVVPZ2ZDt+k8Thpu4lAYYpVrhA/NIT6GuNh0Ih9kSfzwHQVkX8gf12nT8iHxp1rd5DmLUZOmhOWWyKg0qbFS2JTG4bo+qRYj0OjfmUFrYCbWwAtW7LqLFWI6CQ7IPw2NaQr4AknVhlIQEWU9Mh6k04cu9IDxhMI83qCFEI/JEwOkKomlK4uCcPT58XnS3RXFt4U6OAXVfMN8ZR2EGmLohUFTa5Yesekp2OahlMYdaoeA9IcQrlQW8VFs24l1Wk9494lvfIiBJQIDAQAB",
+   "manifest_version": 2,
+   "name": "Blue Jeans Meeting",
+   "permissions": [ "nativeMessaging", "desktopCapture" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.9.3"
+}

@@ -1,0 +1,395 @@
+
+<!doctype html>
+<html>
+<head>
+  <title>  helber/atom
+ Copr</title>
+  <script src="/static/components/jquery/dist/jquery.min.js"></script>
+  <script src="/static/components/jquery-ui/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="/static/components/jquery-ui/jquery-ui.min.css" />
+  <link rel="shortcut icon" href="/static/favicon.ico" type="image/vnd.microsoft.icon">
+  <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+  <link href="/static/css/patternfly.min.css" rel="stylesheet" media="screen, print">
+  <link href="/static/css/custom-styles.css" rel="stylesheet" media="screen, print">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="../components/html5shiv/dist/html5shiv.min.js"></script>
+  <script src="../components/respond/dest/respond.min.js"></script>
+  <![endif]-->
+  <!-- IE8 requires jQuery and Bootstrap JS to load in head to prevent rendering bugs -->
+  <!-- IE8 requires jQuery v1.x -->
+  <script src="/static/components/jquery/dist/jquery.min.js"></script>
+  <script src="/static/components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/static/components/datatables/media/js/jquery.dataTables.js"></script>
+  <script src="/static/js/patternfly.min.js"></script>
+
+  <script src="/static/copr.js"></script>
+  <link rel=stylesheet type=text/css href="/static/copr.css">
+</head>
+
+<body>
+  <!-- BANNER -->
+
+  <!-- MAIN MENU -->
+  <nav class="" id="main-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-7 col-xs-6">
+          <a href="/coprs/">
+            <img id="logo" src="/static/copr_logo.png" alt="Copr Build System">
+          </a>
+        </div>
+        <div class="col-md-4 col-sm-5 col-xs-6">
+          <div id="login-menu" class="text-right">
+            <a href="/login/">log in</a> |
+            <a href="https://admin.fedoraproject.org/accounts/user/new">sign up</a>
+          </div>
+          <form role="search" method="get" action="/coprs/fulltext/">
+            <div class="input-group menu-search">
+              <input name="fulltext" type="text" class="form-control" placeholder="Search projects by name, os or arch" value="">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="breadcrumb-panel">
+    <div class="container">
+<ol class="breadcrumb">
+  <li  >
+  <a href="/coprs/">
+    Home
+  </a>
+</li>
+
+    <li  >
+  <a href="/coprs/helber/">
+    helber
+  </a>
+</li>
+
+  <li  >
+  <a href="/coprs/helber/atom/">
+    atom
+  </a>
+</li>
+
+
+<li class="active">
+  Overview
+</li>
+</ol>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div id=content>
+    <div class="container">
+
+      <!-- Flash messages -->
+
+      <!-- the actual content -->
+
+
+<!-- PROJECT NAME -->
+<h1 class="project-name">
+  
+  <a href="/coprs/helber/">helber</a><!--
+  --> / <!--
+  --><strong><a href="/coprs/helber/atom/">atom</a></strong>
+
+</h1>
+
+
+
+
+
+<!-- MENU -->
+<ul class="nav nav-tabs">
+
+    <li class="active">
+  <a href="/coprs/helber/atom/"> <span class="fa fa-home"></span>&nbsp;    Overview
+  </a>
+</li>
+
+    <li class="">
+  <a href="/coprs/helber/atom/packages/"> <span class="fa fa-archive"></span>&nbsp;    Packages
+  </a>
+</li>
+
+    <li class="">
+  <a href="/coprs/helber/atom/builds/"> <span class="fa fa-tasks"></span>&nbsp;    Builds
+  </a>
+</li>
+
+    <li class="">
+  <a href="/coprs/helber/atom/monitor/"> <span class="fa fa-desktop"></span>&nbsp;    Monitor
+  </a>
+</li>
+
+
+</ul>
+
+<div class="row">
+  <div class="col-sm-8 col-md-9">
+    <h3>Description</h3>
+    <p><h2>ATTENTION</h2>
+<p>This copr will be deactivate.
+Please test this Copr repo:
+$ sudo dnf copr enable mosquito/atom
+$ sudo dnf install atom
+https://copr.fedorainfracloud.org/coprs/mosquito/atom</p>
+<p>The source is placed on:
+https://github.com/FZUG/repo</p>
+<p>The atom packages is on:
+https://github.com/FZUG/repo/tree/master/rpms/SPECS/atom</p>
+    </p>
+
+
+    <h3>Installation Instructions</h3>
+    <p>Instructions not filled in by author.
+             Author knows what to do.
+             Everybody else should avoid this repo.
+    </p>
+
+    <h3>Active Releases</h3>
+    <p>
+        The following unofficial repositories are provided as-is
+        by owner of this project.
+        Contact the owner directly for bugs or issues (IE: not bugzilla).
+    </p>
+
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Release</th>
+          <th>Architectures</th>
+          <th>Repo Download </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+                Epel for <img style="height:1.8em" src="/static/centos_logo.png" /> CentOS 7
+
+          </td>
+          <td>
+              x86_64
+              <small class="text-muted"> (2)*</small>          </td>
+          <td class="rightmost">
+            <a class="btn btn-default btn-margin" href="https://copr.fedorainfracloud.org/coprs/helber/atom/repo/epel-7/helber-atom-epel-7.repo">
+              <span class="pficon pficon-save"></span> Epel 7
+            </a>
+            <small class="text-muted"> (116 downloads) </small>
+          </td>
+        </tr>
+        <tr>
+          <td>
+                <img style="height:1.8em" src="/static/fedora_logo.png" /> Fedora 22
+
+          </td>
+          <td>
+              x86_64
+              <small class="text-muted"> (143)*</small>          </td>
+          <td class="rightmost">
+            <a class="btn btn-default btn-margin" href="https://copr.fedorainfracloud.org/coprs/helber/atom/repo/fedora-22/helber-atom-fedora-22.repo">
+              <span class="pficon pficon-save"></span> Fedora 22
+            </a>
+            <small class="text-muted"> (946 downloads) </small>
+          </td>
+        </tr>
+        <tr>
+          <td>
+                <img style="height:1.8em" src="/static/fedora_logo.png" /> Fedora 23
+
+          </td>
+          <td>
+              x86_64
+              <small class="text-muted"> (63)*</small>          </td>
+          <td class="rightmost">
+            <a class="btn btn-default btn-margin" href="https://copr.fedorainfracloud.org/coprs/helber/atom/repo/fedora-23/helber-atom-fedora-23.repo">
+              <span class="pficon pficon-save"></span> Fedora 23
+            </a>
+            <small class="text-muted"> (1442 downloads) </small>
+          </td>
+        </tr>
+        <tr>
+          <td>
+                <img style="height:1.8em" src="/static/fedora_logo.png" /> Fedora 24
+
+          </td>
+          <td>
+              x86_64
+              <small class="text-muted"> (232)*</small>          </td>
+          <td class="rightmost">
+            <a class="btn btn-default btn-margin" href="https://copr.fedorainfracloud.org/coprs/helber/atom/repo/fedora-24/helber-atom-fedora-24.repo">
+              <span class="pficon pficon-save"></span> Fedora 24
+            </a>
+            <small class="text-muted"> (76 downloads) </small>
+          </td>
+        </tr>
+        <tr>
+          <td>
+                <img style="height:1.8em" src="/static/fedora_logo.png" /> Fedora rawhide
+
+          </td>
+          <td>
+              x86_64
+              <small class="text-muted"> (0)*</small>          </td>
+          <td class="rightmost">
+            <a class="btn btn-default btn-margin" href="https://copr.fedorainfracloud.org/coprs/helber/atom/repo/fedora-rawhide/helber-atom-fedora-rawhide.repo">
+              <span class="pficon pficon-save"></span> Fedora rawhide
+            </a>
+            <small class="text-muted"> (41 downloads) </small>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="text-muted"><small> * Total number of packages downloaded in the last seven days.</small></p>
+
+  </div>
+  <div class="col-sm-4 col-md-3">
+    <br>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <a class="btn btn-default" href="https://atom.io/" title="https://atom.io/">
+            <span class="fa fa-home"></span> Homepage
+          </a>
+
+        </div>
+      </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"> Last Build </h3>
+      </div>
+      <div class="list-group">
+        <a href="/coprs/helber/atom/build/173233/" class="list-group-item">
+          <h4 class="list-group-item-heading">atom</h4>
+          <p class="list-group-item-text">
+            <small> Build: </small>
+            173233
+          </p>
+          <p class="list-group-item-text">
+            <small> State: </small>
+            <span class="build-succeeded">
+              succeeded
+            </span>
+          </p>
+          <p class="list-group-item-text">
+            <small> Finished: </small>
+            4 months ago
+          </p>
+        </a>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"> Quick Enable </h3>
+      </div>
+      <div class="panel-body">
+        <div class="well well-sm">
+          dnf copr enable   helber/atom
+
+        </div>
+        <a href="https://fedorahosted.org/copr/wiki/HowToEnableRepo" target="_blank">
+          <small><span class="pficon pficon-info"></span> More info about enabling Copr repositories</small></a>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"> Other Actions </h3>
+      </div>
+      <div class="panel-body">
+
+
+        <a href="/coprs/helber/atom/report-abuse">
+          <small><span class="pficon pficon-warning-triangle-o"></span> Report Abuse </small>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    </div>
+    <footer class="footer">
+      <div>
+        <div class="container text-muted">
+          <div class="">
+            <div class="row">
+              <div class="col-sm-4">
+                <dl>
+                  <dt><h3>Copr Project</h3></dt>
+                  <dd>
+                    <ul class="list-unstyled">
+                      <li><a href="https://fedorahosted.org/copr/">Project Homepage</a></li>
+                      <li><a href="https://fedorahosted.org/copr/wiki/UserDocs">User Documentation</a></li>
+                      <li><a href="https://bugzilla.redhat.com/enter_bug.cgi?product=Copr">Report a Bug</a></li>
+                      <li><a href="https://fedorahosted.org/copr/wiki/UserDocs#FAQ">FAQ</a></li>
+                    </ul>
+                  </dd>
+                </dl>
+              </div>
+              <div class="col-sm-4">
+                <dl>
+                  <dt><h3>Site Navigation</h3></dt>
+                  <dd>
+                    <ul class="list-unstyled">
+                      <li> <a href="/coprs/">Home</a> </li>
+                      <li> <a href="/status/importing/">Task Queue</a> </li>
+                      <li> <a href="/api/">API</a> </li>
+                    </ul>
+                  </dd>
+                </dl>
+              </div>
+              <div class="col-sm-4">
+                <dl>
+                  <dt><h3>Powered by</h3></dt>
+                  <dd>
+                    <ul class="list-unstyled">
+                      <li><a href="https://www.python.org">Python</a></li>
+                      <li><a href="http://www.openstack.org">OpenStack</a></li>
+                      <li><a href="https://www.patternfly.org">PatternFly</a></li>
+                      <li><a href="https://github.com/release-engineering/dist-git">Dist Git</a></li>
+                    </ul>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+            <!-- <small class="text-muted">
+              Build 1.99-1.fc23
+            </small> -->
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- FEDORA MENU -->
+  <script src="https://apps.fedoraproject.org/fedmenu//js/fedora-libravatar.js"></script>
+  <script src="https://apps.fedoraproject.org/fedmenu//js/fedmenu.js"></script>
+  <script>
+    fedmenu({
+        'url': 'https://apps.fedoraproject.org/js/data.js',
+        'mimeType': 'application/javascript',
+        'position': 'bottom-right',
+        'user': 'helber',
+    });
+  </script>
+</body>
+</html>0¡}…ª]      WÇÈHWÇÈL<Ø@¨       5    :https://copr.fedorainfracloud.org/coprs/helber/atom/ necko:classified 1 security-info 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 request-method GET response-head HTTP/1.1 200 OK
+Date: Thu, 01 Sep 2016 06:18:48 GMT
+Server: Apache/2.4.23 (Fedora) OpenSSL/1.0.2h-fips mod_wsgi/4.4.8 Python/2.7.11
+Strict-Transport-Security: max-age=15768000; preload
+Content-Length: 12370
+Content-Type: text/html; charset=utf-8
+ charset UTF-8 uncompressed-len 0 predictor::resource-count 27 predictor::https://copr.fedorainfracloud.org/static/components/jquery/dist/jquery.min.js 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/components/jquery-ui/jquery-ui.min.js 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/components/jquery-ui/jquery-ui.min.css 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/css/patternfly.min.css 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/css/custom-styles.css 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/components/bootstrap/dist/js/bootstrap.min.js 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/components/datatables/media/js/jquery.dataTables.js 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/js/patternfly.min.js 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/copr.js 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/copr.css 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/copr_logo.png 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/centos_logo.png 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/fedora_logo.png 1,1,1472710728,0 predictor::https://apps.fedoraproject.org/fedmenu//js/fedora-libravatar.js 1,1,1472710728,0 predictor::https://apps.fedoraproject.org/fedmenu//js/fedmenu.js 1,1,1472710728,0 predictor::https://apps.fedoraproject.org/fedmenu//css/fedmenu.css 1,1,1472710728,0 predictor::https://apps.fedoraproject.org/js/data.js 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/header_background.png 1,1,1472710728,0 predictor::https://seccdn.libravatar.org/avatar/0b90f09cafd295c5b443705a36fc8d9b30a0bce83ffce6aca5161bc7209eaf85?s=64&d=retro 1,1,1472710728,0 predictor::https://apps.fedoraproject.org/fedmenu//img/logo.png 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/fonts/OpenSans-Regular-webfont.woff 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/fonts/OpenSans-Bold-webfont.woff 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/fonts/OpenSans-Semibold-webfont.woff 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/components/font-awesome/fonts/fontawesome-webfont.woff2?v=4.3.0 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/fonts/OpenSans-Light-webfont.woff 1,1,1472710728,0 predictor::https://copr.fedorainfracloud.org/static/fonts/PatternFlyIcons-webfont.ttf 1,1,1472710728,0   0R

@@ -1,0 +1,290 @@
+T 1472710772 19*	19jhutar (~Jan@dhcp130-189.brq.redhat.com) has joined #perf-blr
+T 1472710804 18<jhutar>	psuriset, Will create 100 repos and add it to the 100 orgs and setup sync plan OK?
+T 1472710829 18<psuriset>	jhutar,  can u see 100 orgs
+T 1472710843 18<psuriset>	jhutar,  10 -15 repos fine 
+T 1472710851 18<psuriset>	jhutar,  may be we can start scale later 
+T 1472710859 18<jhutar>	psuriset, 10 repos each?
+T 1472710868 18<jhutar>	psuriset, Yes, I can see these orgs
+T 1472711026 18<psuriset>	jhutar, yeh
+T 1472711033 18<psuriset>	jhutar,  but how do you get 10 repos 
+T 1472711047 18<psuriset>	jhutar,  from where you sync 10 repos? 
+T 1472711062 18<psuriset>	vikasc, ping 
+T 1472711070 18<jhutar>	psuriset, I will copy one repo agaian and again
+T 1472711079 18<psuriset>	jhutar,  on pman06?
+T 1472711088 18<psuriset>	vikasc,  can you share new joinee mojo? 
+T 1472711155 21<psuriset>21	sonal, https://mojo.redhat.com/docs/DOC-1055335
+T 1472711209 18<vikasc>	psuriset, 
+T 1472711218 18<vikasc>	do you still need one?
+T 1472711275 18<vikasc>	psuriset, You already shared :)
+T 1472711344 18<jhutar>	psuriset, http://pman06.perf.lab.eng.bos.redhat.com/pub/bz1218785/ - it is a same repo (on pman06 it is just a symlinks to "origin/" directory)
+T 1472711355 18<psuriset>	ok
+T 1472711357 18<psuriset>	jhutar, ok
+T 1472711359 18<jhutar>	for org in $( seq 1 100 ); do for i in $( seq 1 10 ); do ln -s origin $org-$i; done; done
+T 1472711360 18<psuriset>	vikasc,  Thanks 
+T 1472711377 18<psuriset>	jhutar,  make sense
+T 1472711549 18<vikasc>	psuriset, np :)
+T 1472714597 22*	Disconnected (Connection timed out).
+T 1472714913 19*	19Now talking on #perf-blr
+T 1472718167 22*	Disconnected (Connection timed out).
+T 1472721888 22*	sonal already in use. Retrying with sonal_...
+T 1472721888 19*	19Now talking on #perf-blr
+T 1472722207 18<vikasc>	psuriset, these are  complete error logs http://pastebin.test.redhat.com/407938 . Still facing same issue. I even tried " yum-config-manager --disable beaker-tasks" . 
+T 1472722246 18<vikasc>	psuriset, i will ask on aos-scalibility
+T 1472722253 18<psuriset>	vikasc,  machine please
+T 1472722261 18<psuriset>	which machine? 
+T 1472722273 18<vikasc>	 yum-config-manager --disable beaker-tasks
+T 1472722280 18<vikasc>	dell-r620-01.perf.lab.eng.rdu.redhat.com
+T 1472722338 18<vikasc>	psuriset, 
+T 1472722641 18<psuriset>	ok
+T 1472722692 18<psuriset>	vikasc,  you want to disable all beaker repos? 
+T 1472722717 18<vikasc>	psuriset, i wanted to work around this error
+T 1472722734 18<psuriset>	vikasc,  i got it. What was the initial problem you had? 
+T 1472722745 18<psuriset>	vikasc,  what were you trying to do before hitting this? 
+T 1472722748 18<vikasc>	psuriset, i am not sure what is the implication of disabling beaker repos
+T 1472722782 18<psuriset>	root@dell-r620-01: /etc/yum.repos.d # yum install -y puppet hiera openssh-clients tar nc rubygem-json
+T 1472722783 18<psuriset>	Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-manager
+T 1472722783 18<psuriset>	This system is not registered to Red Hat Subscription Management. You can use subscription-manager to register.
+T 1472722783 18<psuriset>	Package puppet-3.6.2-3.el7.noarch already installed and latest version
+T 1472722783 18<psuriset>	Package 1:hiera-1.3.4-5.el7.noarch already installed and latest version
+T 1472722784 18<psuriset>	Package openssh-clients-6.6.1p1-30.el7.x86_64 already installed and latest version
+T 1472722786 18<psuriset>	Package 2:tar-1.26-30.el7.x86_64 already installed and latest version
+T 1472722788 18<psuriset>	Package 2:nmap-ncat-6.40-7.el7.x86_64 already installed and latest version
+T 1472722790 18<psuriset>	Package rubygem-json-1.7.7-29.el7.x86_64 already installed and latest version
+T 1472722792 18<psuriset>	Nothing to do
+T 1472722794 18<psuriset>	root@dell-r620-01: /etc/yum.repos.d # 
+T 1472722798 18<psuriset>	vikasc,  this is already installed
+T 1472722814 18<vikasc>	let me try packstack again
+T 1472722824 18<psuriset>	vikasc, ok
+T 1472722835 18<psuriset>	vikasc,  can you start a screen , i can see that 
+T 1472722837 18<vikasc>	psuriset, http://pastebin.test.redhat.com/407938
+T 1472722843 18<psuriset>	vikasc, ok
+T 1472722845 18<psuriset>	1 sec
+T 1472722862 18<psuriset>	gotcha
+T 1472722909 18<psuriset>	vikasc,  can you share packstack command 
+T 1472722912 18<vikasc>	psuriset, getting same error again
+T 1472722942 18<vikasc>	psuriset, at /root
+T 1472722945 18<vikasc>	psuriset, packstack --answer-file=my_file.txt
+T 1472722971 18<psuriset>	vikasc,  simply we can registered to cdn and try 
+T 1472722975 18<psuriset>	vikasc,  lets try 
+T 1472722995 18*	psuriset running 
+T 1472723002 18<psuriset>	paclstack 
+T 1472723092 18<psuriset>	vikasc,  you want to install openstack? 
+T 1472723107 18<vikasc>	psuriset, yes
+T 1472723117 18<psuriset>	vikasc,   allin one? 
+T 1472723148 18<vikasc>	psuriset, No, one controller/Networking-node and two computes
+T 1472723155 18<psuriset>	ok
+T 1472723158 18<vikasc>	same is mentioned is my_file.txt
+T 1472723171 18<psuriset>	vikasc,  you might be asked to  try on ospd :) 
+T 1472723187 18<psuriset>	paskstack not much used internally
+T 1472723242 18<psuriset>	give me a min 
+T 1472723256 18<vikasc>	psuriset, i though by using packstack i am doing it RedHattish way :D
+T 1472723300 18<psuriset>	vikasc,  production people use ospd 
+T 1472723302 18<psuriset>	no worries 
+T 1472723314 18*	psuriset re-running 
+T 1472723338 18<vikasc>	psuriset, will confirm with jeremy
+T 1472723351 18<vikasc>	psuriset, If he has any preference
+T 1472723418 18<psuriset>	vikasc, ok
+T 1472723458 18*	psuriset setting repos. please dont run packstack now 
+T 1472723530 18<vikasc>	psuriset, "please dont run packstack now" why?
+T 1472723544 18*	psuriset changing repos 
+T 1472723556 18<psuriset>	vikasc,  register to rhn 
+T 1472723556 18<vikasc>	psuriset,  ok
+T 1472723561 18<psuriset>	and then enable 
+T 1472723593 18<vikasc>	psuriset, how can i register to rhn?
+T 1472723601 18<psuriset>	will share 
+T 1472723743 18<vikasc>	psuriset, what should be my next step now?
+T 1472723754 18<vikasc>	psuriset, are you trying something on machine?
+T 1472723755 18<psuriset>	vikasc,  :) wait for 2 mins 
+T 1472723760 18<psuriset>	vikasc, yeh
+T 1472723764 18<vikasc>	psuriset, sure :)
+T 1472723769 18<psuriset>	vikasc,  go for a coffee :) 
+T 1472723781 18<vikasc>	psuriset, cool
+T 1472724046 18<psuriset>	vikasc,  you want openstack 8 or 9? 
+T 1472724096 18<vikasc>	psuriset, mitaka release, if not sure than 8 will be fine
+T 1472724108 18<psuriset>	vikasc,  mitaka is 9
+T 1472724116 18<psuriset>	which was released yesterday 
+T 1472724131 18<vikasc>	psuriset, ok then 9
+T 1472724143 18<psuriset>	ok
+T 1472724148 18*	psuriset tried 8. 
+T 1472724153 18<psuriset>	first time 9 :) 
+T 1472724175 18<vikasc>	psuriset,  :)
+T 1472724189 18<vikasc>	psuriset, please let me know steps 
+T 1472724192 18<vikasc>	or better bj
+T 1472724200 18<psuriset>	vikasc,  sure
+T 1472724205 18<psuriset>	i just enabeld repos
+T 1472724206 18<vikasc>	psuriset, so that i can do again in future
+T 1472724206 18<psuriset>	started
+T 1472724215 18<vikasc>	psuriset, how did you enable repos
+T 1472724217 18<psuriset>	vikasc,  sure. 
+T 1472724232 18<psuriset>	vikasc,  root@dell-r620-01: ~ # subscription-manager register
+T 1472724232 18<psuriset>	Registering to: subscription.rhsm.redhat.com:443/subscription
+T 1472724232 18<psuriset>	Username: psuriset@redhat.com
+T 1472724232 18<psuriset>	Password: 
+T 1472724232 18<psuriset>	The system has been registered with ID: ae14cf67-0f6d-4da0-8cbc-a2188ae0d23f 
+T 1472724233 18<psuriset>	root@dell-r620-01: ~ '
+T 1472724240 18<psuriset>	vikasc,  register with my id 
+T 1472724255 18<psuriset>	vikasc,  https://access.redhat.com/articles/1127153
+T 1472724261 18<psuriset>	vikasc,  its just openstack 
+T 1472724266 18<psuriset>	all redhat repos same way 
+T 1472724324 18<psuriset>	for respective product, respective pool,. repo would have to be enabled 
+T 1472724497 18<vikasc>	psuriset, this password for registration is the one for which i have to mail to customer service?
+T 1472724511 18<psuriset>	vikasc, nope
+T 1472724518 18<vikasc>	psuriset, then?
+T 1472724523 18<vikasc>	psuriset, kerberos
+T 1472724525 18<vikasc>	?
+T 1472724545 18<psuriset>	vikasc,  you dont need to send password
+T 1472724547 18<psuriset>	just send mail 
+T 1472724555 18<psuriset>	they will respond what to do 
+T 1472724557 18<vikasc>	ok
+T 1472724596 18<vikasc>	psuriset, and then how u are installing ?
+T 1472724603 18<vikasc>	psuriset, what steps?
+T 1472724624 18<vikasc>	psuriset, packstack only?
+T 1472724646 18<psuriset>	vikasc,  yeh
+T 1472724649 18<psuriset>	just a sec
+T 1472724774 18*	psuriset yet to fix it 
+T 1472724791 18<psuriset>	will share screen in some time 
+T 1472724872 18<vikasc>	psuriset, cool
+T 1472724916 18<psuriset>	jhutar, ping 
+T 1472724938 18<jhutar>	psuriset, pong
+T 1472724954 18<psuriset>	jhutar,  some customer reported same qpidd mem issues on 6.1.9 
+T 1472724958 18<psuriset>	jhutar,  23G
+T 1472724966 18<psuriset>	This is regarding High priority customer's case# 01692739
+T 1472724967 18<psuriset>	Customers satellite version is 6.1.9 initially qpidd was not running so customer increased timeout by 20 minutes this started qpidd service but now qpidd is consuming 23GB memory out of 32GB.
+T 1472724967 18<psuriset>	Best Regards,
+T 1472724967 18<psuriset>	Preetesh Sharma
+T 1472725020 18<jhutar>	psuriset, Great, maybe they can check findings in our BZs?
+T 1472725145 18<psuriset>	jhutar,  we dont have solution yet :(
+T 1472725225 18<jhutar>	psuriset, But it is good to connect the report to the BZ to raise its importancy
+T 1472725235 18<psuriset>	yeh
+T 1472725270 18<jhutar>	psuriset, Also gives good impression to customer if GSS tells him: we already have bug about it (for 6.2 though) and eng is working on that
+T 1472725288 18<psuriset>	jhutar,  yeh
+T 1472725293 18<psuriset>	jhutar,  now let them fix :) 
+T 1472725305 18<psuriset>	jhutar,  cant sit on it for long 
+T 1472725317 18<psuriset>	i replied 
+T 1472725457 18<jhutar>	psuriset, Unfortunatelly I have already started synces
+T 1472725479 18<psuriset>	jhutar, why unfortunate? 
+T 1472725489 18<psuriset>	jhutar,  we will learn some thing new :)
+T 1472725493 18<jhutar>	psuriset, I have not let you know in advance
+T 1472725503 18<psuriset>	jhutar,  this is with hammer? 
+T 1472725535 18<jhutar>	psuriset, Anyway, load of the machine is >130, >6GB of swap is used
+T 1472725545 18<jhutar>	psuriset, Yes, with hammer
+T 1472725550 18<psuriset>	jhutar,  ok
+T 1472725555 18<psuriset>	hammer consume lot mem 
+T 1472725562 18<psuriset>	jhutar,  with async? 
+T 1472725570 18<jhutar>	yes
+T 1472725584 18<psuriset>	vikasc,  its giving hard time for me. 
+T 1472725588 18<psuriset>	beaker sucks 
+T 1472725594 18*	psuriset trying 
+T 1472725609 18<psuriset>	vikasc,  lets check with elko
+T 1472725626 18<vikasc>	psuriset, sure
+T 1472725642 18<psuriset>	its nothing to do with openstack
+T 1472725646 18<psuriset>	beaker
+T 1472725650 18*	psuriset try last trial 
+T 1472725689 18<jhutar>	psuriset, http://norton.perf.lab.eng.rdu.redhat.com:3000/dashboard/db/satellite6-general-system-performance?var-Cloud=satellite6&var-Node=pman05&var-Interface=interface-enp2s0f0&var-Disk=disk-sda&var-cpus0=All&var-cpus00=All
+T 1472725715 18<jhutar>	psuriset, Beaker rocks! - what problem do you have?
+T 1472725740 18<psuriset>	may be i am opinionated :) 
+T 1472725745 18<psuriset>	i hate beaker :) 
+T 1472725761 18<psuriset>	jhutar,  let me show u 
+T 1472725784 18<psuriset>	jhutar, http://pastebin.test.redhat.com/407938
+T 1472725883 18<jhutar>	http://beaker.engineering.redhat.com/repos/2878122/repodata/repomd.xml: [Errno 14] HTTP Error 404 - Not Found
+T 1472725908 18<jhutar>	psuriset, You have done something bad to beaker repos?
+T 1472725950 18<jhutar>	This is for beaker-tasks repo?
+T 1472726173 18<jhutar>	That URL is unique for each job/recipe (?) and is destroyed when job finishes
+T 1472726220 18<jhutar>	If you do not have more tests to install on the machine (it is reserved), you can safely disable the repo
+T 1472726254 18<jhutar>	If you need latest tests available, you can change its baseurl to http://beaker.engineering.redhat.com/rpms/
+T 1472726263 18<jhutar>	(that contain latest)
+T 1472727387 18<archit>	psuriset, 10.12.23.221
+T 1472727408 18<archit>	psuriset, smartvm
+T 1472727802 18*	psuriset was away 
+T 1472727808 18<psuriset>	vikasc,  its working?
+T 1472727844 18<vikasc>	psuriset, that error resolved atleast. Still getting another error
+T 1472727853 18<vikasc>	psuriset, working on it :)
+T 1472727889 18<jhutar>	psuriset, Test with 10 orgs (i.e. 100 repos): http://norton.perf.lab.eng.rdu.redhat.com:3000/dashboard/db/satellite6-general-system-performance?var-Cloud=satellite6&var-Node=pman05&var-Interface=interface-enp2s0f0&var-Disk=disk-sda&var-cpus0=All&var-cpus00=All&from=1472726898656&to=1472727798656&panelId=58&fullscreen
+T 1472727936 18<psuriset>	jhutar,  successfully completed right 
+T 1472727948 18<psuriset>	jhutar,  sync plan is an issue . 
+T 1472727950 18<jhutar>	psuriset, seems so
+T 1472727955 18<jhutar>	psuriset, Yes
+T 1472727957 18<psuriset>	lets update that this works atleast 
+T 1472727969 18<psuriset>	sync plan failing. We are exploring it 
+T 1472728360 18<psuriset>	jhutar, https://bugzilla.redhat.com/show_bug.cgi?id=1218785#c6
+T 1472728364 18<psuriset>	jhutar,  :) 
+T 1472728384 18<psuriset>	jhutar,  it took 6 months for some one to share it with me :) 
+T 1472728428 18<jhutar>	psuriset, Will add it there
+T 1472728448 18<psuriset>	jhutar, let me add it 
+T 1472728450 18<psuriset>	1 sec
+T 1472728464 18<jhutar>	psuriset, Wait, you are not CCed to any BZ comment which have "performance" or "scale" in the text? :-O :)
+T 1472728486 18<psuriset>	jhutar,  is it 
+T 1472728488 18<psuriset>	jhutar,  https://bugzilla.redhat.com/show_bug.cgi?id=1218785#c6
+T 1472728495 18<jhutar>	psuriset, Great, I'm now trying with 100 orgs * 10 reos
+T 1472728500 18<psuriset>	jhutar,  they mentioned my name 
+T 1472728504 18<psuriset>	jhutar,  kool 
+T 1472728512 18<psuriset>	jhutar,  go ahead and update then 
+T 1472728537 18<psuriset>	jhutar,  crap yar. they should have asked 6 months before. 
+T 1472728540 18<psuriset>	simple thing 
+T 1472728756 18<vikasc>	psuriset, Are there still any changes on that machine which you did related to repos? I am getting this error now http://pastebin.test.redhat.com/407984 . Hope it is not related to any of changes you tried.
+T 1472728939 18<psuriset>	vikasc, looking at it 
+T 1472728967 18<vikasc>	psuriset, just now elko suggested this one "cp /root/perf-dept/repo_files/rhel7-latest.repo /etc/yum.repos.d/"
+T 1472728977 18<vikasc>	psuriset, going to try this out
+T 1472728985 18<psuriset>	ok
+T 1472728989 18<psuriset>	vikasc, ^
+T 1472729117 18<vikasc>	psuriset, that worked
+T 1472730927 22*	hroy|afk is now known as hroy
+T 1472730995 18<jhutar>	psuriset, Updated the BZ https://bugzilla.redhat.com/show_bug.cgi?id=1218785#c7
+T 1472731528 23*	23shberry has quit (23Ping timeout: 620 seconds23)
+T 1472753102 22*	Disconnected (Connection timed out).
+T 1472791159 19*	19Now talking on #perf-blr
+T 1472791507 18<psuriset>	Morning!
+T 1472791526 21<psuriset>21	sonal, ping 
+T 1472791564 18<psuriset>	vikasc, Jeremy was fine with RDO?
+T 1472791634 18<psuriset>	vikasc,  the reason why i am more inclined towards OSPD is " we/perf team care much about enterprise product". Again i am not the one taking deicions on Openshift. You & Jeremy may have better insignts. 
+T 1472791683 18<vikasc>	morning psuriset 
+T 1472791730 18<vikasc>	i missed yesterday to confirm
+T 1472791782 18<vikasc>	along with current activities he asked me to review some proposals in k8s and give my comments upstream
+T 1472791802 18<vikasc>	this is related to k8s schedular enhacement
+T 1472791828 18<vikasc>	psuriset, i agree to yr point. Will confirm
+T 1472791855 18<psuriset>	vikasc,  kool
+T 1472791871 18<psuriset>	vikasc,  you have more trello cards  :) 
+T 1472791902 21<psuriset>21	vikasc,  sonal is our new intern joined yesterday 
+T 1472791904 18<psuriset>	hroy|afk, ^
+T 1472792560 18<vikasc>	psuriset, yeah, lot of things to track on
+T 1472792563 18<vikasc>	psuriset,  :)
+T 1472792583 18<vikasc>	psuriset, i am enjoying it
+T 1472792592 18<vikasc>	psuriset, i like load
+T 1472792618 21<vikasc>21	welcome sonal 
+T 1472792704 31<sonal>30	hello vikasc
+T 1472792741 21<vikasc>21	hi sonal 
+T 1472792766 31<sonal>30	:)
+T 1472792823 21<vikasc>21	sonal, though i also recently joined. Please let me know if I can help in something.
+T 1472792837 31<sonal>30	oh..ya sure
+T 1472792859 31<sonal>30	em going through documentations 
+T 1472793057 18<vikasc>	cool :)
+T 1472793210 19*	19jhutar (~Jan@ovpn-200-36.brq.redhat.com) has joined #perf-blr
+T 1472793954 31<sonal>30	:)
+T 1472794655 19*	19shberry (~sberry@vpn-48-165.rdu2.redhat.com) has joined #perf-blr
+T 1472795268 22*	hroy|afk is now known as hroy
+T 1472795313 18<hroy>	psuriset, morning
+T 1472795320 21<hroy>21	sonal, welcome
+T 1472795597 22*	jhutar is now known as jhutar_afk
+T 1472796580 18<psuriset>	jhutar_afk, ping 
+T 1472798514 18<mpillai>	shberry, congrats! chess champion and table-tennis silver medalist!
+T 1472798527 18<shberry>	Thank you!!
+T 1472800029 18<mpillai>	shberry, did u ping bene on how he uses pbench-fio?
+T 1472800152 18<vikasc>	psuriset, OSP is recommended
+T 1472800166 18<vikasc>	psuriset, thanks
+T 1472804064 22*	Disconnected (Connection timed out).
+T 1472804075 19*	19Now talking on #perf-blr
+T 1472804176 18<shberry>	yes i did
+T 1472804354 18<mpillai>	shberry, pm
+T 1472807925 18<psuriset>	hroy, ping 
+T 1472807934 18<hroy>	psuriset, pong
+T 1472807949 18<psuriset>	hroy,  let me know if u need any help with compass. Effectively this is your first compass :) 
+T 1472807959 18<hroy>	psuriset, sure
+T 1472808022 18<psuriset>	hroy,  Going out some where for long weekend?  You celebrate vinayaka chaturthi ? 
+T 1472808070 18<hroy>	psuriset, we do celebrate but its not one of the major festivals
+T 1472808107 18<hroy>	maybe in the evening i will roam around, there should be a vinayak temple nearby
+T 1472808133 18<psuriset>	ack
+T 1472808846 21<psuriset>21	sonal_, Good to see first PR. nice :)
+T 1472808848 21<psuriset>21	sonal_, ++
+T 1472808870 31<sonal_>30	ty :)
+T 1472809155 22*	vikasc is now known as vikasc|lunch
+T 1472809608 23*	23shberry has quit (23Read error: Connection reset by peer23)

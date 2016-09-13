@@ -1,0 +1,424 @@
+T 1472710291 29*	29Topic for #bangalore 29is: Bangalore Wiki - https://wiki.eng.blr.redhat.com | Local Mirror - http://download.eng.blr.redhat.com/pub/
+T 1472710291 29*	29Topic for #bangalore 29set by rmc!~rmc@dhcp-0-189.blr.redhat.com 29at Fri Aug 26 13:20:57 2016
+T 1472710323 19*	19vdas (~vdas@dhcp-0-125.blr.redhat.com) has joined #bangalore
+T 1472710476 19*	19ambarish (~ambarish@10.70.6.68) has joined #bangalore
+T 1472710568 19*	19samikshan (~sbairagy@vpn1-49-239.bne.redhat.com) has joined #bangalore
+T 1472710616 22*	Vj-T is now known as Vj
+T 1472710678 23*	23jiffin has quit (23Remote host closed the connection23)
+T 1472710714 23*	23samikshan has quit (23Client Quit23)
+T 1472710743 19*	19jiffin (~jiffin@dhcp-0-136.blr.redhat.com) has joined #bangalore
+T 1472710888 23*	23ShwethaHP has quit (23Ping timeout: 620 seconds23)
+T 1472710900 19*	19ShwethaHP (~ShwethaHP@vpn-229-16.phx2.redhat.com) has joined #bangalore
+T 1472710941 19*	19ashah (~ashah@10.70.7.54) has joined #bangalore
+T 1472710988 19*	19kaverma (~kaverma@10.70.1.208) has joined #bangalore
+T 1472711016 23*	23karnan has quit (23Ping timeout: 620 seconds23)
+T 1472711022 19*	19sanjayu_ (~sanjayu@dhcp-0-30.blr.redhat.com) has joined #bangalore
+T 1472711036 23*	23sanjayu_ has quit (23Remote host closed the connection23)
+T 1472711107 19*	19sanjay (~sanjayu@dhcp-0-30.blr.redhat.com) has joined #bangalore
+T 1472711136 19*	19Harish (~hnallurv@dhcp-0-13.blr.redhat.com) has joined #bangalore
+T 1472711218 19*	19smohan (~smohan@dhcp35-12.lab.eng.blr.redhat.com) has joined #bangalore
+T 1472711277 19*	19arthy (~aloganat@vpn1-5-182.ams2.redhat.com) has joined #bangalore
+T 1472711325 23*	23hgowtham has quit (23Ping timeout: 615 seconds23)
+T 1472711329 19*	19cgowda (~cgowda@10.70.1.219) has joined #bangalore
+T 1472711392 19*	19aspandey_ (~aspandey@vpn-58-153.rdu2.redhat.com) has joined #bangalore
+T 1472711587 19*	19sg (~sgirijan@10.70.1.211) has joined #bangalore
+T 1472711626 19*	19karnan (~karnan@10.70.1.228) has joined #bangalore
+T 1472711718 19*	19aravindavk_ (~aravinda@10.70.6.178) has joined #bangalore
+T 1472711745 23*	23atinm has quit (23Ping timeout: 615 seconds23)
+T 1472711815 23*	23skoduri has quit (23Ping timeout: 615 seconds23)
+T 1472711849 19*	19Muthu (~Muthu@10.70.6.97) has joined #bangalore
+T 1472711912 23*	23aspandey has quit (23Ping timeout: 620 seconds23)
+T 1472711959 19*	19sramling (~sramling@dhcp-0-132.blr.redhat.com) has joined #bangalore
+T 1472712018 19*	19a2batic (~a2batic@vpn1-4-145.sin2.redhat.com) has joined #bangalore
+T 1472712028 23*	23sg has quit (23Quit: Leaving23)
+T 1472712031 19*	19sg (~sgirijan@10.70.1.211) has joined #bangalore
+T 1472712057 19*	19ashiq (~ashiq@dhcp-0-52.blr.redhat.com) has joined #bangalore
+T 1472712097 23*	23arthy has quit (23Quit: Leaving23)
+T 1472712101 19*	19arthy (~aloganat@vpn1-5-182.ams2.redhat.com) has joined #bangalore
+T 1472712104 23*	23aravindavk has quit (23Ping timeout: 620 seconds23)
+T 1472712125 19*	19sridharg (~Sridhar@ovpn-116-71.phx2.redhat.com) has joined #bangalore
+T 1472712216 19*	19hgowtham (~hgowtham@vpn1-4-47.sin2.redhat.com) has joined #bangalore
+T 1472714597 22*	Disconnected (Connection timed out).
+T 1472714912 19*	19Now talking on #bangalore
+T 1472714912 29*	29Topic for #bangalore 29is: Bangalore Wiki - https://wiki.eng.blr.redhat.com | Local Mirror - http://download.eng.blr.redhat.com/pub/
+T 1472714912 29*	29Topic for #bangalore 29set by rmc!~rmc@dhcp-0-189.blr.redhat.com 29at Fri Aug 26 13:20:57 2016
+T 1472715016 19*	19Poornima_K (~pkshiras@vpn-231-30.phx2.redhat.com) has joined #bangalore
+T 1472715020 23*	23Poornima_K has quit (23Read error: Connection reset by peer23)
+T 1472715044 23*	23Poornima has quit (23Read error: Connection reset by peer23)
+T 1472718167 22*	Disconnected (Connection timed out).
+T 1472721888 19*	19Now talking on #bangalore
+T 1472721888 29*	29Topic for #bangalore 29is: Bangalore Wiki - https://wiki.eng.blr.redhat.com | Local Mirror - http://download.eng.blr.redhat.com/pub/
+T 1472721888 29*	29Topic for #bangalore 29set by rmc!~rmc@dhcp-0-189.blr.redhat.com 29at Fri Aug 26 13:20:57 2016
+T 1472721960 23*	23Jeeva has quit (23Ping timeout: 620 seconds23)
+T 1472722008 19*	19numans (~numans@dhcp-0-177.blr.redhat.com) has joined #bangalore
+T 1472722151 19*	19Hemanth (~hkumar_@dhcp-0-46.blr.redhat.com) has joined #bangalore
+T 1472722178 19*	19sahina (~sabose@dhcp-0-78.blr.redhat.com) has joined #bangalore
+T 1472722210 22*	naina is now known as naina_afk
+T 1472722242 23*	23dominic|afk has quit (23Read error: Connection reset by peer23)
+T 1472722243 19*	19dominic (~dgeevarg@vpn-60-55.rdu2.redhat.com) has joined #bangalore
+T 1472722243 22*	26CHANSERV gives channel operator status to26 dominic
+T 1472722258 22*	dominic is now known as dominic|afk
+T 1472722420 23*	23anbu has quit (23Ping timeout: 615 seconds23)
+T 1472722430 19*	19sumantro (~sumantro@vpn1-50-5.bne.redhat.com) has joined #bangalore
+T 1472722438 19*	19sg (~sgirijan@10.70.6.215) has joined #bangalore
+T 1472722536 19*	19anush (~ashetty@dhcp35-129.lab.eng.blr.redhat.com) has joined #bangalore
+T 1472722634 22*	Anjana|lunch is now known as Anjana|mtg
+T 1472722751 22*	kasturi is now known as kasturi|afk
+T 1472722756 22*	jkalliyat|brb is now known as jkalliyat
+T 1472722768 22*	kasturi|afk is now known as kasturi|mtg
+T 1472722811 19*	19sharmilla (~sharmilla@vpn1-4-168.sin2.redhat.com) has joined #bangalore
+T 1472722855 23*	23aswin has quit (23Read error: Connection reset by peer23)
+T 1472722885 22*	sampath-brb is now known as sampath
+T 1472722938 22*	divyaM-mtg is now known as divyaM-afk
+T 1472723126 19*	19anil (~ashah@dhcp-0-80.blr.redhat.com) has joined #bangalore
+T 1472723128 19*	19anil_ (~ashah@dhcp-0-80.blr.redhat.com) has joined #bangalore
+T 1472723259 19*	19Poornima (~pkshiras@vpn-230-225.phx2.redhat.com) has joined #bangalore
+T 1472723435 23*	23Muthu has quit (23Ping timeout: 615 seconds23)
+T 1472723435 22*	mchangir is now known as mchangir|afk
+T 1472723508 23*	23itisravi has quit (23Quit: Konversation terminated!23)
+T 1472723521 19*	19itisravi (~ravi@dhcp-0-169.blr.redhat.com) has joined #bangalore
+T 1472723583 23*	23buvanesh_kumar has quit (23Quit: Leaving23)
+T 1472723678 19*	19anbu (~anbu@ovpn-116-17.phx2.redhat.com) has joined #bangalore
+T 1472723720 23*	23ndarshan has quit (23Ping timeout: 620 seconds23)
+T 1472723794 23*	23arcolife has quit (23Quit: Ex-Chat23)
+T 1472723848 23*	23preeti has quit (23Ping timeout: 620 seconds23)
+T 1472723855 23*	23kaverma has quit (23Ping timeout: 615 seconds23)
+T 1472723919 22*	shruti is now known as shruti_afk
+T 1472723986 23*	23Shijoe has quit (23Quit: Leaving23)
+T 1472724030 23*	23dominic|afk has quit (23Ping timeout: 615 seconds23)
+T 1472724036 19*	19ndarshan (~darshan@vpn-231-165.phx2.redhat.com) has joined #bangalore
+T 1472724145 23*	23sg has quit (23Quit: Leaving23)
+T 1472724149 19*	19sg (~sgirijan@10.70.6.215) has joined #bangalore
+T 1472724367 23*	23sg has quit (23Client Quit23)
+T 1472724482 19*	19arunv (~avasudev@vpn1-4-166.sin2.redhat.com) has joined #bangalore
+T 1472724630 22*	kasturi|mtg is now known as kasturi
+T 1472724660 23*	23hgowtham has quit (23Ping timeout: 615 seconds23)
+T 1472724776 23*	23ndarshan has quit (23Ping timeout: 620 seconds23)
+T 1472724902 23*	23aakanksha has quit (23Read error: Connection reset by peer23)
+T 1472725004 19*	19kaverma (~kaverma@vpn-63-113.rdu2.redhat.com) has joined #bangalore
+T 1472725029 19*	19hgowtham (~hgowtham@vpn1-4-153.sin2.redhat.com) has joined #bangalore
+T 1472725032 23*	23Poornima has quit (23Ping timeout: 620 seconds23)
+T 1472725055 22*	rmc is now known as rmc|brb
+T 1472725128 23*	23RameshN has quit (23Ping timeout: 620 seconds23)
+T 1472725151 23*	23Saravanan has quit (23Remote host closed the connection23)
+T 1472725165 19*	19ndarshan (~darshan@vpn-230-253.phx2.redhat.com) has joined #bangalore
+T 1472725231 22*	kasturi is now known as kasturi|afk
+T 1472725245 23*	23anande has quit (23Ping timeout: 619 seconds23)
+T 1472725260 23*	23ramky has quit (23Quit: Leaving23)
+T 1472725289 22*	divyaM-afk is now known as divyaM
+T 1472725360 23*	23kiran_raje_urs_J has quit (23Ping timeout: 615 seconds23)
+T 1472725710 23*	23rmc|brb has quit (23Ping timeout: 615 seconds23)
+T 1472725717 23*	23karnan has quit (23Remote host closed the connection23)
+T 1472725923 19*	19Poornima (~pkshiras@vpn-231-44.phx2.redhat.com) has joined #bangalore
+T 1472725946 23*	23Poornima has quit (23Client Quit23)
+T 1472725951 19*	19Poornima (~pkshiras@vpn-231-44.phx2.redhat.com) has joined #bangalore
+T 1472725960 23*	23krk has quit (23Ping timeout: 620 seconds23)
+T 1472725986 22*	arthy is now known as arthy|afk
+T 1472726184 23*	23aravindavk_ has quit (23Ping timeout: 620 seconds23)
+T 1472726217 19*	19RameshN (~rnachimu@10.70.1.96) has joined #bangalore
+T 1472726239 19*	19arcolife (~arcolife@dhcp-0-145.blr.redhat.com) has joined #bangalore
+T 1472726660 22*	pkalever is now known as pkalever|lunch
+T 1472726772 19*	19hchiramm (~hchiramm@10.70.1.227) has joined #bangalore
+T 1472726919 22*	kasturi|afk is now known as kasturi
+T 1472726970 23*	23anilvenkata has quit (23Ping timeout: 615 seconds23)
+T 1472727298 22*	pkalever|lunch is now known as pkalever
+T 1472727320 22*	Anjana|mtg is now known as Anjana
+T 1472727322 19*	19preeti (~preetic@vpn1-4-105.sin2.redhat.com) has joined #bangalore
+T 1472727584 19*	19miype (~mojan@10.70.7.90) has joined #bangalore
+T 1472727615 22*	mchangir|afk is now known as mchangir
+T 1472727644 23*	23sridharg has quit (23Ping timeout: 630 seconds23)
+T 1472727682 23*	23sahina has quit (23Quit: Leaving23)
+T 1472727785 19*	19vraghuna (~vraghuna@vpn1-4-95.sin2.redhat.com) has joined #bangalore
+T 1472728072 19*	19dominic (~dgeevarg@vpn-57-205.rdu2.redhat.com) has joined #bangalore
+T 1472728072 22*	26CHANSERV gives channel operator status to26 dominic
+T 1472728280 22*	arthy|afk is now known as arthy
+T 1472728553 19*	19rmc (~rmc@dhcp-0-189.blr.redhat.com) has joined #bangalore
+T 1472728578 22*	26CHANSERV gives channel operator status to26 rmc
+T 1472728741 19*	19anilvenkata (~vkommadi@ovpn-116-97.phx2.redhat.com) has joined #bangalore
+T 1472728762 23*	23miype has quit (23Remote host closed the connection23)
+T 1472728781 19*	19kiran_raje_urs_J (~kurs@dhcp-0-73.blr.redhat.com) has joined #bangalore
+T 1472729064 23*	23amit_ has quit (23Ping timeout: 620 seconds23)
+T 1472729416 23*	23tim__ has quit (23Ping timeout: 620 seconds23)
+T 1472729416 23*	23tim_ has quit (23Ping timeout: 620 seconds23)
+T 1472729420 23*	23sharmilla has quit (23Ping timeout: 615 seconds23)
+T 1472729448 23*	23hemani has quit (23Ping timeout: 620 seconds23)
+T 1472729486 22*	arunv is now known as arunv|afk
+T 1472729520 19*	19amit_ (~amit@vpn1-4-170.sin2.redhat.com) has joined #bangalore
+T 1472729781 22*	divyaM is now known as divyaM-afk
+T 1472730001 22*	shruti_afk is now known as shruti
+T 1472730015 23*	23rhinduja has quit (23Ping timeout: 615 seconds23)
+T 1472730032 19*	19sharmilla (~sharmilla@vpn1-4-118.sin2.redhat.com) has joined #bangalore
+T 1472730033 23*	23asengupt has quit (23Remote host closed the connection23)
+T 1472730047 19*	19hemani (~hemani@vpn1-4-67.sin2.redhat.com) has joined #bangalore
+T 1472730130 23*	23rmc has quit (23Quit: Leaving23)
+T 1472730330 23*	23tejas has quit (23Ping timeout: 615 seconds23)
+T 1472730405 19*	19budhram (~budhram@vpn1-4-43.sin2.redhat.com) has joined #bangalore
+T 1472730493 19*	19anbu_ (~anbu@ovpn-116-111.phx2.redhat.com) has joined #bangalore
+T 1472730545 23*	23DebS has quit (23Quit: Leaving.23)
+T 1472730728 23*	23Poornima has quit (23Ping timeout: 620 seconds23)
+T 1472730856 19*	19rmc (~rmc@10.70.7.56) has joined #bangalore
+T 1472730881 22*	rmc is now known as rmc|mtg
+T 1472730883 22*	26CHANSERV gives channel operator status to26 rmc|mtg
+T 1472730927 22*	hroy|afk is now known as hroy
+T 1472730960 23*	23anbu has quit (23Ping timeout: 615 seconds23)
+T 1472731010 19*	19Poornima (~pkshiras@vpn-229-7.phx2.redhat.com) has joined #bangalore
+T 1472731034 19*	19adisakala (~Adium@vpn-60-14.rdu2.redhat.com) has joined #bangalore
+T 1472731080 19*	19tejas (~tejas@10.70.7.18) has joined #bangalore
+T 1472731240 23*	23sumantro has quit (23Ping timeout: 620 seconds23)
+T 1472731248 23*	23gowtham has quit (23Quit: Leaving23)
+T 1472731407 23*	23ndarshan has quit (23Read error: Connection reset by peer23)
+T 1472731528 23*	23shberry has quit (23Ping timeout: 620 seconds23)
+T 1472731560 23*	23neha has quit (23Ping timeout: 620 seconds23)
+T 1472731653 19*	19amainkar (~amainkar@vpn-57-21.rdu2.redhat.com) has joined #bangalore
+T 1472731782 19*	19ramky (~ramky@dhcp-0-165.blr.redhat.com) has joined #bangalore
+T 1472731825 23*	23sanjay has quit (23Quit: Leaving23)
+T 1472731880 23*	23vraghuna has quit (23Ping timeout: 620 seconds23)
+T 1472731880 23*	23Hemanth has quit (23Ping timeout: 620 seconds23)
+T 1472731905 23*	23kaverma has quit (23Ping timeout: 615 seconds23)
+T 1472731912 23*	23surabhi has quit (23Ping timeout: 620 seconds23)
+T 1472732136 23*	23sas has quit (23Ping timeout: 620 seconds23)
+T 1472732428 19*	19sridharg (~Sridhar@ovpn-116-135.phx2.redhat.com) has joined #bangalore
+T 1472732480 19*	19surajd (~hummer@dhcp-0-118.blr.redhat.com) has joined #bangalore
+T 1472732486 22*	shruti is now known as shruti_afk
+T 1472732614 22*	Poornima is now known as Poornima|mtg
+T 1472732728 19*	19divya1 (~dmuntima@vpn1-4-127.sin2.redhat.com) has joined #bangalore
+T 1472732745 23*	23skramaja has quit (23Ping timeout: 615 seconds23)
+T 1472732849 23*	23lkoranda has quit (23Quit: Splunk> Be an IT superhero. Go home early.23)
+T 1472732867 22*	a2batic is now known as Kanika
+T 1472732872 23*	23divyaM-afk has quit (23Ping timeout: 620 seconds23)
+T 1472732909 23*	23Saravanakmr has quit (23Quit: Leaving23)
+T 1472732994 22*	divya1 is now known as divyaM-mtg
+T 1472733013 19*	19asriram_ (~Anjana@vpn-57-15.rdu2.redhat.com) has joined #bangalore
+T 1472733128 23*	23Anjana has quit (23Ping timeout: 620 seconds23)
+T 1472733128 23*	23jkalliyat has quit (23Ping timeout: 620 seconds23)
+T 1472733203 23*	23ShwethaHP has quit (23Quit: Leaving23)
+T 1472733274 23*	23aspandey_ has quit (23Quit: Leaving23)
+T 1472733556 19*	19anilvenkata_ (~vkommadi@ovpn-116-120.phx2.redhat.com) has joined #bangalore
+T 1472733576 23*	23anilvenkata_ has quit (23Client Quit23)
+T 1472733583 19*	19anilvenkata_ (~vkommadi@ovpn-116-120.phx2.redhat.com) has joined #bangalore
+T 1472733596 22*	nbalacha is now known as nbalacha_afk
+T 1472733743 19*	19jkalliyat (~jkalliya@vpn-228-207.phx2.redhat.com) has joined #bangalore
+T 1472753102 22*	Disconnected (Connection timed out).
+T 1472791159 19*	19Now talking on #bangalore
+T 1472791159 29*	29Topic for #bangalore 29is: Bangalore Wiki - https://wiki.eng.blr.redhat.com | Local Mirror - http://download.eng.blr.redhat.com/pub/
+T 1472791159 29*	29Topic for #bangalore 29set by rmc!~rmc@dhcp-0-189.blr.redhat.com 29at Fri Aug 26 13:20:57 2016
+T 1472791212 19*	19budhram (~budhram@vpn1-4-175.sin2.redhat.com) has joined #bangalore
+T 1472791246 19*	19ppai (~ppai@dhcp-0-194.blr.redhat.com) has joined #bangalore
+T 1472791318 19*	19ShwethaHP (~ShwethaHP@vpn-231-125.phx2.redhat.com) has joined #bangalore
+T 1472791475 23*	23vshankar has quit (23Ping timeout: 615 seconds23)
+T 1472791497 19*	19kaverma (~kaverma@vpn-48-156.rdu2.redhat.com) has joined #bangalore
+T 1472791557 19*	19rananda (~rananda@vpn-48-71.rdu2.redhat.com) has joined #bangalore
+T 1472791880 19*	19aswin (~aswin@vpn1-4-188.sin2.redhat.com) has joined #bangalore
+T 1472791909 19*	19Anjana (~Anjana@vpn-48-66.rdu2.redhat.com) has joined #bangalore
+T 1472791930 19*	19Poornima (~pkshiras@vpn-231-226.phx2.redhat.com) has joined #bangalore
+T 1472791946 19*	19Apeksha (~Apeksha@vpn-48-73.rdu2.redhat.com) has joined #bangalore
+T 1472792138 23*	23shubhendu has quit (23Quit: Done!23)
+T 1472792160 19*	19shubhendu (~shubhendu@vpn1-4-153.sin2.redhat.com) has joined #bangalore
+T 1472792160 19*	19kdhananjay (~kdhananja@vpn1-4-118.sin2.redhat.com) has joined #bangalore
+T 1472792258 19*	19numans (~numans@ovpn-116-10.phx2.redhat.com) has joined #bangalore
+T 1472792326 19*	19sampath (~sampath@vpn-58-164.rdu2.redhat.com) has joined #bangalore
+T 1472792329 19*	19vshankar (~vshankar@vpn-58-109.rdu2.redhat.com) has joined #bangalore
+T 1472792383 19*	19sahina (~sabose@vpn1-4-141.sin2.redhat.com) has joined #bangalore
+T 1472792385 22*	sampath is now known as sampath-wfh
+T 1472792463 19*	19aravindavk (~aravinda@ovpn-116-20.sin2.redhat.com) has joined #bangalore
+T 1472792510 23*	23Byreddy has quit (23Read error: Connection reset by peer23)
+T 1472792572 23*	23prasanth has quit (23Remote host closed the connection23)
+T 1472792617 19*	19hgowtham (~hgowtham@vpn1-4-45.sin2.redhat.com) has joined #bangalore
+T 1472792667 19*	19jiffin (~jiffin@vpn-63-175.rdu2.redhat.com) has joined #bangalore
+T 1472792668 19*	19ndarshan (~darshan@vpn-228-193.phx2.redhat.com) has joined #bangalore
+T 1472792839 19*	19vipin (~Vasishta@vpn1-4-122.sin2.redhat.com) has joined #bangalore
+T 1472792923 23*	23rhinduja (23~rhinduja@vpn-48-165.rdu2.redhat.com) has left #bangalore
+T 1472792936 19*	19rhinduja (~rhinduja@vpn-48-165.rdu2.redhat.com) has joined #bangalore
+T 1472793007 19*	19prasanth (~prasanth@vpn1-4-191.sin2.redhat.com) has joined #bangalore
+T 1472793082 19*	19asengupt (~asengupt@vpn-48-71.rdu2.redhat.com) has joined #bangalore
+T 1472793091 23*	23Poornima has quit (23Read error: Connection timed out23)
+T 1472793112 19*	19rmc (~rmc@vpn1-4-174.sin2.redhat.com) has joined #bangalore
+T 1472793250 19*	19Byreddy (~Byreddy@vpn1-4-194.sin2.redhat.com) has joined #bangalore
+T 1472793272 19*	19dhritishikhar (~dhritishi@vpn1-4-176.sin2.redhat.com) has joined #bangalore
+T 1472793297 19*	19Poornima (~pkshiras@vpn-229-77.phx2.redhat.com) has joined #bangalore
+T 1472793337 19*	19ashah (~ashah@vpn1-4-197.sin2.redhat.com) has joined #bangalore
+T 1472793352 23*	23rananda has quit (23Ping timeout: 620 seconds23)
+T 1472793512 23*	23ndarshan has quit (23Ping timeout: 620 seconds23)
+T 1472793525 19*	19ndarshan (~darshan@vpn-228-193.phx2.redhat.com) has joined #bangalore
+T 1472793672 23*	23bala has quit (23Ping timeout: 620 seconds23)
+T 1472793708 19*	19sas (~satheesar@vpn-58-189.rdu2.redhat.com) has joined #bangalore
+T 1472793775 19*	19nag (~nchilaka@vpn1-4-201.sin2.redhat.com) has joined #bangalore
+T 1472793788 23*	23Apeksha has quit (23Read error: Connection reset by peer23)
+T 1472793866 19*	19skoduri (~skoduri@vpn-57-80.rdu2.redhat.com) has joined #bangalore
+T 1472794011 19*	19yogi (~yogi@vpn1-5-133.ams2.redhat.com) has joined #bangalore
+T 1472794020 19*	19amith (~amith@vpn-247-101.nrt.redhat.com) has joined #bangalore
+T 1472794210 19*	19mchangir (~mchangir@vpn-48-69.rdu2.redhat.com) has joined #bangalore
+T 1472794319 19*	19jaganathan (~jaganatha@10.70.1.217) has joined #bangalore
+T 1472794391 23*	23masco has quit (23Quit: Leaving23)
+T 1472794399 22*	ShwethaHP is now known as ShwethaHP_afk
+T 1472794471 19*	19Byreddy_ (~Byreddy@vpn1-4-208.sin2.redhat.com) has joined #bangalore
+T 1472794480 23*	23Byreddy_ has quit (23Client Quit23)
+T 1472794486 19*	19Byreddy_ (~Byreddy@vpn1-4-208.sin2.redhat.com) has joined #bangalore
+T 1472794497 23*	23Byreddy_ has quit (23Client Quit23)
+T 1472794556 19*	19a2batic (~a2batic@vpn1-4-209.sin2.redhat.com) has joined #bangalore
+T 1472794561 19*	19Byreddy_ (~Byreddy@vpn1-4-208.sin2.redhat.com) has joined #bangalore
+T 1472794563 19*	19Apeksha (~Apeksha@vpn-58-174.rdu2.redhat.com) has joined #bangalore
+T 1472794573 23*	23Byreddy_ has quit (23Client Quit23)
+T 1472794577 19*	19Byreddy_ (~Byreddy@vpn1-4-208.sin2.redhat.com) has joined #bangalore
+T 1472794582 19*	19sachin (~sachin@vpn1-4-185.sin2.redhat.com) has joined #bangalore
+T 1472794589 23*	23Byreddy_ has quit (23Client Quit23)
+T 1472794661 19*	19shberry (~sberry@vpn-48-165.rdu2.redhat.com) has joined #bangalore
+T 1472794775 19*	19surajd (~hummer@dhcp-0-118.blr.redhat.com) has joined #bangalore
+T 1472794868 19*	19nbalacha (~nbalachan@vpn-48-219.rdu2.redhat.com) has joined #bangalore
+T 1472794875 22*	nbalacha is now known as nbalacha_wfh
+T 1472794892 19*	19surabhi (~sbhaloth@vpn-48-220.rdu2.redhat.com) has joined #bangalore
+T 1472794905 23*	23rhinduja has quit (23Ping timeout: 615 seconds23)
+T 1472794913 19*	19Bhaskarakiran (~bky@vpn1-4-211.sin2.redhat.com) has joined #bangalore
+T 1472794940 23*	23vipin has quit (23Ping timeout: 615 seconds23)
+T 1472794975 23*	23Byreddy has quit (23Ping timeout: 615 seconds23)
+T 1472794990 19*	19Byreddy (~Byreddy@vpn1-4-208.sin2.redhat.com) has joined #bangalore
+T 1472794998 23*	23a2batic has quit (23Quit: Leaving23)
+T 1472795000 19*	19a2batic (~a2batic@vpn1-4-209.sin2.redhat.com) has joined #bangalore
+T 1472795150 23*	23skoduri has quit (23Ping timeout: 615 seconds23)
+T 1472795268 22*	hroy|afk is now known as hroy
+T 1472795332 22*	a2batic is now known as Kanika
+T 1472795395 23*	23mchangir has quit (23Ping timeout: 615 seconds23)
+T 1472795452 19*	19Karan (~ksandha@vpn1-4-214.sin2.redhat.com) has joined #bangalore
+T 1472795568 19*	19rananda (~rananda@vpn-58-134.rdu2.redhat.com) has joined #bangalore
+T 1472795965 19*	19rhinduja (~rhinduja@vpn-48-217.rdu2.redhat.com) has joined #bangalore
+T 1472796130 23*	23Bhaskarakiran has quit (23Ping timeout: 615 seconds23)
+T 1472796156 23*	23rhinduja (23~rhinduja@vpn-48-217.rdu2.redhat.com) has left #bangalore
+T 1472796163 19*	19rhinduja (~rhinduja@vpn-48-217.rdu2.redhat.com) has joined #bangalore
+T 1472796163 19*	19bala (~bala@dhcp-0-139.blr.redhat.com) has joined #bangalore
+T 1472796216 19*	19Bhaskarakiran (~bky@vpn1-4-216.sin2.redhat.com) has joined #bangalore
+T 1472796222 19*	19mchangir (~mchangir@vpn-48-169.rdu2.redhat.com) has joined #bangalore
+T 1472796444 19*	19preeti (~preetic@vpn1-4-128.sin2.redhat.com) has joined #bangalore
+T 1472796486 23*	23aspandey has quit (23Read error: Connection reset by peer23)
+T 1472796503 19*	19rmc_ (~rmc@vpn-58-34.rdu2.redhat.com) has joined #bangalore
+T 1472796561 23*	23rmc has quit (23Read error: Connection reset by peer23)
+T 1472796817 19*	19Saravanakmr_ (~Saravana@vpn-231-141.phx2.redhat.com) has joined #bangalore
+T 1472796818 19*	19karnan (~karnan@dhcp-0-99.blr.redhat.com) has joined #bangalore
+T 1472796819 19*	19gowtham (~gowtham@dhcp-0-117.blr.redhat.com) has joined #bangalore
+T 1472797096 23*	23Saravanakmr has quit (23Ping timeout: 620 seconds23)
+T 1472797307 19*	19ashiq (~ashiq@vpn1-4-174.sin2.redhat.com) has joined #bangalore
+T 1472797416 23*	23asengupt has quit (23Ping timeout: 620 seconds23)
+T 1472797438 19*	19skoduri (~skoduri@vpn-63-202.rdu2.redhat.com) has joined #bangalore
+T 1472797480 23*	23Saravanakmr_ has quit (23Ping timeout: 620 seconds23)
+T 1472797492 19*	19Saravanakmr_ (~Saravana@vpn-231-141.phx2.redhat.com) has joined #bangalore
+T 1472797565 23*	23numans has quit (23Ping timeout: 615 seconds23)
+T 1472797576 23*	23ndarshan has quit (23Ping timeout: 620 seconds23)
+T 1472797634 22*	Vj-Meeting is now known as Vj
+T 1472797760 22*	ShwethaHP_afk is now known as ShwethaHP
+T 1472797791 23*	23dhritishikhar has quit (23Quit: dhritishikhar23)
+T 1472797821 19*	19aspandey (~aspandey@vpn-49-99.rdu2.redhat.com) has joined #bangalore
+T 1472797837 19*	19jkalliyat (~jkalliya@vpn-231-229.phx2.redhat.com) has joined #bangalore
+T 1472797986 19*	19Saravanan (~sjayaram@10.70.1.218) has joined #bangalore
+T 1472798045 19*	19ndarshan (~darshan@vpn-228-221.phx2.redhat.com) has joined #bangalore
+T 1472798055 19*	19anilvenkata (~vkommadi@ovpn-116-10.phx2.redhat.com) has joined #bangalore
+T 1472798184 23*	23sampath-wfh has quit (23Ping timeout: 620 seconds23)
+T 1472798456 18<concaf>	hchiramm, no traffic today, loved traveling to office
+T 1472798464 18<concaf>	hchiramm, also, happy birthday :)
+T 1472798473 18<anoopcs>	hchiramm, Happy Birthday.
+T 1472798573 22*	aspandey is now known as aspandey|afk
+T 1472798601 19*	19rehana (~redakkan@vpn1-4-226.sin2.redhat.com) has joined #bangalore
+T 1472798632 19*	19aakanksha_ (~aasingh@vpn1-4-47.sin2.redhat.com) has joined #bangalore
+T 1472798715 23*	23aakanksha has quit (23Read error: Connection reset by peer23)
+T 1472798860 23*	23Apeksha has quit (23Ping timeout: 615 seconds23)
+T 1472798959 18<hchiramm>	concaf, anoopcs thanks! 
+T 1472799019 18<hchiramm>	concaf, yep and also will be fun to work from office today
+T 1472799020 18<hchiramm>	:)
+T 1472799025 19*	19Apeksha (~Apeksha@vpn-62-140.rdu2.redhat.com) has joined #bangalore
+T 1472799052 19*	19sramling (~sramling@vpn-49-99.rdu2.redhat.com) has joined #bangalore
+T 1472799147 19*	19Harish (~hnallurv@vpn-48-162.rdu2.redhat.com) has joined #bangalore
+T 1472799176 23*	23Poornima has quit (23Ping timeout: 620 seconds23)
+T 1472799176 23*	23aswin has quit (23Ping timeout: 620 seconds23)
+T 1472799217 23*	23aspandey|afk has quit (23Read error: Connection reset by peer23)
+T 1472799317 19*	19neha (~negupta@vpn1-4-224.sin2.redhat.com) has joined #bangalore
+T 1472799425 23*	23jiffin has quit (23Read error: Connection reset by peer23)
+T 1472799536 19*	19Jeeva (~jkandasa@vpn1-4-230.sin2.redhat.com) has joined #bangalore
+T 1472799542 18<rmc_>	hchiramm, are you at the office ?
+T 1472799574 19*	19shilpa (~shilpa@vpn-49-101.rdu2.redhat.com) has joined #bangalore
+T 1472799582 22*	rmc_ is now known as rmc
+T 1472799595 23*	23prasanth has quit (23Ping timeout: 615 seconds23)
+T 1472799605 18<rmc>	anoopcs, are you at the office ?
+T 1472799613 18<anoopcs>	rmc, Yup.
+T 1472799642 18<rmc>	anoopcs, no problems driving on the roads related to strike ?
+T 1472799659 18<anoopcs>	Hopefully nobody stops a bicycle rider
+T 1472799666 18<rmc>	:)
+T 1472799747 19*	19Poornima (~pkshiras@vpn-231-119.phx2.redhat.com) has joined #bangalore
+T 1472799797 19*	19ankit-raj (~ankit@vpn1-4-191.sin2.redhat.com) has joined #bangalore
+T 1472799848 23*	23sachin has quit (23Ping timeout: 620 seconds23)
+T 1472799886 19*	19ramky (~ramky@vpn-57-73.rdu2.redhat.com) has joined #bangalore
+T 1472799921 22*	rmc is now known as rmc|brb
+T 1472799938 19*	19rafi (~kc@dhcp-0-163.blr.redhat.com) has joined #bangalore
+T 1472800012 19*	19prasanth (~prasanth@vpn1-4-182.sin2.redhat.com) has joined #bangalore
+T 1472800210 19*	19rraja (~rraja@dhcp-0-141.blr.redhat.com) has joined #bangalore
+T 1472800350 22*	Vj is now known as Vj-afk
+T 1472800379 19*	19jiffin (~jiffin@vpn-63-177.rdu2.redhat.com) has joined #bangalore
+T 1472800591 22*	Anjana is now known as Anjana|brb
+T 1472804064 22*	Disconnected (Connection timed out).
+T 1472804075 19*	19Now talking on #bangalore
+T 1472804075 29*	29Topic for #bangalore 29is: Bangalore Wiki - https://wiki.eng.blr.redhat.com | Local Mirror - http://download.eng.blr.redhat.com/pub/
+T 1472804075 29*	29Topic for #bangalore 29set by rmc!~rmc@dhcp-0-189.blr.redhat.com 29at Fri Aug 26 13:20:57 2016
+T 1472804132 22*	divyaM is now known as divyaM-afk
+T 1472804277 19*	19nag (~nchilaka@vpn1-4-216.sin2.redhat.com) has joined #bangalore
+T 1472804360 23*	23bala|lunch has quit (23Ping timeout: 620 seconds23)
+T 1472804382 19*	19devyani7 (~devyani7@vpn1-49-233.bne.redhat.com) has joined #bangalore
+T 1472804486 22*	arthy|lunch is now known as arthy
+T 1472804487 19*	19sumantro (~sumantro@vpn1-50-71.bne.redhat.com) has joined #bangalore
+T 1472804530 23*	23Bhaskarakiran has quit (23Ping timeout: 615 seconds23)
+T 1472804586 19*	19arunv (~avasudev@vpn1-4-170.sin2.redhat.com) has joined #bangalore
+T 1472805225 22*	arunv is now known as arunv|afk
+T 1472805312 19*	19Bhaskarakiran (~bky@vpn1-4-200.sin2.redhat.com) has joined #bangalore
+T 1472805327 22*	ShwethaHP is now known as ShwethaHP|lunch
+T 1472805475 22*	krk is now known as krk|lunch
+T 1472805544 23*	23ashah has quit (23Ping timeout: 620 seconds23)
+T 1472805596 19*	19Poornima (~pkshiras@vpn-231-152.phx2.redhat.com) has joined #bangalore
+T 1472805618 23*	23budhram has quit (23Read error: Connection reset by peer23)
+T 1472805627 22*	ndarshan is now known as ndarshan|lunch
+T 1472805679 19*	19ankitraj (~ankit@vpn1-4-169.sin2.redhat.com) has joined #bangalore
+T 1472805848 22*	divyaM-afk is now known as divyaM
+T 1472805864 23*	23karthik has quit (23Quit: Leaving23)
+T 1472806024 23*	23nbalacha_wfh has quit (23Ping timeout: 620 seconds23)
+T 1472806041 22*	amith is now known as amith_afk
+T 1472806142 22*	arunv|afk is now known as arunv
+T 1472806175 19*	19budhram (~budhram@vpn1-4-206.sin2.redhat.com) has joined #bangalore
+T 1472806191 18<surajd>	hchiramm: Happy Birthday man
+T 1472806207 19*	19ashah (~ashah@vpn1-4-193.sin2.redhat.com) has joined #bangalore
+T 1472806359 23*	23surajd has quit (23Quit: WeeChat 1.523)
+T 1472806476 22*	kdhananjay is now known as kdhananjay|afk
+T 1472806489 19*	19bala|lunch (~bala@dhcp-0-139.blr.redhat.com) has joined #bangalore
+T 1472806496 19*	19yogi (~yogi@vpn1-7-16.ams2.redhat.com) has joined #bangalore
+T 1472806502 22*	bala|lunch is now known as bala
+T 1472806504 23*	23sampath-wfh has quit (23Ping timeout: 620 seconds23)
+T 1472806517 19*	19anande_ (~anande@vpn1-4-176.sin2.redhat.com) has joined #bangalore
+T 1472806615 22*	arthy is now known as arthy|afk
+T 1472806743 19*	19aswin (~aswin@vpn1-4-235.sin2.redhat.com) has joined #bangalore
+T 1472806770 23*	23vdas has quit (23Ping timeout: 615 seconds23)
+T 1472806862 23*	23mchangir has quit (23Read error: Connection reset by peer23)
+T 1472807082 22*	anande_ is now known as anande
+T 1472807134 22*	ShwethaHP|lunch is now known as ShwethaHP
+T 1472807218 22*	aakanksha_ is now known as aakanksha_lunch
+T 1472807342 22*	kasturi is now known as kasturi|afk
+T 1472807344 22*	kdhananjay|afk is now known as kdhananjay
+T 1472807435 23*	23anbu has quit (23Ping timeout: 615 seconds23)
+T 1472807513 22*	Jeeva is now known as Jeeva|afk
+T 1472807535 22*	surabhi is now known as surabhi|afk
+T 1472807579 23*	23ppai has quit (23Quit: Leaving23)
+T 1472807816 23*	23aspandey has quit (23Ping timeout: 620 seconds23)
+T 1472807821 22*	ndarshan|lunch is now known as ndarshan
+T 1472808406 19*	19numans (~numans@ovpn-116-7.phx2.redhat.com) has joined #bangalore
+T 1472808552 23*	23preeti has quit (23Ping timeout: 620 seconds23)
+T 1472808555 23*	23jiffin has quit (23Ping timeout: 615 seconds23)
+T 1472808586 19*	19sachin (~sachin@vpn1-4-54.sin2.redhat.com) has joined #bangalore
+T 1472808636 19*	19karthik (~karthik@vpn1-4-168.sin2.redhat.com) has joined #bangalore
+T 1472808641 22*	anande is now known as anande|bomgar
+T 1472808667 23*	23RameshN has quit (23Quit: Quit23)
+T 1472808673 19*	19RameshN (~rnachimu@10.70.1.96) has joined #bangalore
+T 1472808760 22*	krk|lunch is now known as krk
+T 1472808767 19*	19anbu (~anbu@ovpn-116-93.phx2.redhat.com) has joined #bangalore
+T 1472808873 19*	19jiffin (~jiffin@10.10.50.13) has joined #bangalore
+T 1472808914 19*	19rmc (~rmc@dhcp-0-189.blr.redhat.com) has joined #bangalore
+T 1472808939 22*	26CHANSERV gives channel operator status to26 rmc
+T 1472808985 22*	kasturi|afk is now known as kasturi
+T 1472808997 22*	Bhaskarakiran is now known as Bhaskarakiran|afk
+T 1472809378 22*	aakanksha_lunch is now known as aakanksha
+T 1472809505 19*	19sampath (~sampath@vpn-48-166.rdu2.redhat.com) has joined #bangalore
+T 1472809535 23*	23Harish has quit (23Ping timeout: 615 seconds23)
+T 1472809596 19*	19vdas (~vdas@vpn1-50-12.bne.redhat.com) has joined #bangalore
+T 1472809608 23*	23shberry has quit (23Read error: Connection reset by peer23)

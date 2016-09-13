@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<!--
+pastebin.com Copyright 2006 Paul Dixon - email suggestions to lordelph at gmail.com
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>pastebin Red Hat instance - collaborative debugging tool</title>
+<meta name="ROBOTS" content="NOARCHIVE"/>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="screen" href="pastebin.css?ver=4" />
+
+<style type="text/css">/**
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ */
+.text .de1, .text .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.text  {font-family:monospace;}
+.text .imp {font-weight: bold; color: red;}
+.text li, .text .li1 {background: #ffffff;}
+.text .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.text .li2 {background: #f8f8f8;}
+.text span.xtra { display:block; }
+</style><script type="text/javascript" src="pastebin.js?ver=3"></script>
+</head>
+
+
+<body onload="initPastebin()">
+<div style="display:none;">
+<h1 style="display: none;">pastebin - collaborative debugging</h1>
+<p style="display: none;">pastebin is a collaborative debugging tool allowing you to share
+and modify code snippets while chatting on IRC, IM or a message board.</p>
+<p style="display: none;">This site is developed to XHTML and CSS2 W3C standards.  
+If you see this paragraph, your browser does not support those standards and you 
+need to upgrade.  Visit <a href="http://www.webstandards.org/upgrade/" target="_blank">WaSP</a>
+for a variety of options.</p>
+</div>
+
+<div id="titlebar">pastebin Red Hat instance - collaborative debugging tool <a href="/pastebin.php?help=1">View Help</a></div>
+
+
+
+<div id="menu">
+
+<h1>Recent Posts</h1>
+<ul>
+<li class="highlight"><a href="http://pastebin.test.redhat.com/407876">Anonymous</a><br/>1 sec ago</li>
+<li><a href="http://pastebin.test.redhat.com/407875">mmiura</a><br/>1 min ago</li>
+<li><a href="http://pastebin.test.redhat.com/407874">Anonymous</a><br/>7 mins ago</li>
+<li><a href="http://pastebin.test.redhat.com/407873">mtp</a><br/>8 mins ago</li>
+<li><a href="http://pastebin.test.redhat.com/407872">mmiura</a><br/>11 mins ago</li>
+<li><a href="http://pastebin.test.redhat.com/407871">mmiura</a><br/>12 mins ago</li>
+<li><a href="http://pastebin.test.redhat.com/407870">Anonymous</a><br/>28 mins ago</li>
+<li><a href="http://pastebin.test.redhat.com/407869">Anonymous</a><br/>34 mins ago</li>
+<li><a href="http://pastebin.test.redhat.com/407868">Anonymous</a><br/>41 mins ago</li>
+<li><a href="http://pastebin.test.redhat.com/407867">Anonymous</a><br/>43 mins ago</li>
+<li><a rel="nofollow" href="/pastebin.php">Make new post</a></li></ul>
+<h1>At last!</h1>
+<p>You should find pastebin <b>much</b>
+	faster! Enjoy...</p>
+
+<!--
+<h1>Translations?</h1>
+
+<p>Anyone interested in
+a <a href="http://blog.dixo.net/2006/05/10/translate-pastebin/">translated
+version of pastebin?</a>. If you'd like to volunteer as a translator or
+just want to give some feedback on the idea, please 
+<a href="http://blog.dixo.net/2006/05/10/translate-pastebin/">leave a comment</a>
+</p>
+-->
+
+<h1>Free subdomains</h1><p>Want your own xyz.pastebin.com sub-domain for your community? Just type the address into your browser address bar. <a href="/pastebin.php?help=1">See help for details</a></p><h1>About</h1><p>Pastebin is a tool for collaborative debugging or editing, <a href="/pastebin.php?help=1">See help for details</a>. For latest news see my <a title="View pastebin related posts on my blog" href="http://blog.dixo.net/category/pastebin/">blog</a>.</p><p>Please send feedback by filing a ticket with <a href="mailto:quality-engineering@redhat.com">Quality Engineering</a>.</p><!--
+<a name="feedback"></a>
+<form method="post" action="/pastebin.php#feedback">
+<textarea name="msg" rows="5" style="width:90%;margin-left:5%;font-size:8pt;font-family:Arial;"></textarea>
+<input type="hidden" name="feedback" value="1"/>
+<input style="width:90%;margin-left:5%" type="submit" value="send feedback"/>
+</form><br/>
+-->
+
+<!--
+
+<form method="get" action="http://www.php.net/search.php">
+<h1>PHP Manual</h1>
+<input type="text" size="9" name="pattern"/>
+<input type="hidden" name="show" value="quickref"/>
+<input type="submit" value="go"/>
+</form>
+
+<form method="get" action="http://www.mysql.com/search/?">
+<h1>MySQL Manual</h1>
+<input type="hidden" name="base" value="http://dev.mysql.com"/>
+<input type="hidden" name="lang" value="en"/>
+<input type="hidden" name="doc" value="1"/>
+<input type="hidden" name="m" value="o"/>
+<input type="text" size="9" name="q"/>
+<input type="submit" value="go"/>
+</form>
+-->
+
+<h1>Credits</h1><p>Software developed by <a title="My blog, mainly about software development" href="http://blog.dixo.net">Paul Dixon</a></p>
+<!--  
+<p>
+    <a href="http://validator.w3.org/check/referer"><img
+        src="http://www.w3.org/Icons/valid-xhtml10"
+        alt="Valid XHTML 1.0!" height="31" width="88" border="0"/></a>
+</p>
+-->
+
+</div>
+
+
+<div id="content">
+
+<h1>Posted by Anonymous on Thu 1st Sep 08:28<br/><a href="/pastebin.php?dl=407876" title="download file">download</a> | <span id="copytoclipboard"></span><a href="/pastebin.php" title="make new post">new post</a></h1><div class="syntax"><div class="text"><ol><li class="li1"><div class="de1">ehghregkjrhtg</div></li>
+</ol></div></div><br /><b>Submit a correction or amendment below (<a href="/pastebin.php">click here to make a fresh posting</a>)</b><br/>After submitting an amendment, you'll be able to view the differences between the old and new posts easily.<form name="editor" method="post" action="/pastebin.php">
+<input type="hidden" name="parent_pid" value="407876"/>
+
+<br/> 
+Syntax highlighting:<select name="format"><option selected="selected" value="text">Plaintext</option><option  value="bash">BASH</option><option  value="c">C</option><option  value="cpp">C++</option><option  value="diff">Diff-output</option><option  value="perl">Perl</option><option  value="php">PHP</option><option  value="python">Python</option><option  value="ruby">Ruby</option><option value="text">----------------------------</option><option  value="text">Plaintext</option><option  value="4cs">4CS</option><option  value="6502acme">MOS 6502 ACME Cross Assembler</option><option  value="6502kickass">MOS 6502 Kick Assembler</option><option  value="6502tasm">MOS 6502 TASM</option><option  value="68000devpac">Motorola 68000 - HiSoft Devpac ST 2 Assembler</option><option  value="abap">ABAP</option><option  value="actionscript3">ActionScript3</option><option  value="actionscript">Actionscript</option><option  value="ada">Ada</option><option  value="algol68">ALGOL 68</option><option  value="apache">Apache</option><option  value="applescript">AppleScript</option><option  value="apt_sources">Apt sources.list</option><option  value="arm">ARM Assembler</option><option  value="asm">x86 Assembler</option><option  value="asp">ASP</option><option  value="asymptote">asymptote</option><option  value="autoconf">autoconf</option><option  value="autohotkey">Autohotkey</option><option  value="autoit">AutoIT</option><option  value="avisynth">AviSynth</option><option  value="awk">Awk</option><option  value="bascomavr">BASCOM AVR</option><option  value="bash">BASH</option><option  value="basic4gl">Basic4GL</option><option  value="bf">Brainfuck</option><option  value="bibtex">BibTeX</option><option  value="blitzbasic">BlitzBasic</option><option  value="bnf">BNF (Backus-Naur form)</option><option  value="boo">Boo</option><option  value="caddcl">CAD DCL (Dialog Control Language)</option><option  value="cadlisp">AutoCAD/IntelliCAD Lisp</option><option  value="cfdg">CFDG</option><option  value="cfm">ColdFusion</option><option  value="chaiscript">ChaiScript</option><option  value="cil">CIL (Common Intermediate Language)</option><option  value="c_loadrunner">C (for LoadRunner)</option><option  value="clojure">Clojure</option><option  value="c_mac">C for Macs</option><option  value="cmake">CMake</option><option  value="cobol">COBOL</option><option  value="coffeescript">CoffeeScript</option><option  value="c">C</option><option  value="cpp">C++</option><option  value="cpp-qt">C++ (with Qt extensions)</option><option  value="csharp">C#</option><option  value="css">CSS</option><option  value="cuesheet">Cuesheet</option><option  value="dcl">DCL</option><option  value="dcpu16">DCPU/16 Assembly</option><option  value="dcs">DCS</option><option  value="delphi">Delphi (Object Pascal)</option><option  value="diff">Diff-output</option><option  value="div">DIV</option><option  value="dos">DOS</option><option  value="dot">dot</option><option  value="d">D</option><option  value="ecmascript">ECMAScript</option><option  value="eiffel">Eiffel</option><option  value="email">Email (mbox \ eml \ RFC format)</option><option  value="epc">Enerscript</option><option  value="e">E</option><option  value="erlang">Erlang</option><option  value="euphoria">Euphoria</option><option  value="f1">Formula One</option><option  value="falcon">Falcon</option><option  value="fo">fo</option><option  value="fortran">Fortran</option><option  value="freebasic">FreeBasic (http://www.freebasic.net/)</option><option  value="freeswitch">FreeSWITCH</option><option  value="fsharp">F#</option><option  value="gambas">GAMBAS</option><option  value="gdb">GDB</option><option  value="genero">Genero (FOURJs Genero 4GL)</option><option  value="genie">Genie</option><option  value="gettext">GNU Gettext .po/.pot</option><option  value="glsl">glSlang</option><option  value="gml">GML</option><option  value="gnuplot">Gnuplot script</option><option  value="go">Go</option><option  value="groovy">Groovy</option><option  value="gwbasic">GwBasic</option><option  value="haskell">Haskell</option><option  value="haxe">Haxe</option><option  value="hicest">HicEst</option><option  value="hq9plus">HQ9+</option><option  value="html4strict">HTML 4.01 strict</option><option  value="html5">HTML 5</option><option  value="icon">Icon</option><option  value="idl">Unoidl</option><option  value="ini">INI</option><option  value="inno">Inno Script language</option><option  value="intercal">INTERCAL</option><option  value="io">Io</option><option  value="java5">Java</option><option  value="java">Java</option><option  value="javascript">JavaScript</option><option  value="j">J</option><option  value="jquery">jQuery 1.3</option><option  value="kixtart">PHP</option><option  value="klonec">KLone with C</option><option  value="klonecpp">KLone with C++</option><option  value="latex">LaTeX</option><option  value="lb">Liberty BASIC</option><option  value="ldif">LDIF</option><option  value="lisp">Generic Lisp</option><option  value="llvm">LLVM</option><option  value="locobasic">Locomotive Basic (Amstrad CPC series)</option><option  value="logtalk">Logtalk</option><option  value="lolcode">LOLcode</option><option  value="lotusformulas">@Formula/@Command</option><option  value="lotusscript">LotusScript</option><option  value="lscript">Lightwave Script</option><option  value="lsl2">Linden Scripting Language (LSL2)</option><option  value="lua">LUA</option><option  value="m68k">Motorola 68000 Assembler</option><option  value="magiksf">MagikSF</option><option  value="make">make</option><option  value="mapbasic">MapBasic</option><option  value="matlab">Matlab M-file</option><option  value="mirc">mIRC Scripting</option><option  value="mmix">MMIX Assembler</option><option  value="modula2">Modula-2</option><option  value="modula3">Modula-3</option><option  value="mpasm">Microchip Assembler</option><option  value="mxml">MXML</option><option  value="mysql">MySQL</option><option  value="nagios">Nagios</option><option  value="netrexx">NetRexx</option><option  value="newlisp">newLISP</option><option  value="nsis">Nullsoft Scriptable Install System</option><option  value="oberon2">Oberon-2</option><option  value="objc">Objective-C</option><option  value="objeck">Objeck Programming Language</option><option  value="ocaml-brief">OCaml (Objective Caml)</option><option  value="ocaml">OCaml (Objective Caml)</option><option  value="octave">GNU Octave M-file</option><option  value="oobas">OpenOffice.org Basic</option><option  value="oorexx">ooRexx</option><option  value="oracle11">Oracle 11i</option><option  value="oracle8">Oracle 8</option><option  value="oxygene">Delphi Prism (Oxygene)</option><option  value="oz">Oz</option><option  value="parasail">ParaSail</option><option  value="parigp">PARI/GP</option><option  value="pascal">Pascal</option><option  value="pcre">PCRE</option><option  value="perl6">Perl 6</option><option  value="perl">Perl</option><option  value="per">Per (forms) (FOURJs Genero 4GL)</option><option  value="pf">OpenBSD PACKET FILTER</option><option  value="php-brief">PHP (brief version)</option><option  value="php">PHP</option><option  value="pic16">PIC16 Assembler</option><option  value="pike">Pike</option><option  value="pixelbender">Pixel Bender 1.0</option><option  value="pli">PL/I</option><option  value="plsql">Oracle 9.2 PL/SQL</option><option  value="postgresql">PostgreSQL</option><option  value="povray">Povray</option><option  value="powerbuilder">PowerBuilder (PowerScript)</option><option  value="powershell">PowerShell</option><option  value="proftpd">ProFTPd</option><option  value="progress">Progress</option><option  value="prolog">Prolog</option><option  value="properties">Property</option><option  value="providex">ProvideX</option><option  value="purebasic">PureBasic</option><option  value="pycon">Python</option><option  value="pys60">Python for S60</option><option  value="python">Python</option><option  value="qbasic">QBasic/QuickBASIC</option><option  value="q">q/kdb+</option><option  value="rails">Ruby (with Ruby on Rails Framework)</option><option  value="rebol">Rebol</option><option  value="reg">Microsoft Registry Editor</option><option  value="rexx">Rexx</option><option  value="robots">robots.txt</option><option  value="rpmspec">RPM Spec</option><option  value="rsplus">R</option><option  value="ruby">Ruby</option><option  value="sas">SAS</option><option  value="scala">Scala</option><option  value="scheme">Scheme</option><option  value="scilab">SciLab</option><option  value="sdlbasic">sdlBasic (http://sdlbasic.sf.net)</option><option  value="smalltalk">Smalltalk</option><option  value="smarty">Smarty template</option><option  value="spark">SPARK</option><option  value="sparql">SPARQL</option><option  value="sql">SQL</option><option  value="stonescript">StoneScript</option><option  value="systemverilog">SystemVerilog IEEE 1800-2009(draft8)</option><option  value="tcl">TCL/iTCL</option><option  value="teraterm">Tera Term Macro</option><option  value="thinbasic">thinBasic</option><option  value="tsql">T-SQL</option><option  value="typoscript">TypoScript</option><option  value="unicon">Unicon the Unified Extended Dialect of Icon</option><option  value="upc">UPC</option><option  value="urbi">Urbi</option><option  value="uscript">UnrealScript</option><option  value="vala">Vala</option><option  value="vbnet">VB.NET</option><option  value="vb">Visual Basic</option><option  value="vedit">Vedit macro language</option><option  value="verilog">Verilog</option><option  value="vhdl">VHDL</option><option  value="vim">Vim scripting</option><option  value="visualfoxpro">Visual FoxPro</option><option  value="visualprolog">Visual Prolog</option><option  value="whitespace">Whitespace</option><option  value="whois">Whois response (RPSL format)</option><option  value="winbatch">WinBatch</option><option  value="xbasic">XBasic</option><option  value="xml">XML</option><option  value="xorg_conf">xorg.conf</option><option  value="xpp">Axapta/Dynamics Ax X++</option><option  value="yaml">YAML</option><option  value="z80">ZiLOG Z80 Assembler</option><option  value="zxbasic">ZXBasic</option></select><br/>
+<br/>
+
+To highlight particular lines, prefix each line with @@@<br/>
+<textarea id="code" class="codeedit" name="code2" cols="80" rows="10" onkeydown="return catchTab(this,event)">
+ehghregkjrhtg</textarea>
+
+<div id="namebox">
+<label for="poster">Your Name</label><br/>
+<input type="text" maxlength="24" size="24" id="poster" name="poster" value="" />
+<input type="submit" name="paste" value="Send"/>
+<br />
+<input type="checkbox" name="remember" value="1"  />Remember me
+</div>
+
+
+<div id="expirybox">
+
+
+<div id="expiryradios">
+<label>How long should your post be retained?</label><br/>
+
+<input type="radio" id="expiry_day" name="expiry" value="d"  />
+<label id="expiry_day_label" for="expiry_day">a day</label>
+
+<input type="radio" id="expiry_month" name="expiry" value="m" checked="checked" />
+<label id="expiry_month_label" for="expiry_month">a month</label>
+
+<input type="radio" id="expiry_forever" name="expiry" value="f"  />
+<label id="expiry_forever_label" for="expiry_forever">forever</label>
+</div>
+
+<div id="expiryinfo"></div>
+	
+</div>
+
+<div id="end"></div>
+
+</form>
+
+</div>
+</body>
+</html>
+UºÞP      WÇÊ†WÇÊ‡<ØB6       '    :http://pastebin.test.redhat.com/407876 necko:classified 1 request-method GET response-head HTTP/1.1 200 OK
+Date: Thu, 01 Sep 2016 06:28:22 GMT
+Server: Apache/2.2.3 (Red Hat)
+X-Powered-By: PHP/5.1.6
+Content-Type: text/html; charset=UTF-8
+ charset UTF-8 uncompressed-len 0 predictor::resource-count 2 predictor::http://pastebin.test.redhat.com/pastebin.css?ver=4 1,1,1472711302,0 predictor::http://pastebin.test.redhat.com/pastebin.js?ver=3 1,1,1472711302,0   C

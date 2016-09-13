@@ -1,0 +1,102 @@
+T 1472710291 19*	19Now talking on #sand
+T 1472710291 29*	29Topic for #sand 29is:  
+T 1472710291 29*	29Topic for #sand 29set by jharriga!~jharriga@vpn-229-32.phx2.redhat.com 29at Tue Aug  2 23:22:44 2016
+T 1472710477 19*	19ambarish (~ambarish@10.70.6.68) has joined #sand
+T 1472711640 19*	19fbaudin (~fbaudin@vpn1-4-209.ams2.redhat.com) has joined #sand
+T 1472711745 19*	19johara (~johara@ovpn-116-47.phx2.redhat.com) has joined #sand
+T 1472711820 23*	23fbaudin has quit (23Client Quit23)
+T 1472714597 22*	Disconnected (Connection timed out).
+T 1472714913 19*	19Now talking on #sand
+T 1472714913 29*	29Topic for #sand 29is:  
+T 1472714913 29*	29Topic for #sand 29set by jharriga!~jharriga@vpn-229-32.phx2.redhat.com 29at Tue Aug  2 23:22:44 2016
+T 1472715025 19*	19fsimonce (~fsimonce@ovpn-116-78.ams2.redhat.com) has joined #sand
+T 1472718167 22*	Disconnected (Connection timed out).
+T 1472721888 19*	19Now talking on #sand
+T 1472721888 29*	29Topic for #sand 29is:  
+T 1472721888 29*	29Topic for #sand 29set by jharriga!~jharriga@vpn-229-32.phx2.redhat.com 29at Tue Aug  2 23:22:44 2016
+T 1472722120 23*	23fbaudin1 has quit (23Quit: Leaving.23)
+T 1472722591 19*	19fbaudin (~fbaudin@vpn-48-51.rdu2.redhat.com) has joined #sand
+T 1472722715 23*	23rlourenc has quit (23Quit: Leaving23)
+T 1472724937 22*	jmencak is now known as jmencak|lunch
+T 1472725679 18<vikasc>	ekuric, ping
+T 1472725748 18<vikasc>	ekuric,  http://pastebin.test.redhat.com/407938
+T 1472725793 18<ekuric>	vikasc: I would do what it says, 
+T 1472725811 18<vikasc>	ekuric, :) 
+T 1472725820 18<ekuric>	vikasc: maybe some other repo will complain too 
+T 1472725835 18<ekuric>	vikasc: but beaker-task is usual suspect
+T 1472725845 18<ekuric>	and I would put epel repo for puppet 
+T 1472725847 18<vikasc>	ekuric, i tried disabling beaker-task as well
+T 1472725859 18<ekuric>	but disable it and re-try
+T 1472725866 18<vikasc>	 yum-config-manager --disable beaker-tasks
+T 1472725880 18<vikasc>	still giving same error
+T 1472725898 18<vikasc>	ekuric,  psuriset can you please also share your finding
+T 1472725911 18<vikasc>	ekuric, psuriset also tried
+T 1472725919 18<ekuric>	vikasc: what is hostname 
+T 1472725947 18<vikasc>	ekuric, dell-r620-01.perf.lab.eng.rdu.redhat.com
+T 1472725949 18<ekuric>	vikasc: just to check it 
+T 1472725977 18<vikasc>	at /root I have my_file.txt which is packstack answers file
+T 1472726006 18<ekuric>	yum install -y puppet hiera openssh-clients tar nc rubygem-json works ... 
+T 1472726007 18<ekuric>	can you try 
+T 1472726012 18<vikasc>	ekuric, and I am using this command then, packstack --answer-file=my_file.txt
+T 1472726013 18<ekuric>	now 
+T 1472726016 18<ekuric>	can you try now
+T 1472726018 18<vikasc>	ok
+T 1472726145 18<vikasc>	ekuric, it worked on this host, but same error getting for compute host
+T 1472726153 18<vikasc>	ekuric, so what you did?
+T 1472726167 18<vikasc>	ekuric, same i will do on another compute machine as well
+T 1472726193 18<ekuric>	            yum-config-manager --save --setopt=beaker-tasks.skip_if_unavailable=true; yum clean all
+T 1472726225 18<ekuric>	vikasc: that error and I are old friends ... ;) long lasting friendship 
+T 1472726233 18<vikasc>	ekuric, uhmm.. hehehehe
+T 1472726256 18<vikasc>	ekuric, i think i tried similar.. anyways let me try it on another machines as well.
+T 1472726272 18<ekuric>	vikasc: np, let know if they fail, we will fix it 
+T 1472726281 18<vikasc>	ekuric, thanks, cool
+T 1472726840 19*	19JoeM (~jmario@vpn-48-170.rdu2.redhat.com) has joined #sand
+T 1472727029 22*	jmencak|lunch is now known as jmencak
+T 1472727565 22*	hhuang_gone is now known as hhuang
+T 1472727952 22*	kosh[out] is now known as kosh
+T 1472728182 18<vikasc>	ekuric,  Can you please take a look at this error, http://pastebin.test.redhat.com/407984
+T 1472728257 18<ekuric>	vikasc: ok
+T 1472728763 23*	23fbaudin has quit (23Quit: Leaving.23)
+T 1472728780 19*	19rlourenc (~rlourenc@vpn1-6-105.ams2.redhat.com) has joined #sand
+T 1472728824 19*	19fbaudin (~fbaudin@vpn-48-51.rdu2.redhat.com) has joined #sand
+T 1472728870 19*	19jkilpatr (~jkilpatr@10.12.23.146) has joined #sand
+T 1472728872 19*	19edannon_ (~edannon@vpn-203-222.tlv.redhat.com) has joined #sand
+T 1472728906 19*	19NOx (~Nigel@vpn-231-57.phx2.redhat.com) has joined #sand
+T 1472728918 18<ekuric>	vikasc: cp /root/perf-dept/repo_files/rhel7-latest.repo /etc/yum.repos.d/ 
+T 1472728924 18<ekuric>	and try again 
+T 1472729160 23*	23edannon has quit (23Ping timeout: 620 seconds23)
+T 1472729671 23*	23sbeal has quit (23Quit: Leaving23)
+T 1472729687 19*	19sbeal (~sbeal@dhcp-49-7.bos.redhat.com) has joined #sand
+T 1472729770 22*	knoel is now known as knoel_gone
+T 1472729805 19*	19sejug (~sjug@dhcp129-39.rdu.redhat.com) has joined #sand
+T 1472730619 19*	19tkatarki (~Adium@vpn-48-173.rdu2.redhat.com) has joined #sand
+T 1472730927 22*	hroy|afk is now known as hroy
+T 1472731216 22*	knoel_gone is now known as knoel
+T 1472731342 23*	23bgray_wfh has quit (23Read error: Connection reset by peer23)
+T 1472731528 23*	23shberry has quit (23Ping timeout: 620 seconds23)
+T 1472731715 23*	23fbaudin has quit (23Quit: Leaving.23)
+T 1472732043 19*	19fbaudin (~fbaudin@vpn-48-199.rdu2.redhat.com) has joined #sand
+T 1472732136 19*	19jharriga (~jharriga@vpn-231-155.phx2.redhat.com) has joined #sand
+T 1472732366 19*	19rsussman (~rsussman@vpn-63-162.rdu2.redhat.com) has joined #sand
+T 1472732759 19*	19willreichert (~wreicher@vpn-48-215.rdu2.redhat.com) has joined #sand
+T 1472732849 23*	23lkoranda has quit (23Quit: Splunk> Be an IT superhero. Go home early.23)
+T 1472732886 19*	19fbaudin1 (~fbaudin@vpn-58-69.rdu2.redhat.com) has joined #sand
+T 1472732930 23*	23jharriga has quit (23Ping timeout: 619 seconds23)
+T 1472732941 19*	19jharriga (~jharriga@vpn-231-155.phx2.redhat.com) has joined #sand
+T 1472733480 23*	23fbaudin has quit (23Ping timeout: 620 seconds23)
+T 1472753102 22*	Disconnected (Connection timed out).
+T 1472791159 19*	19Now talking on #sand
+T 1472791159 29*	29Topic for #sand 29is:  
+T 1472791159 29*	29Topic for #sand 29set by jharriga!~jharriga@vpn-229-32.phx2.redhat.com 29at Tue Aug  2 23:22:44 2016
+T 1472794657 19*	19shberry (~sberry@vpn-48-165.rdu2.redhat.com) has joined #sand
+T 1472794683 23*	23willreichert has quit (23Quit: Leaving.23)
+T 1472795268 22*	hroy|afk is now known as hroy
+T 1472796955 19*	19jmencak (~Jiri_Menc@ovpn-204-74.brq.redhat.com) has joined #sand
+T 1472804064 22*	Disconnected (Connection timed out).
+T 1472804076 19*	19Now talking on #sand
+T 1472804076 29*	29Topic for #sand 29is:  
+T 1472804076 29*	29Topic for #sand 29set by jharriga!~jharriga@vpn-229-32.phx2.redhat.com 29at Tue Aug  2 23:22:44 2016
+T 1472805724 19*	19fbaudin (~fbaudin@vpn1-6-148.ams2.redhat.com) has joined #sand
+T 1472809055 19*	19mkocka (~mkocka@dhcp129-164.brq.redhat.com) has joined #sand
+T 1472809155 22*	vikasc is now known as vikasc|lunch
+T 1472809608 23*	23shberry has quit (23Read error: Connection reset by peer23)
